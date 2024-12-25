@@ -1,33 +1,17 @@
-# Gwent-Online
+# Not-Gwent-Online
 
 # Introduction
 Not-Gwent-Online is a standalone multiplayer version of Gwent, a card game from The Witcher 3. 
 
-# Install
-## - Requirements
-- [node.js](https://nodejs.org/) installed
-- [GraphicsMagick](http://www.graphicsmagick.org) installed (for generating sprites)
-
-## - Build
-
-```sh
-cd ~/myWebserverRoot
-git clone https://github.com/exane/not-gwent-online
+## Installation
+```bash
+git clone https://github.com/LeonardJouve/not-gwent-online.git
 cd not-gwent-online
-npm install
-npm run build
+docker build -t not-gwent .
 ```
 
-
-## - Config
-- go to /public and open Config.js
-- change hostname to your address. (e.g., "192.168.123.1") <br>Make sure you don't have a trailing slash after your IP or address. (e.g., "192.168.123.1/")
-
-## - Start Server
-```sh
-cd ~/myProjectDirectory/not-gwent-online
-node server/server.js
-```
+## Start Server
+`docker run --rm -e BIND=<server-ip> -p <webserver-port>:2000 -p <websocket-port>:2001 not-gwent`
 
 ## - Start Client
-- Open your browser and go to e.g. "http://192.168.123.1:3000"
+- Open your browser and go to e.g. "http://<server-ip>:<webserver-port>"
