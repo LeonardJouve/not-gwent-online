@@ -5,7 +5,7 @@ var fs = require("fs");
 var babelify = require("babelify");
 var livereload = require("gulp-livereload");
 var handlebars = require("browserify-handlebars");
-// var imagemin = require('gulp-imagemin');
+var imagemin = require('gulp-imagemin');
 var gm = require("gulp-gm");
 var sprity = require("sprity");
 var gulpif = require("gulp-if");
@@ -81,7 +81,7 @@ gulp.task('resize sm', function(done) {
   .pipe(gm(function(gmfile) {
     return gmfile.resize(null, 120);
   }))
-  // .pipe(imagemin())
+  .pipe(imagemin())
   .pipe(gulp.dest('./assets/cards/sm/'));
 });
 
@@ -94,7 +94,7 @@ gulp.task('resize md', function(done) {
   .pipe(gm(function(gmfile) {
     return gmfile.resize(null, 284);
   }))
-  // .pipe(imagemin())
+  .pipe(imagemin())
   .pipe(gulp.dest('./assets/cards/md/'));
 });
 
@@ -107,7 +107,7 @@ gulp.task('resize lg', ["resize sm", "resize md"], function(done) {
   .pipe(gm(function(gmfile) {
     return gmfile.resize(null, 450);
   }))
-  // .pipe(imagemin())
+  .pipe(imagemin())
   .pipe(gulp.dest('./assets/cards/lg/'));
 });
 
@@ -132,7 +132,7 @@ gulp.task("generate sprites", ["resize lg"], function() {
     margin: 0
     //template: "./client/scss/_cards.hbs"
   })
-  // .pipe(imagemin())
+  .pipe(imagemin())
   .pipe(gulpif(function (file) {
     return file.path.match(".*\\.png$") != null;
   }, rename({
