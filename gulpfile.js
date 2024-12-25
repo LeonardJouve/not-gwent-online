@@ -35,20 +35,6 @@ gulp.task('browserify', function() {
 
 });
 
-gulp.task("unit tests", function() {
-  browserify('./test/src/mainSpec.js', {standalone: "app", debug: true})
-  .transform(babelify)
-  .bundle().on("error", function(err) {
-    console.log(err);
-  })
-  .pipe(source('spec.js').on("error", function(err) {
-    console.log(err);
-  }))
-  .pipe(gulp.dest('./test/spec/').on("error", function(err) {
-    console.log(err);
-  }));
-})
-
 gulp.task("watch", function() {
   if(argv.production) return;
   gulp.watch("./client/js/*", ["browserify"]);
@@ -145,4 +131,4 @@ gulp.task("generate sprites", ["resize lg"], function() {
 })
 
 
-gulp.task("default", ["watch", "browserify", "unit tests", "index", "resize lg", "resize sm", "resize md", "generate sprites"]);
+gulp.task("default", ["watch", "browserify", "index", "resize lg", "resize sm", "resize md", "generate sprites"]);

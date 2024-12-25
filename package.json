@@ -1,8 +1,5 @@
 {
-  "name": "Gwent-online",
-  "version": "1.0.0",
-  "description": "A standalone multiplayer version of Gwent (The Witcher 3)",
-  "main": "gulpfile.js",
+  "name": "Not-Gwent-Online",
   "dependencies": {
     "connect": "3.0.1",
     "express": "4.16.2",
@@ -38,22 +35,6 @@
     "vinyl-source-stream": "1.1.0"
   },
   "scripts": {
-    "gulp": "gulp",
-    "build": "gulp --production"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/exane/not-gwent-online"
-  },
-  "author": {
-    "name": "Tim Meier",
-    "email": "raco0n@gmx.de"
-  },
-  "contributors": [
-    {
-      "name": "Viktor Geringer",
-      "email": "devfakeplus@googlemail.com"
-    }
-  ],
-  "license": "MIT"
+    "run": "gulp --production"
+  }
 }
