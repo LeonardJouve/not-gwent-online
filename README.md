@@ -14,4 +14,4 @@ docker build -t not-gwent .
 `docker run --rm -e BIND=<server-ip> -p <webserver-port>:2000 -p <websocket-port>:2001 not-gwent`
 
 ## - Start Client
-- Open your browser and go to e.g. "http://<server-ip>:<webserver-port>"
+- Open your browser and go to `http://<server-ip>:<webserver-port>`
