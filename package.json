@@ -22,6 +22,7 @@
     "browserify-handlebars": "1.0.0",
     "gulp": "3.9.1",
     "gulp-gm": "0.0.7",
+    "gm": "1.23.0",
     "gulp-if": "1.2.5",
     "gulp-imagemin": "2.4.0",
     "gulp-livereload": "3.8.1",
