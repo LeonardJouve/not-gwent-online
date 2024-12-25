@@ -62,6 +62,9 @@ gulp.task("index", function() {
   gulp.src("./client/index.html")
   .pipe(gulp.dest("./public/"));
 
+  gulp.src("./client/favicon.ico")
+  .pipe(gulp.dest("./public/"));
+
   gulp.src("./client/css/bootstrap.css")
   .pipe(gulp.dest("./public/build"));
 
