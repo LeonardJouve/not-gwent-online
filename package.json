@@ -23,7 +23,6 @@
     "gulp": "^3.9.0",
     "gulp-gm": "0.0.7",
     "gulp-if": "^1.2.5",
-    "gulp-imagemin": "2.4.0",
     "gulp-livereload": "^3.8.0",
     "handlebars": "^3.0.3",
     "jquery": "^2.1.4",
