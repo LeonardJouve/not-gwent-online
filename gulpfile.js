@@ -4,7 +4,6 @@ var source = require('vinyl-source-stream');
 var fs = require("fs");
 var babelify = require("babelify");
 var livereload = require("gulp-livereload");
-var sass = require("gulp-sass");
 var handlebars = require("browserify-handlebars");
 var imagemin = require('gulp-imagemin');
 var gm = require("gulp-gm");
@@ -15,7 +14,7 @@ var rename = require("gulp-rename");
 //livereload({start: true});
 
 //fast install
-//npm i --save-dev browserify vinyl-source-stream babelify gulp-livereload gulp gulp-sass
+//npm i --save-dev browserify vinyl-source-stream babelify gulp-livereload gulp
 
 
 gulp.task('browserify', function() {
@@ -36,21 +35,6 @@ gulp.task('browserify', function() {
 
 });
 
-gulp.task('sass', function() {
-  gulp.src('./client/scss/main.scss')
-  .pipe(sass({
-    outputStyle: 'compressed'
-  }).on("error", function(err) {
-    console.log(err);
-  }))
-  .pipe(gulp.dest('./public/build/').on("error", function(err) {
-    console.log(err);
-  }))
-  .pipe(livereload().on("error", function(err) {
-    console.log(err);
-  }));
-});
-
 gulp.task("unit tests", function() {
   browserify('./test/src/mainSpec.js', {standalone: "app", debug: true})
   .transform(babelify)
@@ -69,7 +53,6 @@ gulp.task("watch", function() {
   if(argv.production) return;
   gulp.watch("./client/js/*", ["browserify"]);
   gulp.watch("./client/templates/*", ["browserify"]);
-  gulp.watch("./client/scss/*", ["sass"]);
   gulp.watch("./client/*.html", ["index"]);
   gulp.watch("./test/src/*", ["unit tests"]);
 })
@@ -80,6 +63,9 @@ gulp.task("index", function() {
   .pipe(gulp.dest("./public/"));
 
   gulp.src("./client/css/bootstrap.css")
+  .pipe(gulp.dest("./public/build"));
+
+  gulp.src("./client/css/main.css")
   .pipe(gulp.dest("./public/build"));
 })
 
@@ -153,4 +139,4 @@ gulp.task("generate sprites", ["resize lg"], function() {
 })
 
 
-gulp.task("default", ["watch", "browserify", "sass", "unit tests", "index", "resize lg", "resize sm", "resize md", "generate sprites"]);
+gulp.task("default", ["watch", "browserify", "unit tests", "index", "resize lg", "resize sm", "resize md", "generate sprites"]);
