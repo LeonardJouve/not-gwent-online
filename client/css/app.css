@@ -733,7 +733,7 @@ body.landing {
 }
 
 body.inner {
-    background: url(../img/inner-bg.jpg) #162232 center top no-repeat;
+    background: url(assets/inner-bg.jpg) #162232 center top no-repeat;
     background-size: cover;
     padding: 40px;
 }
