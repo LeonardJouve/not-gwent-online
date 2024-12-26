@@ -1,13 +1,14 @@
+require("dotenv").config();
 
 var Config = {};
 
 Config.Server = {
-  "hostname": "127.0.0.1",
-  "port": 16918
+  "hostname": process.env.BIND,
+  "port": process.env.WEBSERVER_PORT
 };
 
 Config.WebServer = {
-  "port": 3000
+  "port": process.env.WEBSOCKET_PORT
 };
 
 Config.Gwent = {
