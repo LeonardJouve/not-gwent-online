@@ -1,6 +1,6 @@
-FROM alpine:3.7
+FROM alpine:3.12
 
-RUN apk add g++ linux-headers make curl bash python
+RUN apk add g++ linux-headers make curl bash python2
 
 ENV NVM_DIR="/root/.nvm"
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash \
