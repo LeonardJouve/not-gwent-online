@@ -1,8 +1,8 @@
-var argv = require('minimist')(process.argv.slice(2));
+require("dotenv").config();
+require('minimist')(process.argv.slice(2));
 var http = require("http");
 var express = require('express');
 var app = express();
-var Config = require("../public/Config");
 
 global.connections = require("./Connections")();
 
@@ -14,13 +14,13 @@ global.User = require("./User");
 
 var server = http.createServer(app);
 global.io = require("socket.io").listen(server);
-server.listen(Config.Server.port);
+server.listen(process.env.WEBSOCKET_PORT);
 
 app.use(express.static('public'));
 app.use('/public', express.static('public'));
 app.use('/assets', express.static('assets'));
 
-app.listen(Config.WebServer.port);
+app.listen(process.env.WEBSERVER_PORT);
 
 var admin = io.of("/admin");
 

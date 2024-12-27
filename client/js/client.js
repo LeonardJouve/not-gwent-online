@@ -48,7 +48,7 @@ let App = Backbone.Router.extend({
     this.lobbyRoute();
   },
   connect: function(){
-    this.socket = socket(Config.Server.hostname + ":" + Config.Server.port);
+    this.socket = socket(process.env.BIND + ":" + process.env.WEBSOCKET_PORT);
     var self = this;
     console.log(this.socket.connected);
     this.socket.on("connect", function(socket){
@@ -985,7 +985,7 @@ let Notification = Backbone.View.extend({
   },
   show: function(){
     let $alert = this.$el.find(".alert");
-    $alert.slideDown(600).delay(Config.Gwent.notification_duration).queue(this.hide.bind(this));
+    $alert.slideDown(600).delay(process.env.NOTIFICATION_DURATION).queue(this.hide.bind(this));
 
   },
   hide: function(){

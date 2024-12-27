@@ -1,4 +1,3 @@
-
 var App = require("./client");
 
 (function main(){

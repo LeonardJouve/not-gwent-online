@@ -11,6 +11,8 @@ var sprity = require("sprity");
 var gulpif = require("gulp-if");
 var argv = require("minimist")(process.argv.slice(2));
 var rename = require("gulp-rename");
+require("dotenv").config();
+var envify = require('envify');
 //livereload({start: true});
 
 //fast install
@@ -19,6 +21,7 @@ var rename = require("gulp-rename");
 
 gulp.task('browserify', function() {
   browserify('./client/js/main.js', {standalone: "app", debug: true})
+  .transform(envify)
   .transform(handlebars).on("error", function(err) {
     console.log(err);
   })
