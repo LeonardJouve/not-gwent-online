@@ -32,7 +32,6 @@ gulp.task('browserify', function() {
   .pipe(gulp.dest('./public/build/').on("error", function(err) {
     console.log(err);
   }));
-
 });
 
 gulp.task("watch", function() {
@@ -122,11 +121,11 @@ gulp.task("generate sprites", ["resize lg"], function() {
     //template: "./client/scss/_cards.hbs"
   })
   // .pipe(imagemin())
-  .pipe(gulpif(function (file) {
-    return file.path.match(".*\\.png$") != null;
-  }, rename({
-    extname: ".PNG"
-  })))
+  // .pipe(gulpif(function (file) {
+  //   return file.path.match(".*\\.png$") != null;
+  // }, rename({
+  //   extname: ".PNG"
+  // })))
   .pipe(gulp.dest("./public/build/"));
 })
 

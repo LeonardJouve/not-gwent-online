@@ -2,7 +2,6 @@
   "name": "Not-Gwent-Online",
   "dependencies": {
     "connect": "3.0.1",
-    "dotenv": "4.0.0",
     "express": "4.16.2",
     "gulp-rename": "1.2.2",
     "jquery-deferred": "0.3.1",

@@ -2,7 +2,7 @@ var argv = require('minimist')(process.argv.slice(2));
 var http = require("http");
 var express = require('express');
 var app = express();
-var Config = require("../public/Config")
+var Config = require("../public/Config");
 
 global.connections = require("./Connections")();
 
