@@ -1,5 +1,6 @@
 services:
-  not-gwent:
+  not-gwent-online:
+    container_name: not-gwent-online
     build:
       context: .
     working_dir: /not-gwent-online
@@ -8,3 +9,4 @@ services:
     ports:
       - "${WEBSERVER_PORT}:${WEBSERVER_PORT}"
       - "${WEBSOCKET_PORT}:${WEBSOCKET_PORT}"
+    restart: always

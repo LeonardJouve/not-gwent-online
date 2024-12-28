@@ -1,12 +1,6 @@
-FROM alpine:3.12
+FROM node:10.12.0-alpine
 
 RUN apk add g++ linux-headers make curl bash python2
-
-ENV NVM_DIR="/root/.nvm"
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash \
-    && . "$NVM_DIR/nvm.sh" \
-    && nvm install 4.6.0 \
-    && nvm use 4.6.0
 
 RUN apk add git libjpeg-turbo-dev libpng-dev xz
 
@@ -17,4 +11,4 @@ RUN curl -L http://downloads.sourceforge.net/graphicsmagick/graphicsmagick/$GRAP
     && make \
     && make install
 
-ENTRYPOINT ["/bin/bash", "-c", ". $NVM_DIR/nvm.sh && npm install && npm run build && npm run start"]
+ENTRYPOINT ["/bin/bash", "-c", "npm install && npm run build && npm run start"]
