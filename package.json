@@ -14,7 +14,7 @@
     "express": "latest",
     "gulp": "3.9.1",
     "gulp-gm": "latest",
-    "gulp-imagemin": "latest",
+    "gulp-imagemin": "7.1.0",
     "gulp-livereload": "latest",
     "handlebars": "latest",
     "jquery": "2.2.4",
