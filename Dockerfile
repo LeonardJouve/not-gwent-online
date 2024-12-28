@@ -1,6 +1,6 @@
-FROM node:10.12.0-alpine
+FROM node:10-alpine
 
-RUN apk add g++ linux-headers make curl bash python2 git libjpeg-turbo-dev libpng-dev xz
+RUN apk add g++ linux-headers make curl bash python3 git libjpeg-turbo-dev libpng-dev xz
 
 ARG GRAPHICSMAGICK_VER=1.3.45
 RUN curl -L http://downloads.sourceforge.net/graphicsmagick/graphicsmagick/$GRAPHICSMAGICK_VER/GraphicsMagick-$GRAPHICSMAGICK_VER.tar.xz | xz -d | tar -xvf - \
