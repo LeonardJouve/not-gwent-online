@@ -11,10 +11,6 @@ var argv = require("minimist")(process.argv.slice(2));
 require("dotenv").config();
 var envify = require('envify');
 
-//fast install
-//npm i --save-dev browserify vinyl-source-stream babelify gulp
-
-
 gulp.task('browserify', function() {
   browserify('./client/js/main.js', {standalone: "app", debug: true})
   .transform(envify)
@@ -40,7 +36,6 @@ gulp.task("watch", function() {
   gulp.watch("./client/*.html", ["index"]);
   gulp.watch("./test/src/*", ["unit tests"]);
 })
-
 
 gulp.task("index", function() {
   gulp.src("./client/index.html")
@@ -104,7 +99,6 @@ gulp.task("generate sprites", ["resize lg"], function() {
     return;
   }
 
-
   return sprity.src({
     src: "./assets/cards/**/*.png",
     style: "cards.css",
@@ -119,6 +113,5 @@ gulp.task("generate sprites", ["resize lg"], function() {
   })
   .pipe(gulp.dest("./public/build/"));
 })
-
 
 gulp.task("default", ["watch", "browserify", "index", "resize lg", "resize sm", "resize md", "generate sprites"]);

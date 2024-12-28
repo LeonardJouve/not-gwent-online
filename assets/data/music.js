@@ -35,7 +35,6 @@ function onPlayerStateChange(event) {
     }
 }
 
-// Volume control
 $('#volume').on('blur', function () {
     let val = $(this).val();
     val = Math.max(0, Math.min(100, val || 75));
@@ -43,7 +42,6 @@ $('#volume').on('blur', function () {
     localStorage.setItem('volumeValue', val);
 });
 
-// Mute/unmute toggle
 $('.music-icon').on('click', function () {
     if ($(this).hasClass('active')) {
         player.mute();
