@@ -18,5 +18,5 @@ Edit .env
 ## Stop Server
 `docker compose down`
 
-## - Start Client
-- Open your browser and go to `http://<server-ip>:<webserver-port>`
+## Start Client
+Open your browser and go to `http://<server-ip>:<webserver-port>`

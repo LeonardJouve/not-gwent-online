@@ -6,18 +6,18 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=no" />
   <meta name="HandheldFriendly" content="true" />
-  <link rel="stylesheet" href="build/app.css">
-  <link rel="stylesheet" href="build/bootstrap.css">
-  <link rel="stylesheet" href="build/cards.css">
-  <link rel="stylesheet" href="build/main.css">
+  <link rel="stylesheet" href="/build/app.css">
+  <link rel="stylesheet" href="/build/bootstrap.css">
+  <link rel="stylesheet" href="/build/cards.css">
+  <link rel="stylesheet" href="/build/main.css">
 </head>
 <body>
 <div class="music-container">
-  <span class="video-self"></span>
+  <div id="player"></div>
   <i class="music-icon active" title="Click to mute/unmute music"></i>
   <div class="music-options">
     <label for="volume">Volume:</label>
-    <input type="text" class="volume" id="volume">
+    <input type="text" class="volume" id="volume" min="0" max="100" value="75">
     <label for="volume">%</label>
   </div>
 </div>
@@ -27,10 +27,8 @@
     <div class="gwent-battle"></div>
   </div>
 </div>
-<script src="build/app.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="../assets/js/tubeplayer.js"></script>
-<script src="../assets/js/temp.js"></script>
+<script src="/build/app.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>  
+<script src="/assets/js/music.js"></script>
 </body>
 </html>

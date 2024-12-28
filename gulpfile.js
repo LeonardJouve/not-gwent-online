@@ -3,7 +3,6 @@ var gulp = require('gulp');
 var source = require('vinyl-source-stream');
 var fs = require("fs");
 var babelify = require("babelify");
-var livereload = require("gulp-livereload");
 var handlebars = require("browserify-handlebars");
 var imagemin = require('gulp-imagemin');
 var gm = require("gulp-gm");
@@ -11,10 +10,9 @@ var sprity = require("sprity");
 var argv = require("minimist")(process.argv.slice(2));
 require("dotenv").config();
 var envify = require('envify');
-//livereload({start: true});
 
 //fast install
-//npm i --save-dev browserify vinyl-source-stream babelify gulp-livereload gulp
+//npm i --save-dev browserify vinyl-source-stream babelify gulp
 
 
 gulp.task('browserify', function() {
