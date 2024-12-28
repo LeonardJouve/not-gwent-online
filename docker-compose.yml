@@ -6,6 +6,8 @@ services:
     working_dir: /not-gwent-online
     volumes:
       - .:/not-gwent-online
+    environment:
+      TZ: Europe/Zurich
     ports:
       - "${WEBSERVER_PORT}:${WEBSERVER_PORT}"
       - "${WEBSOCKET_PORT}:${WEBSOCKET_PORT}"

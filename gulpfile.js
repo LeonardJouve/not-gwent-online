@@ -8,9 +8,7 @@ var handlebars = require("browserify-handlebars");
 // var imagemin = require('gulp-imagemin');
 var gm = require("gulp-gm");
 var sprity = require("sprity");
-var gulpif = require("gulp-if");
 var argv = require("minimist")(process.argv.slice(2));
-var rename = require("gulp-rename");
 require("dotenv").config();
 var envify = require('envify');
 //livereload({start: true});
@@ -112,7 +110,6 @@ gulp.task("generate sprites", ["resize lg"], function() {
   return sprity.src({
     src: "./assets/cards/**/*.png",
     style: "cards.css",
-    //"style-type": "scss",
     processor: "css",
     engine: "gm",
     orientation: "binary-tree",
@@ -121,14 +118,7 @@ gulp.task("generate sprites", ["resize lg"], function() {
     prefix: "card",
     name: "cards",
     margin: 0
-    //template: "./client/scss/_cards.hbs"
   })
-  // .pipe(imagemin())
-  // .pipe(gulpif(function (file) {
-  //   return file.path.match(".*\\.png$") != null;
-  // }, rename({
-  //   extname: ".PNG"
-  // })))
   .pipe(gulp.dest("./public/build/"));
 })
 
