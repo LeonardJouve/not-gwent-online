@@ -15,6 +15,7 @@
     "gulp": "3.9.1",
     "gulp-gm": "latest",
     "gulp-imagemin": "7.1.0",
+    "gulp.spritesmith": "latest",
     "handlebars": "latest",
     "jquery": "2.2.4",
     "jquery-deferred": "latest",
@@ -22,9 +23,9 @@
     "shortid": "latest",
     "socket.io": "v2-latest",
     "socket.io-client": "v2-latest",
-    "sprity": "latest",
     "sprity-gm": "latest",
     "underscore": "latest",
+    "vinyl-buffer": "latest",
     "vinyl-source-stream": "latest"
   }
 }

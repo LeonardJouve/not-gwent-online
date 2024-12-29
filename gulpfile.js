@@ -2,11 +2,13 @@ var browserify = require('browserify');
 var gulp = require('gulp');
 var source = require('vinyl-source-stream');
 var fs = require("fs");
+var path = require("path");
+var spritesmith = require('gulp.spritesmith');
+var buffer = require('vinyl-buffer');
 var babelify = require("babelify");
 var handlebars = require("browserify-handlebars");
 var imagemin = require('gulp-imagemin');
 var gm = require("gulp-gm");
-var sprity = require("sprity");
 var argv = require("minimist")(process.argv.slice(2));
 require("dotenv").config();
 var envify = require('envify');
@@ -99,19 +101,41 @@ gulp.task("generate sprites", ["resize lg"], function() {
     return;
   }
 
-  return sprity.src({
-    src: "./assets/cards/**/*.png",
-    style: "cards.css",
-    processor: "css",
-    engine: "gm",
-    orientation: "binary-tree",
-    split: true,
-    cssPath: "../../public/build/",
-    prefix: "card",
-    name: "cards",
-    margin: 0
-  })
-  .pipe(gulp.dest("./public/build/"));
+  var assetsPath = './assets/cards/';
+  return Promise.all(fs.readdirSync(assetsPath).reduce((acc, size) => {
+    return fs.readdirSync(path.join(assetsPath, size)).reduce((acc, faction) => {
+      var sprite = gulp.src(path.join(assetsPath, size, faction, "*.png")).pipe(spritesmith({
+        imgName: `cards-${size}-${faction}.png`,
+        cssName: `cards.css`,
+        cssFormat: 'css',
+        cssOpts: {cssSelector: (item) => `.card-${size}-${faction}-${item.name}`}
+      }));
+
+      acc.push(
+        new Promise((resolve, reject) => {
+          sprite.img
+            .pipe(buffer())
+            .pipe(imagemin())
+            .pipe(gulp.dest('./public/build/'))
+            .on('finish', resolve)
+            .on('error', reject);
+        }),
+        new Promise((resolve, reject) => {
+          sprite.css.on("data", (file) => {
+            if (file.isBuffer()) {
+              fs.appendFile('./public/build/cards.css', file.contents.toString(), (err) => {
+                if (err) reject(err);
+              });
+            }
+          })
+            .on('finish', resolve)
+            .on('error', reject);
+        })
+      );
+
+      return acc;
+    }, acc);
+  }, []));
 })
 
 gulp.task("default", ["watch", "browserify", "index", "resize lg", "resize sm", "resize md", "generate sprites"]);
