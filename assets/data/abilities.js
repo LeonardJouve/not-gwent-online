@@ -104,119 +104,22 @@ module.exports = {
   "weather_fog": {
     name: "weather_fog",
     description: "Sets the strength of all Ranged Combat cards to 1 for both players.",
-    weather: 1/*,
-    onEachTurn: function(card){
-      var targetRow = card.constructor.TYPE.RANGED;
-      var forcedPower = 1;
-      var field1 = this.field[targetRow].get();
-      var field2 = this.foe.field[targetRow].get();
-
-      var field = field1.concat(field2);
-
-      field.forEach(function(_card){
-        if(_card.getRawAbility() == "hero") return;
-        _card.setForcedPower(forcedPower);
-      });
-    },
-    onEachCardPlace: function(card){
-      var targetRow = card.constructor.TYPE.RANGED;
-      var forcedPower = 1;
-      var field1 = this.field[targetRow].get();
-      var field2 = this.foe.field[targetRow].get();
-
-      var field = field1.concat(field2);
-
-      field.forEach(function(_card){
-        if(_card.getRawAbility() == "hero") return;
-        _card.setForcedPower(forcedPower);
-      });
-    }*/
+    weather: 1
   },
   "weather_rain": {
     name: "weather_rain",
     description: "Sets the strength of all Siege Combat cards to 1 for both players.",
     weather: 2
-    /*onEachTurn: function(card){
-      var targetRow = card.constructor.TYPE.SIEGE;
-      var forcedPower = 1;
-      var field1 = this.field[targetRow].get();
-      var field2 = this.foe.field[targetRow].get();
-
-      var field = field1.concat(field2);
-
-      field.forEach(function(_card){
-        if(_card.getRawAbility() == "hero") return;
-        _card.setForcedPower(forcedPower);
-      });
-    },
-    onEachCardPlace: function(card){
-      var targetRow = card.constructor.TYPE.SIEGE;
-      var forcedPower = 1;
-      var field1 = this.field[targetRow].get();
-      var field2 = this.foe.field[targetRow].get();
-
-      var field = field1.concat(field2);
-
-      field.forEach(function(_card){
-        if(_card.getRawAbility() == "hero") return;
-        _card.setForcedPower(forcedPower);
-      });
-    }*/
   },
   "weather_frost": {
     name: "weather_frost",
     description: "Sets the strength of all Close Combat cards to 1 for both players.",
     weather: 0
-    /*
-      onEachTurn: function(card){
-        var targetRow = card.constructor.TYPE.CLOSE_COMBAT;
-        var forcedPower = 1;
-        var field1 = this.field[targetRow].get();
-        var field2 = this.foe.field[targetRow].get();
-
-        var field = field1.concat(field2);
-
-        field.forEach(function(_card){
-          if(_card.getRawAbility() == "hero") return;
-          _card.setForcedPower(forcedPower);
-        });
-      },
-      onEachCardPlace: function(card){
-        var targetRow = card.constructor.TYPE.CLOSE_COMBAT;
-        var forcedPower = 1;
-        var field1 = this.field[targetRow].get();
-        var field2 = this.foe.field[targetRow].get();
-
-        var field = field1.concat(field2);
-
-        field.forEach(function(_card){
-          if(_card.getRawAbility() == "hero") return;
-          _card.setForcedPower(forcedPower);
-        });
-      }*/
   },
   "weather_clear": {
     name: "weather_clear",
     description: "Removes all Weather Card (Biting Frost, Impenetrable Fog and Torrential Rain) effects.",
     weather: 5
-    /*onAfterPlace: function(card){
-      var targetRow = card.constructor.TYPE.WEATHER;
-      var field = this.field[targetRow];
-      field.removeAll();
-
-      for(var i = card.constructor.TYPE.CLOSE_COMBAT; i < card.constructor.TYPE.SIEGE; i++) {
-        var _field1, _field2, _field;
-        _field1 = this.field[i].get();
-        _field2 = this.foe.field[i].get();
-        _field = _field1.concat(_field2);
-
-        _field.forEach(function(_card){
-          if(_card.getRawAbility() == "hero") return;
-          _card.setForcedPower(-1);
-        });
-      }
-
-    }*/
   },
   "decoy": {
     name: "decoy",
@@ -249,7 +152,7 @@ module.exports = {
   },
   "foltest_leader1": {
     name: "",
-    description: "",
+    description: "Pick an Impenetrable Fog card from your deck and play it instantly.",
     onActivate: function(){
       var cards = this.deck.find("key", "impenetrable_fog")
       if(!cards.length) return;
@@ -259,7 +162,7 @@ module.exports = {
   },
   "foltest_leader2": {
     name: "",
-    description: "",
+    description: "Clear any weather effects (resulting from Biting Frost, Torrential Rain or Impenetrable Fog cards) in play.",
     onActivate: function(){
       this.setWeather(5);
     }
@@ -273,14 +176,14 @@ module.exports = {
   },
   "foltest_leader4": {
     name: "",
-    description: "",
+    description: "Destroy your enemy's strongest Siege unit(s) if the combined strength of all his or her Siege units is 10 or more.",
     onActivate: function(){
-      //scorch siege
+      //
     }
   },
   "francesca_leader1": {
     name: "",
-    description: "",
+    description: "Pick a Biting Frost card from your deck and play it instantly",
     onActivate: function(){
       var cards = this.deck.find("key", "biting_frost")
       if(!cards.length) return;
@@ -289,7 +192,7 @@ module.exports = {
     }
   },
   "francesca_leader2": {
-    name: "Francesca Findabair the Beautiful",
+    name: "",
     description: "Doubles the strength of all your Ranged Combat units (unless a Commander's Horn is also present on that row).",
     onActivate: function(){
       this.setHorn("commanders_horn", 1);
@@ -297,44 +200,81 @@ module.exports = {
   },
   "francesca_leader3": {
     name: "",
-    description: "",
+    description: "Draw an extra card at the beginning of the battle.",
     onActivate: function(){
+      //
     }
   },
   "francesca_leader4": {
     name: "",
-    description: "",
+    description: "Destroy your enemy's strongest Close Combat unit(s) if the combined strength of all his or her Close Combat units is 10 or more.",
     onActivate: function(){
+      //
     }
   },
   "eredin_leader1": {
     name: "",
-    description: "",
-    onActivate: function(){
-    }
-  },
-  "eredin_leader2": {
-    name: "",
-    description: "",
-    onActivate: function(){
-    }
-  },
-  "eredin_leader3": {
-    name: "",
-    description: "",
-    onActivate: function(){
-
-    }
-  },
-  "eredin_leader4": {
-    name: "Eredin King of the Wild Hunt",
-    description: "Double the strength of all your Close Combat units (unless a Commander's Horn is also present on that row).",
+    description: "Double the strength of all your Close Combat units (unless a Commander's horn is also present on that row).",
     onActivate: function(){
       this.setHorn("commanders_horn", 0);
     }
   },
+  "eredin_leader2": {
+    name: "",
+    description: "Restore a card from your discard pile to your hand.",
+    onActivate: function(){
+      var discard = this.player.getDiscard();
+
+      discard = this.filter(discard, {
+        "ability": "hero",
+        "type": [card.constructor.TYPE.SPECIAL, card.constructor.TYPE.WEATHER]
+      })
+
+      this.send("played:emreis_leader4", {
+        cards: JSON.stringify(discard)
+      }, true);
+    }
+  },
+  "eredin_leader3": {
+    name: "",
+    description: "Discard 2 card and draw 1 card of your choice from your deck.",
+    onActivate: function(){
+      //
+    }
+  },
+  "eredin_leader4": {
+    name: "",
+    description: "Pick any weather card from your deck and play it instantly.",
+    onActivate: function(){
+      //
+    }
+  },
+  "emreis_leader1": {
+    name: "",
+    description: "Look at 3 random cards from your opponent's hand.",
+    onActivate: function(){
+      //
+    }
+  },
+  "emreis_leader2": {
+    name: "",
+    description: "Pick a Torrential Rain card from your deck and play it instantly.",
+    onActivate: function(){
+      var cards = this.deck.find("key", "torrential_rain")
+      if(!cards.length) return;
+      var card = this.deck.removeFromDeck(cards[0]);
+      this.placeCard(card);
+    }
+  },
+  "emreis_leader3": {
+    name: "",
+    description: "Cancel your opponent's Leader Ability.",
+    onActivate: function(){
+      //
+    }
+  },
   "emreis_leader4": {
-    name: "Emhyr vas Emreis the Relentless",
+    name: "",
     description: "Draw a card from your opponent's discard pile.",
     waitResponse: true,
     onActivate: function(card){

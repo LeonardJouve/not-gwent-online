@@ -264,12 +264,15 @@ Battleside = (function() {
   }
 
   r.setLeadercard = function() {
-    var leaderCard = this.deck.find("type", Card.TYPE.LEADER);
-    this.deck.removeFromDeck(leaderCard[0]);
-    /*
-        this.getYourside().setField("leader", leaderCard[0]);*/
-    this.field[Card.TYPE.LEADER].add(leaderCard[0]);
-  }
+    // edited to use a random leader, please don't blame me if its ugly -f
+    var leaderCards = [];
+    var leaderCard;
+    while ((leaderCard = this.deck.find("type", Card.TYPE.LEADER)) && leaderCard.length > 0) {
+        leaderCards.push(leaderCard[0]);
+        this.deck.removeFromDeck(leaderCard[0]);
+    }
+    this.field[Card.TYPE.LEADER].add(leaderCards[0]);
+  };
 
   r.getLeader = function() {
     return this.field[Card.TYPE.LEADER].get()[0];

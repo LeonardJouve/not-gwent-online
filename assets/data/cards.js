@@ -8,6 +8,16 @@
  * 5 weather
  */
 
+/*
+Missing cards:
+geralt
+ciri
+triss
+yennefer
+vesemir
+zoltan
+emiel
+*/
 
 module.exports = {
   "none": {
@@ -195,7 +205,7 @@ module.exports = {
     type: 3
   },
   "foltest_lord_commander": {
-    name: "Foltest: Lord Commander",
+    name: "Foltest: Lord Commander of the North",
     power: -1,
     ability: "foltest_leader2",
     img: "foltest_commander",
@@ -250,8 +260,6 @@ module.exports = {
     faction: "northern",
     type: 2
   },
-
-
   "decoy": {
     name: "Decoy",
     power: -1,
@@ -276,8 +284,6 @@ module.exports = {
     faction: "neutral",
     type: 4
   },
-
-
   "impenetrable_fog": {
     name: "Impenetrable Fog",
     power: -1,
@@ -310,7 +316,6 @@ module.exports = {
     faction: "neutral",
     type: 5
   },
-
   "dandelion": {
     name: "Dandelion",
     power: 2,
@@ -335,7 +340,6 @@ module.exports = {
     faction: "neutral",
     type: 0
   },
-
   "francesca_pureblood_elf": {
     name: "Francesca, Pureblood Elf",
     power: -1,
@@ -465,15 +469,15 @@ module.exports = {
     img: "archer",
     faction: "scoiatael",
     type: 1
-  }, /*
+  },
   "hav_caaren_medic": {
-    name: "Hav’caaren Medic",
+    name: "Hav'caaren Medic",
     power: 5,
     ability: null,
-    img: "", //missing image
+    img: "", // missing image, doesn't exist ingame
     faction: "scoiatael",
     type: 0
-  },*/
+  },
   "havekar_smuggler": {
     name: "Havekar Smuggler",
     power: 5,
@@ -555,8 +559,6 @@ module.exports = {
     faction: "scoiatael",
     type: 1
   },
-
-
   "eredin_commander_of_the_red_riders": {
     name: "Eredin, Commander of the Red Riders",
     power: -1,
@@ -804,15 +806,15 @@ module.exports = {
     faction: "monster",
     type: 1
   },
-  /*"vampire_katakan": {
+  "vampire_katakan": {
     name: "Vampire: Katakan",
     power: 5,
     ability: "muster",
- musterType: "vampire",
+    musterType: "vampire",
     img: "vampire_katakan",
     faction: "monster",
     type: 0
-  },*/
+  },
   "crone_whispess": {
     name: "Crone: Whispess",
     power: 6,
@@ -873,9 +875,30 @@ module.exports = {
     faction: "monster",
     type: 2
   },
-
-
-  //nilfgaardian
+  "emreis_emperor": {
+    name: "Emhyr var Emreis Emperor of Nilfgaard",
+    power: -1,
+    ability: "emreis_leader1",
+    img: "emhyr_emperor",
+    faction: "nilfgaardian",
+    type: 3
+  },
+  "emreis_imperial": {
+    name: "Emhyr var Emreis: His Imperial Majesty",
+    power: -1,
+    ability: "emreis_leader2",
+    img: "emhyr_imperial",
+    faction: "nilfgaardian",
+    type: 3
+  },
+  "emreis_white": {
+    name: "Emhyr var Emreis: The White Flame",
+    power: -1,
+    ability: "emreis_leader3",
+    img: "emhyr_white",
+    faction: "nilfgaardian",  
+    type: 3
+  },
   "emreis_relentless": {
     name: "Emhyr vas Emreis the Relentless",
     power: -1,

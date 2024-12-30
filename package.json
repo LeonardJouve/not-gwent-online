@@ -23,7 +23,6 @@
     "shortid": "latest",
     "socket.io": "v2-latest",
     "socket.io-client": "v2-latest",
-    "sprity-gm": "latest",
     "underscore": "latest",
     "vinyl-buffer": "latest",
     "vinyl-source-stream": "latest"

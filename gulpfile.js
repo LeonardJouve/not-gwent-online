@@ -36,7 +36,6 @@ gulp.task("watch", function() {
   gulp.watch("./client/js/*", ["browserify"]);
   gulp.watch("./client/templates/*", ["browserify"]);
   gulp.watch("./client/*.html", ["index"]);
-  gulp.watch("./test/src/*", ["unit tests"]);
 })
 
 gulp.task("index", function() {
