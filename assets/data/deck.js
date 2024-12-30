@@ -57,7 +57,13 @@ module.exports = {
       // shared
       "avallach",
       "dandelion",
+      "zoltan",
+      "vesemir",
       "villentretenmerth",
+      "triss",
+      "yen",
+      "ciri",
+      "geralt",
 
       // weather
       "biting_frost",
@@ -141,7 +147,13 @@ module.exports = {
       // shared
       "avallach",
       "dandelion",
+      "zoltan",
+      "vesemir",
       "villentretenmerth",
+      "triss",
+      "yen",
+      "ciri",
+      "geralt",
 
       // weather
       "biting_frost",
@@ -225,7 +237,13 @@ module.exports = {
       // shared
       "avallach",
       "dandelion",
+      "zoltan",
+      "vesemir",
       "villentretenmerth",
+      "triss",
+      "yen",
+      "ciri",
+      "geralt",
 
       // weather
       "biting_frost",
@@ -275,7 +293,7 @@ module.exports = {
       "frightener",
       "griffin",
       "plague_maiden",
-      "vampire_katakan",
+      // "vampire_katakan",
       "werewolf",
       "crone_brewess",
       "crone_weavess",
@@ -314,7 +332,13 @@ module.exports = {
       // shared
       "avallach",
       "dandelion",
+      "zoltan",
+      "vesemir",
       "villentretenmerth",
+      "triss",
+      "yen",
+      "ciri",
+      "geralt",
 
       // weather
       "biting_frost",

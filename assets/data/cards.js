@@ -10,13 +10,7 @@
 
 /*
 Missing cards:
-geralt
-ciri
-triss
-yennefer
-vesemir
-zoltan
-emiel
+Emiel Regis Rohellec Terzieff
 */
 
 module.exports = {
@@ -316,14 +310,6 @@ module.exports = {
     faction: "neutral",
     type: 5
   },
-  "dandelion": {
-    name: "Dandelion",
-    power: 2,
-    ability: "commanders_horn",
-    img: "dandelion",
-    faction: "neutral",
-    type: 0
-  },
   "avallach": {
     name: "Avallac'h",
     power: 0,
@@ -332,11 +318,67 @@ module.exports = {
     faction: "neutral",
     type: 0
   },
+  "dandelion": {
+    name: "Dandelion",
+    power: 2,
+    ability: "commanders_horn",
+    img: "dandelion",
+    faction: "neutral",
+    type: 0
+  },
+  "zoltan": {
+    name: "Zoltan Chivay",
+    power: 5,
+    ability: null,
+    img: "zoltan",
+    faction: "neutral",
+    type: 0
+  },
+  "vesemir": {
+    name: "Vesemir",
+    power: 6,
+    ability: null,
+    img: "vesemir",
+    faction: "neutral",
+    type: 0
+  },
   "villentretenmerth": {
     name: "Villentretenmerth ",
     power: 7,
     ability: "scorch",
     img: "villentretenmerth",
+    faction: "neutral",
+    type: 0
+  },
+  "triss": {
+    name: "Triss Merigold",
+    power: 7,
+    ability: "hero",
+    img: "triss",
+    faction: "neutral",
+    type: 0
+  },
+  "yen": {
+    name: "Yennefer of Vengerberg",
+    power: 7,
+    ability: ["hero", "medic"],
+    img: "yen",
+    faction: "neutral",
+    type: 1
+  },
+  "ciri": {
+    name: "Cirilla Fiona Elen Rianno",
+    power: 15,
+    ability: "hero",
+    img: "ciri",
+    faction: "neutral",
+    type: 0
+  },
+  "geralt": {
+    name: "Geralt of Rivia",
+    power: 15,
+    ability: "hero",
+    img: "geralt",
     faction: "neutral",
     type: 0
   },
