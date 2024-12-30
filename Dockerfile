@@ -1,5 +1,5 @@
 FROM node:10-alpine
 
-RUN apk add bash curl git graphicsmagick g++ libpng-dev linux-headers make python3 xz
+RUN apk add autoconf graphicsmagick g++ libpng-dev make
 
-ENTRYPOINT ["/bin/bash", "-c", "npm install && npm run build && npm start"]
+ENTRYPOINT ["sh", "-c", "npm install && npm run build && npm start"]
