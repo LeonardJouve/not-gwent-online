@@ -21,7 +21,6 @@ module.exports = {
       // range
       "sabrina_glevissig",
       "sheldon_skaggs",
-      "sabrina_glevissig",
       "crinfrid_reavers_dragon_hunter",
       "crinfrid_reavers_dragon_hunter",
       "crinfrid_reavers_dragon_hunter",
