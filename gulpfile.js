@@ -96,8 +96,8 @@ function generateSprites() {
             .pipe(buffer())
             .pipe(imagemin())
             .pipe(gulp.dest('./public/build/'))
-            .on('finish', resolve)
-            .on('error', reject);
+            .on('error', reject)
+            .on('end', resolve);
         }),
         new Promise((resolve, reject) => {
           sprite.css.on("data", (file) => {
@@ -107,8 +107,8 @@ function generateSprites() {
               });
             }
           })
-            .on('finish', resolve)
-            .on('error', reject);
+          .on('error', reject)
+          .on('end', resolve);
         })
       );
 
@@ -117,8 +117,8 @@ function generateSprites() {
   }, []));
 }
 
-var images = gulp.series(resizeLg, resizeSm, resizeMd, generateSprites);
+var images = gulp.series(gulp.parallel(resizeSm/*, resizeMd, resizeLg*/), generateSprites);
 
 var code = gulp.parallel(index, source);
 
-gulp.task("default", gulp.series(code, /*images*/));
+gulp.task("default", gulp.series(code, images));
