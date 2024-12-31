@@ -12,7 +12,7 @@
     "dotenv": "4.0.0",
     "envify": "latest",
     "express": "latest",
-    "gulp": "3.9.1",
+    "gulp": "latest",
     "gulp-gm": "latest",
     "gulp-imagemin": "7.1.0",
     "gulp.spritesmith": "latest",

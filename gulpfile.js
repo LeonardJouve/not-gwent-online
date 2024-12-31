@@ -1,6 +1,6 @@
 var browserify = require('browserify');
 var gulp = require('gulp');
-var source = require('vinyl-source-stream');
+var vinylSource = require('vinyl-source-stream');
 var fs = require("fs");
 var path = require("path");
 var spritesmith = require('gulp.spritesmith');
@@ -13,92 +13,71 @@ var argv = require("minimist")(process.argv.slice(2));
 require("dotenv").config();
 var envify = require('envify');
 
-gulp.task('browserify', function() {
-  browserify('./client/js/main.js', {standalone: "app", debug: true})
-  .transform(envify)
-  .transform(handlebars).on("error", function(err) {
-    console.log(err);
-  })
-  .transform(babelify)
-  .bundle().on("error", function(err) {
-    console.log(err);
-  })
-  .pipe(source('app.js').on("error", function(err) {
-    console.log(err);
-  }))
-  .pipe(gulp.dest('./public/build/').on("error", function(err) {
-    console.log(err);
-  }));
-});
+function source() {
+  return browserify('./client/js/main.js', {standalone: "app", debug: true})
+    .transform(envify)
+    .transform(handlebars).on("error", console.log)
+    .transform(babelify)
+    .bundle().on("error", console.log)
+    .pipe(vinylSource('app.js').on("error", console.log))
+    .pipe(gulp.dest('./public/build/').on("error", console.log));
+}
 
-gulp.task("watch", function() {
-  if(argv.production) return;
-  gulp.watch("./client/js/*", ["browserify"]);
-  gulp.watch("./client/templates/*", ["browserify"]);
-  gulp.watch("./client/*.html", ["index"]);
-  gulp.watch("./test/src/*", ["unit tests"]);
-})
+function index() {
+  var files = ["./client/index.html", "./client/favicon.ico", "./client/css/bootstrap.css", "./client/css/main.css", "./client/css/app.css"];
+  
+  return Promise.all(files.map((file) => new Promise((resolve, reject) => gulp.src(file)
+    .pipe(gulp.dest("./public/build"))
+    .on("error", reject)
+    .on("end", resolve))));
+}
 
-gulp.task("index", function() {
-  gulp.src("./client/index.html")
-  .pipe(gulp.dest("./public/"));
-
-  gulp.src("./client/favicon.ico")
-  .pipe(gulp.dest("./public/"));
-
-  gulp.src("./client/css/bootstrap.css")
-  .pipe(gulp.dest("./public/build"));
-
-  gulp.src("./client/css/main.css")
-  .pipe(gulp.dest("./public/build"));
-
-  gulp.src("./client/css/app.css")
-  .pipe(gulp.dest("./public/build"));
-})
-
-gulp.task('resize sm', function(done) {
+function resizeSm() {
   if(fs.existsSync(__dirname + "/assets/cards/sm/monster/arachas1.png")) {
     console.log("skip generating sm images");
-    return done();
+    return Promise.resolve();
   }
-  return gulp.src('./assets/original_cards/**/*.png')
-  .pipe(gm(function(gmfile) {
-    return gmfile.resize(null, 120);
-  }))
-  .pipe(imagemin())
-  .pipe(gulp.dest('./assets/cards/sm/'));
-});
 
-gulp.task('resize md', function(done) {
+  return gulp.src('./assets/original_cards/**/*.png')
+    .pipe(gm(function(gmfile) {
+      return gmfile.resize(null, 120);
+    }))
+    .pipe(imagemin())
+    .pipe(gulp.dest('./assets/cards/sm/'));
+};
+
+function resizeMd() {
   if(fs.existsSync(__dirname + "/assets/cards/md/monster/arachas1.png")) {
     console.log("skip generating md images");
-    return done();
+    return Promise.resolve();
   }
+  
   return gulp.src('./assets/original_cards/**/*.png')
-  .pipe(gm(function(gmfile) {
-    return gmfile.resize(null, 284);
-  }))
-  .pipe(imagemin())
-  .pipe(gulp.dest('./assets/cards/md/'));
-});
+    .pipe(gm(function(gmfile) {
+      return gmfile.resize(null, 284);
+    }))
+    .pipe(imagemin())
+    .pipe(gulp.dest('./assets/cards/md/'));
+}
 
-gulp.task('resize lg', ["resize sm", "resize md"], function(done) {
+function resizeLg() {
   if(fs.existsSync(__dirname + "/assets/cards/lg/monster/arachas1.png")) {
     console.log("skip generating lg images");
-    return done();
+    return Promise.resolve();
   }
+  
   return gulp.src('./assets/original_cards/**/*.png')
-  .pipe(gm(function(gmfile) {
-    return gmfile.resize(null, 450);
-  }))
-  .pipe(imagemin())
-  .pipe(gulp.dest('./assets/cards/lg/'));
-});
+    .pipe(gm(function(gmfile) {
+      return gmfile.resize(null, 450);
+    }))
+    .pipe(imagemin())
+    .pipe(gulp.dest('./assets/cards/lg/'));
+}
 
-gulp.task("generate sprites", ["resize lg"], function() {
+function generateSprites() {
   if(fs.existsSync(__dirname + "/public/build/cards-lg-monster.png")) {
     console.log("skip sprite generation");
-    return;
+    return Promise.resolve();
   }
 
   var assetsPath = './assets/cards/';
@@ -136,6 +115,10 @@ gulp.task("generate sprites", ["resize lg"], function() {
       return acc;
     }, acc);
   }, []));
-})
+}
 
-gulp.task("default", ["watch", "browserify", "index", "resize lg", "resize sm", "resize md", "generate sprites"]);
+var images = gulp.series(resizeLg, resizeSm, resizeMd, generateSprites);
+
+var code = gulp.parallel(index, source);
+
+gulp.task("default", gulp.series(code, /*images*/));
