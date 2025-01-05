@@ -467,6 +467,10 @@ let BattleView = Backbone.View.extend({
       let modal = new MedicModal({model: this.user});
       this.$el.prepend(modal.render().el);
     }
+    if(this.user.get("eredin_leader2")){
+      let modal = new LeaderEredin2Modal({model: this.user});
+      this.$el.prepend(modal.render().el);
+    }
     if(this.user.get("emreis_leader4")){
       let modal = new LeaderEmreis4Modal({model: this.user});
       this.$el.prepend(modal.render().el);
@@ -634,6 +638,23 @@ let MedicModal = Modal.extend({
     this.model.set("medicDiscard", false);
   }
 });
+let LeaderEredin2Modal = Modal.extend({
+  template: require("../templates/modal.eredin_leader2.handlebars"),
+  events: {
+    "click .card": "onCardClick"
+  },
+  onCardClick: function(e){
+    let id = $(e.target).closest(".card").data().id;
+    this.model.get("app").send("eredin_leader2:chooseCardFromDiscard", {
+      cardID: id
+    })
+    this.model.set("eredin_leader2", false);
+  },
+  cancel: function(){
+    this.model.get("app").send("eredin_leader2:chooseCardFromDiscard")
+    this.model.set("eredin_leader2", false);
+  }
+});
 
 let LeaderEmreis4Modal = Modal.extend({
   template: require("../templates/modal.emreis_leader4.handlebars"),
@@ -755,6 +776,13 @@ let User = Backbone.Model.extend({
     app.receive("played:medic", function(data){
       let cards = JSON.parse(data.cards);
       self.set("medicDiscard", {
+        cards: cards
+      });
+    })
+
+    app.receive("played:eredin_leader2", function(data){
+      let cards = JSON.parse(data.cards);
+      self.set("eredin_leader2", {
         cards: cards
       });
     })

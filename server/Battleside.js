@@ -115,6 +115,31 @@ Battleside = (function() {
 
       self.playCard(card);
     })
+    this.receive("eredin_leader2:chooseCardFromDiscard", function(data) {
+      if(!data) {
+        self.endTurn();
+        self.sendNotificationTo(self.foe, self.getName() + " takes no card from his discard pile (or there wasn't any card to choose)");
+        //self.runEvent("NextTurn", null, [self.foe]);
+        return;
+      }
+      var cardID = data.cardID;
+      var card = self.getCardFromDiscard(cardID);
+      if(card === -1) {
+        console.log("eredin_leader2:chooseCardFromDiscard | unknown card: ", card);
+        self.sendNotificationTo(self, "Possible bug occured: unknown card was chosen by playing nilfgaardian leader ability.");
+        self.endTurn();
+        return;
+      }
+
+      self.removeFromDiscard(card);
+
+      //self.placeCard(card);
+      self.sendNotificationTo(self.foe, self.getName() + " takes " + card.getName() + " from his discard pile into his hand.");
+      self.hand.add(card);
+
+      self.endTurn();
+      // self.runEvent("NextTurn", null, [self.foe]);
+    })
     this.receive("emreis_leader4:chooseCardFromDiscard", function(data) {
       if(!data) {
         self.endTurn();
@@ -224,8 +249,12 @@ Battleside = (function() {
 
   r.getRandomCardOnField = function() {
     var allCards = this.getFieldCards();
-    var rnd = (Math.random() * allCards.length) | 0;
 
+    allCards = allCards.filter(function(card) {
+      return !card.hasAbility("hero");
+    });
+    
+    var rnd = (Math.random() * allCards.length) | 0;
 
     return allCards[rnd];
   }

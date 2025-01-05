@@ -222,15 +222,16 @@ module.exports = {
   "eredin_leader2": {
     name: "",
     description: "Restore a card from your discard pile to your hand.",
-    onActivate: function(){
-      var discard = this.player.getDiscard();
+    waitResponse: true,
+    onActivate: function(card){
+      var discard = this.getDiscard();
 
       discard = this.filter(discard, {
         "ability": "hero",
         "type": [card.constructor.TYPE.SPECIAL, card.constructor.TYPE.WEATHER]
       })
 
-      this.send("played:emreis_leader4", {
+      this.send("played:eredin_leader2", {
         cards: JSON.stringify(discard)
       }, true);
     }
