@@ -177,8 +177,23 @@ module.exports = {
   "foltest_leader4": {
     name: "",
     description: "Destroy your enemy's strongest Siege unit(s) if the combined strength of all his or her Siege units is 10 or more.",
-    onActivate: function(){
-      //
+    onActivate: function(card) {
+        var side = this.foe;
+        var field = side.field[card.constructor.TYPE.SIEGE];
+
+        if (field.getScore() < 10) {
+            this.battle.sendNotification("Foltest: The Steel-Forged: Siege unit(s) score is under 10! Nothing happens.");
+            return;
+        }
+
+        var cards = field.getHighestCards(true);
+        var removedCards = field.removeCard(cards);
+
+        var message = "Foltest: The Steel-Forged destroyed:";
+        removedCards.forEach(card => message += "\n" + card.getName());
+        this.battle.sendNotification(message);
+
+        side.addToDiscard(removedCards);
     }
   },
   "francesca_leader1": {
@@ -201,16 +216,32 @@ module.exports = {
   "francesca_leader3": {
     name: "",
     description: "Draw an extra card at the beginning of the battle.",
-    onActivate: function(){
-      //
+    onGameStart: function() {
+        this.draw(1);
+        this.battle.sendNotification(this.getName() + " draws an extra card at the start of the battle.");
     }
   },
   "francesca_leader4": {
     name: "",
     description: "Destroy your enemy's strongest Close Combat unit(s) if the combined strength of all his or her Close Combat units is 10 or more.",
-    onActivate: function(){
-      //
-    }
+    onActivate: function(card){
+      var side = this.foe;
+      var field = side.field[card.constructor.TYPE.CLOSE_COMBAT];
+
+      if (field.getScore() < 10) {
+          this.battle.sendNotification("Francesca, Queen of Dol Blathanna: Close Combat unit(s) score is under 10! Nothing happens.");
+          return;
+      }
+
+      var cards = field.getHighestCards(true);
+      var removedCards = field.removeCard(cards);
+
+      var message = "Francesca, Queen of Dol Blathanna destroyed:";
+      removedCards.forEach(card => message += "\n" + card.getName());
+      this.battle.sendNotification(message);
+
+      side.addToDiscard(removedCards);
+  }
   },
   "eredin_leader1": {
     name: "",
@@ -270,8 +301,12 @@ module.exports = {
   "emreis_leader3": {
     name: "",
     description: "Cancel your opponent's Leader Ability.",
-    onActivate: function(){
-      //
+    onGameStart: function() {
+        var opponentLeader = this.foe.getLeader();
+        if (opponentLeader) {
+            opponentLeader.setDisabled(true);
+            this.battle.sendNotification(this.getName() + " cancels the opponent's Leader Ability.");
+        }
     }
   },
   "emreis_leader4": {

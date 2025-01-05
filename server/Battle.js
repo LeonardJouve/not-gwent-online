@@ -61,6 +61,13 @@ var Battle = (function(){
     this.p1.draw(10);
     this.p2.draw(10);
 
+    if (this.p1.getLeader().getAbility().onGameStart) {
+        this.p1.getLeader().getAbility().onGameStart.call(this.p1);
+    }
+    if (this.p2.getLeader().getAbility().onGameStart) {
+        this.p2.getLeader().getAbility().onGameStart.call(this.p2);
+    }
+
     /*this.p1.placeCard("ves");
     this.p2.placeCard("ves");
     this.p1.placeCard("yarpen_zigrin");

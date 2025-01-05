@@ -52,7 +52,7 @@ module.exports = {
       /* "foltest_king_of_temeria",
       "foltest_lord_commander", */
       "foltest_siegemaster",
-      // "foltest_forged",
+      /* "foltest_forged", */
 
       // shared
       "avallach",
@@ -142,8 +142,8 @@ module.exports = {
 
       // leader
       // "emreis_emperor",
-      /* "emreis_imperial", */
-      // "emreis_white",
+      /* "emreis_imperial",
+      "emreis_white", */
       "emreis_relentless",
 
       // shared
@@ -233,10 +233,10 @@ module.exports = {
       "saesenthessis",
 
       // leader
-      /* "francesca_pureblood_elf", */
-      "francesca_the_beautiful",
-      // "francesca_daisy_of_the_valley",
-      // "francesca_queen_of_dol_blathanna",
+      /* "francesca_pureblood_elf",
+      "francesca_the_beautiful", */
+      "francesca_daisy_of_the_valley",
+      /* "francesca_queen_of_dol_blathanna", */
 
       // shared
       "avallach",

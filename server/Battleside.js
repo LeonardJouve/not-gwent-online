@@ -251,9 +251,10 @@ Battleside = (function() {
     var allCards = this.getFieldCards();
 
     allCards = allCards.filter(function(card) {
-      return !card.hasAbility("hero");
+      return !card.hasAbility("hero") &&
+             card.getType() !== card.constructor.TYPE.SPECIAL
     });
-    
+
     var rnd = (Math.random() * allCards.length) | 0;
 
     return allCards[rnd];
