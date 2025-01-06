@@ -1535,7 +1535,7 @@ module.exports = {
     faction: "skellige",
     type: 0
   },
-  "donar": {
+  "donar_an_hindar": {
     name: "Donar an Hindar",
     power: 4,
     ability: null,
@@ -1578,7 +1578,7 @@ module.exports = {
   "pirate": {
     name: "Clan Dimun Pirate",
     power: 6,
-    ability: null,
+    ability: "scorch_range",
     img: "pirate",
     faction: "skellige",
     type: 0
