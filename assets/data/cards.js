@@ -8,25 +8,28 @@
  * 5 weather
  */
 
-/*
-Missing cards:
-Emiel Regis Rohellec Terzieff
-*/
-
 module.exports = {
   "none": {
     name: "none",
     power: 0,
     ability: null,
-    img: "foot_soldier1",
+    img: "",
     faction: "northern",
     type: 0
   },
-  "redanian_foot_soldier": {
+  "redanian_foot_soldier1": {
     name: "Redanian Foot Soldier",
     power: 1,
     ability: null,
     img: "foot_soldier1",
+    faction: "northern",
+    type: 0
+  },
+  "redanian_foot_soldier2": {
+    name: "Redanian Foot Soldier",
+    power: 1,
+    ability: null,
+    img: "foot_soldier2",
     faction: "northern",
     type: 0
   },
@@ -150,11 +153,27 @@ module.exports = {
     faction: "northern",
     type: 1
   },
-  "kaedweni_siege_expert": {
+  "kaedweni_siege_expert1": {
     name: "Kaedweni Siege Expert",
     power: 1,
     ability: "morale_boost",
     img: "siege_expert1",
+    faction: "northern",
+    type: 2
+  },
+  "kaedweni_siege_expert2": {
+    name: "Kaedweni Siege Expert",
+    power: 1,
+    ability: "morale_boost",
+    img: "siege_expert2",
+    faction: "northern",
+    type: 2
+  },
+  "kaedweni_siege_expert3": {
+    name: "Kaedweni Siege Expert",
+    power: 1,
+    ability: "morale_boost",
+    img: "siege_expert3",
     faction: "northern",
     type: 2
   },
@@ -166,7 +185,7 @@ module.exports = {
     faction: "northern",
     type: 2
   },
-  "ballista": {
+  "ballista1": {
     name: "Ballista",
     power: 6,
     ability: null,
@@ -174,11 +193,27 @@ module.exports = {
     faction: "northern",
     type: 2
   },
-  "trebuchet": {
+  "ballista2": {
+    name: "Ballista",
+    power: 6,
+    ability: null,
+    img: "ballista2",
+    faction: "northern",
+    type: 2
+  },
+  "trebuchet1": {
     name: "Trebuchet",
     power: 6,
     ability: null,
     img: "trebuchet1",
+    faction: "northern",
+    type: 2
+  },
+  "trebuchet2": {
+    name: "Trebuchet",
+    power: 6,
+    ability: null,
+    img: "trebuchet2",
     faction: "northern",
     type: 2
   },
@@ -219,6 +254,14 @@ module.exports = {
     power: -1,
     ability: "foltest_leader4",
     img: "foltest_forged",
+    faction: "northern",
+    type: 3
+  },
+  "foltest_son_of_medel": {
+    name: "Foltest: Son of Medell",
+    power: -1,
+    ability: "foltest_leader5",
+    img: "foltest_son",
     faction: "northern",
     type: 3
   },
@@ -326,6 +369,14 @@ module.exports = {
     faction: "neutral",
     type: 0
   },
+  "emiel": {
+    name: "Emiel Regis Rohellec Terzieff",
+    power: 5,
+    ability: null,
+    img: "emiel",
+    faction: "neutral",
+    type: 0
+  },
   "zoltan": {
     name: "Zoltan Chivay",
     power: 5,
@@ -383,7 +434,7 @@ module.exports = {
     type: 0
   },
   "francesca_pureblood_elf": {
-    name: "Francesca, Pureblood Elf",
+    name: "Francesca Findabair: Pureblood Elf",
     power: -1,
     ability: "francesca_leader1",
     img: "francesca_pureblood",
@@ -391,7 +442,7 @@ module.exports = {
     type: 3
   },
   "francesca_the_beautiful": {
-    name: "Francesca The Beautiful",
+    name: "Francesca Findabair: The Beautiful",
     power: -1,
     ability: "francesca_leader2",
     img: "francesca_beautiful",
@@ -399,7 +450,7 @@ module.exports = {
     type: 3
   },
   "francesca_daisy_of_the_valley": {
-    name: "Francesca, Daisy of The Valley",
+    name: "Francesca Findabair: Daisy of The Valley",
     power: -1,
     ability: "francesca_leader3",
     img: "francesca_daisy",
@@ -407,10 +458,18 @@ module.exports = {
     type: 3
   },
   "francesca_queen_of_dol_blathanna": {
-    name: "Francesca, Queen of Dol Blathanna",
+    name: "Francesca Findabair: Queen of Dol Blathanna",
     power: -1,
     ability: "francesca_leader4",
     img: "francesca_queen",
+    faction: "scoiatael",
+    type: 3
+  },
+  "francesca_hope_of_the_aen_seidhe": {
+    name: "Francesca Findabair: Hope of the Aen Seidhe",
+    power: -1,
+    ability: "francesca_leader5",
+    img: "francesca_hope",
     faction: "scoiatael",
     type: 3
   },
@@ -446,11 +505,27 @@ module.exports = {
     faction: "scoiatael",
     type: 1
   },
-  "havekar_healer": {
+  "havekar_healer1": {
     name: "Havekar Healer",
     power: 0,
     ability: "medic",
-    img: "healer",
+    img: "healer1",
+    faction: "scoiatael",
+    type: 1
+  },
+  "havekar_healer2": {
+    name: "Havekar Healer",
+    power: 0,
+    ability: "medic",
+    img: "healer2",
+    faction: "scoiatael",
+    type: 1
+  },
+  "havekar_healer3": {
+    name: "Havekar Healer",
+    power: 0,
+    ability: "medic",
+    img: "healer3",
     faction: "scoiatael",
     type: 1
   },
@@ -470,7 +545,16 @@ module.exports = {
     faction: "scoiatael",
     type: 1
   },
-  "elven_skirmisher": {
+  "elven_skirmisher1": {
+    name: "Elven Skirmisher",
+    power: 2,
+    ability: "muster",
+    musterType: "skirmisher",
+    img: "elven_skirmisher1",
+    faction: "scoiatael",
+    type: 1
+  },
+  "elven_skirmisher2": {
     name: "Elven Skirmisher",
     power: 2,
     ability: "muster",
@@ -479,12 +563,39 @@ module.exports = {
     faction: "scoiatael",
     type: 1
   },
-  "dwarven_skirmisher": {
+  "elven_skirmisher3": {
+    name: "Elven Skirmisher",
+    power: 2,
+    ability: "muster",
+    musterType: "skirmisher",
+    img: "elven_skirmisher3",
+    faction: "scoiatael",
+    type: 1
+  },
+  "dwarven_skirmisher1": {
     name: "Dwarven Skirmisher",
     power: 3,
     ability: "muster",
     musterType: "skirmisher",
-    img: "skirmisher2",
+    img: "dwarven_skirmisher1",
+    faction: "scoiatael",
+    type: 0
+  },
+  "dwarven_skirmisher2": {
+    name: "Dwarven Skirmisher",
+    power: 3,
+    ability: "muster",
+    musterType: "skirmisher",
+    img: "dwarven_skirmisher2",
+    faction: "scoiatael",
+    type: 0
+  },
+  "dwarven_skirmisher3": {
+    name: "Dwarven Skirmisher",
+    power: 3,
+    ability: "muster",
+    musterType: "skirmisher",
+    img: "dwarven_skirmisher3",
     faction: "scoiatael",
     type: 0
   },
@@ -494,7 +605,7 @@ module.exports = {
     ability: "agile",
     img: "easnillien",
     faction: "scoiatael",
-    type: 1
+    type: 0
   },
   "vrihedd_brigade_recruit": {
     name: "Vrihedd Brigade Recruit",
@@ -512,15 +623,7 @@ module.exports = {
     faction: "scoiatael",
     type: 1
   },
-  "hav_caaren_medic": {
-    name: "Hav'caaren Medic",
-    power: 5,
-    ability: null,
-    img: "", // missing image, doesn't exist ingame
-    faction: "scoiatael",
-    type: 0
-  },
-  "havekar_smuggler": {
+  "havekar_smuggler1": {
     name: "Havekar Smuggler",
     power: 5,
     ability: "muster",
@@ -529,7 +632,33 @@ module.exports = {
     faction: "scoiatael",
     type: 0
   },
-  "mahakaman_defender": {
+  "havekar_smuggler2": {
+    name: "Havekar Smuggler",
+    power: 5,
+    ability: "muster",
+    musterType: "smuggler",
+    img: "smuggler2",
+    faction: "scoiatael",
+    type: 0
+  },
+  "havekar_smuggler3": {
+    name: "Havekar Smuggler",
+    power: 5,
+    ability: "muster",
+    musterType: "smuggler",
+    img: "smuggler3",
+    faction: "scoiatael",
+    type: 0
+  },
+  "mahakaman_defender1": {
+    name: "Mahakaman Defender",
+    power: 5,
+    ability: null,
+    img: "defender1",
+    faction: "scoiatael",
+    type: 0
+  },
+  "mahakaman_defender2": {
     name: "Mahakaman Defender",
     power: 5,
     ability: null,
@@ -537,11 +666,43 @@ module.exports = {
     faction: "scoiatael",
     type: 0
   },
-  "vrihedd_brigade_veteran": {
+  "mahakaman_defender3": {
+    name: "Mahakaman Defender",
+    power: 5,
+    ability: null,
+    img: "defender3",
+    faction: "scoiatael",
+    type: 0
+  },
+  "mahakaman_defender4": {
+    name: "Mahakaman Defender",
+    power: 5,
+    ability: null,
+    img: "defender4",
+    faction: "scoiatael",
+    type: 0
+  },
+  "mahakaman_defender5": {
+    name: "Mahakaman Defender",
+    power: 5,
+    ability: null,
+    img: "defender5",
+    faction: "scoiatael",
+    type: 0
+  },
+  "vrihedd_brigade_veteran1": {
     name: "Vrihedd Brigade Veteran",
     power: 5,
     ability: "agile",
     img: "veteran1",
+    faction: "scoiatael",
+    type: 0
+  },
+  "vrihedd_brigade_veteran2": {
+    name: "Vrihedd Brigade Veteran",
+    power: 5,
+    ability: "agile",
+    img: "veteran2",
     faction: "scoiatael",
     type: 0
   },
@@ -559,7 +720,7 @@ module.exports = {
     ability: "agile",
     img: "fidhail",
     faction: "scoiatael",
-    type: 1
+    type: 0
   },
   "ida_emean_aep_sivney": {
     name: "Ida Emean aep Sivney",
@@ -585,11 +746,27 @@ module.exports = {
     faction: "scoiatael",
     type: 0
   },
-  "dol_blathanna_scout": {
+  "dol_blathanna_scout1": {
+    name: "Dol Blathanna Scout",
+    power: 6,
+    ability: "agile",
+    img: "scout1",
+    faction: "scoiatael",
+    type: 0
+  },
+  "dol_blathanna_scout2": {
     name: "Dol Blathanna Scout",
     power: 6,
     ability: "agile",
     img: "scout2",
+    faction: "scoiatael",
+    type: 0
+  },
+  "dol_blathanna_scout3": {
+    name: "Dol Blathanna Scout",
+    power: 6,
+    ability: "agile",
+    img: "scout3",
     faction: "scoiatael",
     type: 0
   },
@@ -601,8 +778,16 @@ module.exports = {
     faction: "scoiatael",
     type: 1
   },
+  "schirru": {
+    name: "Schirrú",
+    power: 6,
+    ability: "scorch_siege",
+    img: "schirru",
+    faction: "scoiatael",
+    type: 2
+  },
   "eredin_commander_of_the_red_riders": {
-    name: "Eredin, Commander of the Red Riders",
+    name: "Eredin: Commander of the Red Riders",
     power: -1,
     ability: "eredin_leader1",
     img: "eredin_commander",
@@ -610,7 +795,7 @@ module.exports = {
     type: 3
   },
   "eredin_bringer_of_death": {
-    name: "Eredin, Bringer of Death",
+    name: "Eredin: Bringer of Death",
     power: -1,
     ability: "eredin_leader2",
     img: "eredin_bringer",
@@ -618,7 +803,7 @@ module.exports = {
     type: 3
   },
   "eredin_destroyer_of_worlds": {
-    name: "Eredin, Destroyer of Worlds",
+    name: "Eredin: Destroyer of Worlds",
     power: -1,
     ability: "eredin_leader3",
     img: "eredin_destroyer",
@@ -626,10 +811,18 @@ module.exports = {
     type: 3
   },
   "eredin_king_of_the_wild_hunt": {
-    name: "Eredin, King of The Wild Hunt",
+    name: "Eredin: King of The Wild Hunt",
     power: -1,
     ability: "eredin_leader4",
     img: "eredin_king",
+    faction: "monster",
+    type: 3
+  },
+  "eredin_the_treacherous": {
+    name: "Eredin: The Treacherous",
+    power: -1,
+    ability: "eredin_leader5",
+    img: "eredin_treacherous",
     faction: "monster",
     type: 3
   },
@@ -639,7 +832,7 @@ module.exports = {
     ability: ["hero", "morale_boost", "agile"],
     img: "kayran",
     faction: "monster",
-    type: 1
+    type: 0
   },
   "leshen": {
     name: "Leshen",
@@ -665,7 +858,7 @@ module.exports = {
     faction: "monster",
     type: 0
   },
-  "ghoul": {
+  "ghoul1": {
     name: "Ghoul",
     power: 1,
     ability: "muster",
@@ -674,12 +867,48 @@ module.exports = {
     faction: "monster",
     type: 0
   },
-  "nekker": {
+  "ghoul2": {
+    name: "Ghoul",
+    power: 1,
+    ability: "muster",
+    musterType: "ghoul",
+    img: "ghoul2",
+    faction: "monster",
+    type: 0
+  },
+  "ghoul3": {
+    name: "Ghoul",
+    power: 1,
+    ability: "muster",
+    musterType: "ghoul",
+    img: "ghoul3",
+    faction: "monster",
+    type: 0
+  },
+  "nekker1": {
     name: "Nekker",
     power: 2,
     ability: "muster",
     musterType: "nekker",
     img: "nekker1",
+    faction: "monster",
+    type: 0
+  },
+  "nekker2": {
+    name: "Nekker",
+    power: 2,
+    ability: "muster",
+    musterType: "nekker",
+    img: "nekker2",
+    faction: "monster",
+    type: 0
+  },
+  "nekker3": {
+    name: "Nekker",
+    power: 2,
+    ability: "muster",
+    musterType: "nekker",
+    img: "nekker3",
     faction: "monster",
     type: 0
   },
@@ -705,7 +934,7 @@ module.exports = {
     ability: "agile",
     img: "celaeno_harpy",
     faction: "monster",
-    type: 1
+    type: 0
   },
   "gargoyle": {
     name: "Gargoyle",
@@ -729,7 +958,7 @@ module.exports = {
     ability: "agile",
     img: "harpy",
     faction: "monster",
-    type: 1
+    type: 0
   },
   "endrega": {
     name: "Endrega",
@@ -775,12 +1004,30 @@ module.exports = {
     faction: "monster",
     type: 0
   },
-  "arachas": {
+  "arachas1": {
     name: "Arachas",
     power: 4,
     ability: "muster",
     musterType: "arachas",
     img: "arachas1",
+    faction: "monster",
+    type: 0
+  },
+  "arachas2": {
+    name: "Arachas",
+    power: 4,
+    ability: "muster",
+    musterType: "arachas",
+    img: "arachas2",
+    faction: "monster",
+    type: 0
+  },
+  "arachas3": {
+    name: "Arachas",
+    power: 4,
+    ability: "muster",
+    musterType: "arachas",
+    img: "arachas3",
     faction: "monster",
     type: 0
   },
@@ -845,6 +1092,14 @@ module.exports = {
     power: 5,
     ability: null,
     img: "grave_hag",
+    faction: "monster",
+    type: 1
+  },
+  "toad": {
+    name: "Toad",
+    power: 6,
+    ability: "scorch_range",
+    img: "toad",
     faction: "monster",
     type: 1
   },
@@ -918,11 +1173,11 @@ module.exports = {
     type: 2
   },
   "emreis_emperor": {
-    name: "Emhyr var Emreis Emperor of Nilfgaard",
+    name: "Emhyr var Emreis: Emperor of Nilfgaard",
     power: -1,
     ability: "emreis_leader1",
     img: "emhyr_emperor",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 3
   },
   "emreis_imperial": {
@@ -930,7 +1185,7 @@ module.exports = {
     power: -1,
     ability: "emreis_leader2",
     img: "emhyr_imperial",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 3
   },
   "emreis_white": {
@@ -938,15 +1193,23 @@ module.exports = {
     power: -1,
     ability: "emreis_leader3",
     img: "emhyr_white",
-    faction: "nilfgaardian",  
+    faction: "nilfgaard",  
     type: 3
   },
   "emreis_relentless": {
-    name: "Emhyr vas Emreis the Relentless",
+    name: "Emhyr var Emreis: the Relentless",
     power: -1,
     ability: "emreis_leader4",
     img: "emhyr_relentless",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
+    type: 3
+  },
+  "emreis_invader": {
+    name: "Emhyr var Emreis: Invader of the North",
+    power: -1,
+    ability: "emreis_leader5",
+    img: "emhyr_invader",
+    faction: "nilfgaard",
     type: 3
   },
   "tibor_eggebracht": {
@@ -954,7 +1217,7 @@ module.exports = {
     power: 10,
     ability: "hero",
     img: "eggebracht",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 1
   },
   "letho_of_gulet": {
@@ -962,7 +1225,7 @@ module.exports = {
     power: 10,
     ability: "hero",
     img: "letho",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 0
   },
   "morvran_voorhis": {
@@ -970,7 +1233,7 @@ module.exports = {
     power: 10,
     ability: "hero",
     img: "voorhis",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 2
   },
   "menno_coehoorn": {
@@ -978,7 +1241,7 @@ module.exports = {
     power: 10,
     ability: ["hero", "medic"],
     img: "menno",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 0
   },
   "siege_technician": {
@@ -986,15 +1249,23 @@ module.exports = {
     power: 0,
     ability: "medic",
     img: "siege_tech",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 2
   },
-  "etolian_auxiliary_archers": {
+  "etolian_auxiliary_archers1": {
     name: "Etolian Auxiliary Archers",
     power: 1,
     ability: "medic",
     img: "aux_archers1",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
+    type: 1
+  },
+  "etolian_auxiliary_archers2": {
+    name: "Etolian Auxiliary Archers",
+    power: 1,
+    ability: "medic",
+    img: "aux_archers2",
+    faction: "nilfgaard",
     type: 1
   },
   "albrich": {
@@ -1002,7 +1273,7 @@ module.exports = {
     power: 2,
     ability: null,
     img: "albrich",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 1
   },
   "sweers": {
@@ -1010,7 +1281,7 @@ module.exports = {
     power: 2,
     ability: null,
     img: "sweers",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 2
   },
   "nausicaa_cavalry_rider": {
@@ -1018,7 +1289,7 @@ module.exports = {
     power: 2,
     ability: "tight_bond",
     img: "nausicaa_cavalry_rider",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 0
   },
   "vreemde": {
@@ -1026,7 +1297,7 @@ module.exports = {
     power: 2,
     ability: null,
     img: "vreemde",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 0
   },
   "rotten_mangonel": {
@@ -1034,7 +1305,7 @@ module.exports = {
     power: 3,
     ability: null,
     img: "rotten_mangonel",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 2
   },
   "morteisen": {
@@ -1042,7 +1313,7 @@ module.exports = {
     power: 3,
     ability: null,
     img: "morteisen",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 0
   },
   "puttkammer": {
@@ -1050,7 +1321,7 @@ module.exports = {
     power: 3,
     ability: null,
     img: "puttkammer",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 1
   },
   "impera_brigade_guard": {
@@ -1058,7 +1329,7 @@ module.exports = {
     power: 3,
     ability: "tight_bond",
     img: "impera_brigade_guard",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 0
   },
   "vanhemar": {
@@ -1066,7 +1337,7 @@ module.exports = {
     power: 4,
     ability: null,
     img: "vanhemar",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 1
   },
   "vattier_de_rideaux": {
@@ -1074,7 +1345,7 @@ module.exports = {
     power: 4,
     ability: "spy",
     img: "vattier",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 0
   },
   "rainfarn": {
@@ -1082,7 +1353,7 @@ module.exports = {
     power: 4,
     ability: null,
     img: "rainfarn",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 0
   },
   "cynthia": {
@@ -1090,7 +1361,7 @@ module.exports = {
     power: 4,
     ability: null,
     img: "cynthia",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 1
   },
   "zerrikanian_fire_scorpion": {
@@ -1098,15 +1369,23 @@ module.exports = {
     power: 5,
     ability: null,
     img: "fire_scorpion",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 2
   },
-  "young_emmisary": {
+  "young_emmisary1": {
     name: "Young Emissary",
     power: 5,
     ability: "tight_bond",
     img: "young_emissary1",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
+    type: 0
+  },
+  "young_emmisary2": {
+    name: "Young Emissary",
+    power: 5,
+    ability: "tight_bond",
+    img: "young_emissary2",
+    faction: "nilfgaard",
     type: 0
   },
   "renuald_aep_matsen": {
@@ -1114,7 +1393,7 @@ module.exports = {
     power: 5,
     ability: null,
     img: "renauld",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 1
   },
   "siege_engineer": {
@@ -1122,7 +1401,7 @@ module.exports = {
     power: 6,
     ability: null,
     img: "siege_engineer",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 2
   },
   "cahir_mawr_dyffryn_aep_ceallach": {
@@ -1130,7 +1409,7 @@ module.exports = {
     power: 6,
     ability: null,
     img: "ceallach",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 0
   },
   "fringilla_vigo": {
@@ -1138,7 +1417,7 @@ module.exports = {
     power: 6,
     ability: null,
     img: "vigo",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 1
   },
   "assire_var_anahid": {
@@ -1146,7 +1425,7 @@ module.exports = {
     power: 6,
     ability: null,
     img: "assire_var_anahid",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 1
   },
   "shilard_fitz_oesterlen": {
@@ -1154,7 +1433,7 @@ module.exports = {
     power: 7,
     ability: "spy",
     img: "shilard",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 0
   },
   "stefan_skellen": {
@@ -1162,7 +1441,7 @@ module.exports = {
     power: 9,
     ability: "spy",
     img: "stefan_skellen",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 0
   },
   "heavy_zerrikanian_fire_scorpion": {
@@ -1170,17 +1449,252 @@ module.exports = {
     power: 10,
     ability: null,
     img: "heavy_fire_scorpion",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 2
   },
-  "black_infantry_archer": {
+  "black_infantry_archer1": {
     name: "Black Infantry Archer",
     power: 10,
     ability: null,
     img: "black_infantry_archer1",
-    faction: "nilfgaardian",
+    faction: "nilfgaard",
     type: 1
+  },
+  "black_infantry_archer2": {
+    name: "Black Infantry Archer",
+    power: 10,
+    ability: null,
+    img: "black_infantry_archer2",
+    faction: "nilfgaard",
+    type: 1
+  },
+  "kambi": {
+    name: "Kambi",
+    power: 0,
+    ability: "summon_avenger",
+    img: "kambi",
+    faction: "skellige",
+    type: 0
+  },
+  "birna_bran": {
+    name: "Birna Bran",
+    power: 2,
+    ability: "medic",
+    img: "birna",
+    faction: "skellige",
+    type: 0
+  },
+  "berserker": {
+    name: "Berserker",
+    power: 4,
+    ability: "berserker",
+    img: "berserker",
+    faction: "skellige",
+    type: 0
+  },
+  "shield_maiden1": {
+    name: "Kambi",
+    power: 4,
+    ability: "tight_bond",
+    musterType: "shield_maiden",
+    img: "shield_maiden1",
+    faction: "skellige",
+    type: 0
+  },
+  "shield_maiden2": {
+    name: "Kambi",
+    power: 4,
+    ability: "tight_bond",
+    musterType: "shield_maiden",
+    img: "shield_maiden2",
+    faction: "skellige",
+    type: 0
+  },
+  "shield_maiden3": {
+    name: "Kambi",
+    power: 4,
+    ability: "tight_bond",
+    musterType: "shield_maiden",
+    img: "shield_maiden3",
+    faction: "skellige",
+    type: 0
+  },
+  "skald": {
+    name: "Clan Heymaey Skald",
+    power: 4,
+    ability: null,
+    img: "skald",
+    faction: "skellige",
+    type: 0
+  },
+  "armorsmith": {
+    name: "Clan Tordarroch Armorsmith",
+    power: 4,
+    ability: null,
+    img: "armorsmith",
+    faction: "skellige",
+    type: 0
+  },
+  "donar": {
+    name: "Donar an Hindar",
+    power: 4,
+    ability: null,
+    img: "donar",
+    faction: "skellige",
+    type: 0
+  },
+  "svanrige": {
+    name: "Svanrige",
+    power: 4,
+    ability: null,
+    img: "svanrige",
+    faction: "skellige",
+    type: 0
+  },
+  "udalryk": {
+    name: "Udalryk",
+    power: 4,
+    ability: null,
+    img: "udalryk",
+    faction: "skellige",
+    type: 0
+  },
+  "blueboy_lugos": {
+    name: "Blueboy Lugos",
+    power: 6,
+    ability: null,
+    img: "blueboy",
+    faction: "skellige",
+    type: 0
+  },
+  "warrior": {
+    name: "Clan an Craite Warrior",
+    power: 6,
+    ability: "tight_bond",
+    img: "warrior",
+    faction: "skellige",
+    type: 0
+  },
+  "pirate": {
+    name: "Clan Dimun Pirate",
+    power: 6,
+    ability: null,
+    img: "pirate",
+    faction: "skellige",
+    type: 0
+  },
+  "madman_lugos": {
+    name: "Madman Lugos",
+    power: 6,
+    ability: null,
+    img: "madman",
+    faction: "skellige",
+    type: 0
+  },
+  "olaf": {
+    name: "Olaf",
+    power: 12,
+    ability: ["tight_bond", "agile"],
+    img: "olaf",
+    faction: "skellige",
+    type: 0
+  },
+  "young_berserker": {
+    name: "Young Berserker",
+    power: 2,
+    ability: "berserker",
+    img: "young_berserker",
+    faction: "skellige",
+    type: 1
+  },
+  "light_longship": {
+    name: "Light Longship",
+    power: 4,
+    ability: "muster",
+    musterType: "light_longship",
+    img: "light_longship",
+    faction: "skellige",
+    type: 1
+  },
+  "archer": {
+    name: "Clan Brokvar Archer",
+    power: 6,
+    ability: null,
+    img: "archer",
+    faction: "skellige",
+    type: 1
+  },
+  "draig_bon_dhu": {
+    name: "Draig Bon-Dhu",
+    power: 2,
+    ability: "commanders_horn",
+    img: "draig",
+    faction: "skellige",
+    type: 2
+  },
+  "holger_blackhand": {
+    name: "Holger Blackhand",
+    power: 4,
+    ability: null,
+    img: "holger",
+    faction: "skellige",
+    type: 2
+  },
+  "war_longship": {
+    name: "War Longship",
+    power: 6,
+    ability: "tight bond",
+    img: "war_longship",
+    faction: "skellige",
+    type: 2
+  },
+  "hjalmar": {
+    name: "Hjalmar",
+    power: 10,
+    ability: "hero",
+    img: "hjalmar",
+    faction: "skellige",
+    type: 0
+  },
+  "cerys": {
+    name: "Cerys",
+    power: 10,
+    ability: ["hero", "muster"],
+    musterType: "shield_maiden",
+    img: "cerys",
+    faction: "skellige",
+    type: 0
+  },
+  "hemdall": {
+    name: "Hemdall",
+    power: 11,
+    ability: "hero",
+    img: "hemdall",
+    faction: "skellige",
+    type: 0
+  },
+  "ermion": {
+    name: "Ermion",
+    power: 8,
+    ability: ["hero", "mardroeme"],
+    img: "ermion",
+    faction: "skellige",
+    type: 1
+  },
+  "crach_an_craite": {
+    name: "Crach An Craite",
+    power: -1,
+    ability: "crach_an_craite",
+    img: "crach_an_craite",
+    faction: "skellige",
+    type: 3
+  },
+  "king_bran": {
+    name: "King Bran",
+    power: -1,
+    ability: "king_bran",
+    img: "king_bran",
+    faction: "skellige",
+    type: 3
   }
-
-
 }

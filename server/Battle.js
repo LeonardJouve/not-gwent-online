@@ -68,50 +68,6 @@ var Battle = (function(){
         this.p2.getLeader().getAbility().onGameStart.call(this.p2);
     }
 
-    /*this.p1.placeCard("ves");
-    this.p2.placeCard("ves");
-    this.p1.placeCard("yarpen_zigrin");
-    this.p2.placeCard("yarpen_zigrin");
-
-    this.p1.hand.add(this.p1.createCard("scorch"));
-    this.p2.hand.add(this.p2.createCard("scorch"));
-    this.p1.hand.add(this.p1.createCard("villentretenmerth"));
-    this.p2.hand.add(this.p2.createCard("villentretenmerth"));*/
-
-    /*this.p1.hand.add(this.p1.createCard("blue_stripes_commando"));
-    this.p2.hand.add(this.p2.createCard("blue_stripes_commando"));
-    this.p1.hand.add(this.p1.createCard("blue_stripes_commando"));
-    this.p2.hand.add(this.p2.createCard("blue_stripes_commando"));
-    this.p1.hand.add(this.p1.createCard("blue_stripes_commando"));
-    this.p2.hand.add(this.p2.createCard("blue_stripes_commando"));
-    this.p1.hand.add(this.p1.createCard("blue_stripes_commando"));
-    this.p2.hand.add(this.p2.createCard("blue_stripes_commando"));
-    this.p1.hand.add(this.p1.createCard("blue_stripes_commando"));
-    this.p2.hand.add(this.p2.createCard("blue_stripes_commando"));
-    this.p1.hand.add(this.p1.createCard("dandelion"));
-    this.p2.hand.add(this.p2.createCard("dandelion"));*/
-
-
-    /*this.p1.placeCard("ves");
-    this.p2.placeCard("ves");
-    this.p1.placeCard("yarpen_zigrin");
-    this.p2.placeCard("yarpen_zigrin");
-
-    this.p1.hand.add(this.p1.createCard("scorch"));
-    this.p2.hand.add(this.p2.createCard("scorch"));
-    this.p1.hand.add(this.p1.createCard("villentretenmerth"));
-    this.p2.hand.add(this.p2.createCard("villentretenmerth"));
-
-    this.p1.hand.add(this.p1.createCard("impenetrable_fog"));
-    this.p2.hand.add(this.p2.createCard("impenetrable_fog"));
-    this.p1.hand.add(this.p1.createCard("biting_frost"));
-    this.p2.hand.add(this.p2.createCard("biting_frost"));
-    this.p1.hand.add(this.p1.createCard("torrential_rain"));
-    this.p2.hand.add(this.p2.createCard("torrential_rain"));
-    this.p1.hand.add(this.p1.createCard("clear_weather"));
-    this.p2.hand.add(this.p2.createCard("clear_weather"));
-*/
-
     this.update();
 
 
@@ -144,13 +100,11 @@ var Battle = (function(){
     this.runEvent("EachTurn");
 
     this.runEvent("Turn" + side.getID());
-
-    //console.log("current Turn: ", side.getName());
   }
 
   r.getWinner = function() {
     if(!this.p1.getRubies() && !this.p2.getRubies()){
-      return null; //tie
+      return null;
     }
     return this.p1.getRubies() ? this.p1 : this.p2;
   }
@@ -160,7 +114,6 @@ var Battle = (function(){
     var loser = lastRound.loser;
     var winner = loser.foe;
     if(this.checkIfIsOver()){
-      //console.log("its over!");
       var winner = this.getWinner();
       winner = winner ? winner.getName() : "nobody";
       this.gameOver(winner);
@@ -171,13 +124,11 @@ var Battle = (function(){
     this.p1.resetNewRound();
     this.p2.resetNewRound();
 
-    //console.log("start new round!");
     this.sendNotification("Start new round!");
 
 
     if(winner.deck.getFaction() === Deck.FACTION.NORTHERN_REALM && !lastRound.isTie){
       winner.draw(1);
-      //console.log(winner.getName() + " draws 1 extra card! (Northern ability)");
       this.sendNotification(winner.getName() + " draws 1 extra card! (Northern ability)");
     }
 
@@ -205,7 +156,6 @@ var Battle = (function(){
     self.sendNotification(side.getName() + " decides who starts first");
     side.send("request:chooseWhichSideBegins", null, true);
     side.socket.once("response:chooseWhichSideBegins", function(data){
-      //console.log("which side? ", data.side);
 
       if(data.side !== "p1" && data.side !== "p2")
         throw new Error("Unknown side property! - ", data.side);
@@ -222,7 +172,6 @@ var Battle = (function(){
   }
 
   r.update = function(){
-    //console.("update called");
     this._update(this.p1);
     this._update(this.p2);
   }
@@ -278,7 +227,6 @@ var Battle = (function(){
         obj.cb.apply(ctx, obj.onArgs.concat(args));
       }
     }
-    //this.update();
   }
 
   r.on = function(eventid, cb, ctx, args){
@@ -348,13 +296,10 @@ var Battle = (function(){
       }
     }
 
-    //tie
-
-    //check if is nilfgaardian faction ability
+    //check if is nilfgaard faction ability
     if(this.p1.deck.getFaction() === Deck.FACTION.NILFGAARDIAN_EMPIRE && this.p1.deck.getFaction() !== this.p2.deck.getFaction()){
       this.p2.removeRuby();
-      //console.log(this.p1.getName() + " wins the tie! (nilfgaardian ability)");
-      this.sendNotification(this.p1.getName() + " wins the tie! (nilfgaardian ability)");
+      this.sendNotification(this.p1.getName() + " wins the tie! (nilfgaard ability)");
       return {
         loser: this.p2,
         isTie: false
@@ -362,8 +307,7 @@ var Battle = (function(){
     }
     if(this.p2.deck.getFaction() === Deck.FACTION.NILFGAARDIAN_EMPIRE && this.p1.deck.getFaction() !== this.p2.deck.getFaction()){
       this.p1.removeRuby();
-      //console.log(this.p2.getName() + " wins the tie! (nilfgaardian ability)");
-      this.sendNotification(this.p2.getName() + " wins the tie! (nilfgaardian ability)");
+      this.sendNotification(this.p2.getName() + " wins the tie! (nilfgaard ability)");
       return {
         loser: this.p1,
         isTie: false

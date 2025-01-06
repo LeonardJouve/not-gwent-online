@@ -36,8 +36,9 @@ var Deck = (function(){
   Deck.FACTION = {
     NORTHERN_REALM: "northern",
     SCOIATAEL: "scoiatael",
-    NILFGAARDIAN_EMPIRE: "nilfgaardian",
-    MONSTERS: "monster"
+    NILFGAARDIAN_EMPIRE: "nilfgaard",
+    MONSTERS: "monster",
+    SKELLIGE: "skellige"
   }
 
   r.setDeck = function(deckKey){

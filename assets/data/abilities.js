@@ -135,8 +135,18 @@ module.exports = {
   },
   "scorch": {
     name: "scorch",
-    description: "Scorch: Destroy your enemy's strongest close combat unit(s) if the combined strength of all of his or her combat unit(s) is 10 or more.",
+    description: "Scorch: Destroy your enemy's strongest close combat unit(s) if the combined strength of all of his or her close combat unit(s) is 10 or more.",
     scorchMelee: true
+  },
+  "scorch_range": {
+    name: "scorch",
+    description: "Scorch: Destroy your enemy's strongest range unit(s) if the combined strength of all of his or her range unit(s) is 10 or more.",
+    scorchRange: true
+  },
+  "scorch_siege": {
+    name: "scorch",
+    description: "Scorch: Destroy your enemy's strongest siege unit(s) if the combined strength of all of his or her siege unit(s) is 10 or more.",
+    scorchSiege: true
   },
   "commanders_horn": {
     name: "commanders_horn",
@@ -169,7 +179,7 @@ module.exports = {
   },
   "foltest_leader3": {
     name: "",
-    description: "Doubles the strength of all Siege units, unless a Commander's Horn is already in play on that row",
+    description: "Doubles the strength of all Siege units (unless a Commander's Horn is already in play on that row).",
     onActivate: function(){
       this.setHorn("commanders_horn", 2);
     }
@@ -196,6 +206,28 @@ module.exports = {
         side.addToDiscard(removedCards);
     }
   },
+  "foltest_leader5": {
+    name: "",
+    description: "Destroy your enemy's strongest Range unit(s) if the combined strength of all his or her Range units is 10 or more.",
+    onActivate: function(card){
+      var side = this.foe;
+      var field = side.field[card.constructor.TYPE.RANGED];
+
+      if (field.getScore() < 10) {
+          this.battle.sendNotification("Foltest: Son of Medell: Score is under 10! Nothing happens.");
+          return;
+      }
+
+      var cards = field.getHighestCards(true);
+      var removedCards = field.removeCard(cards);
+
+      var message = "Foltest: Son of Medell destroyed:";
+      removedCards.forEach(card => message += "\n" + card.getName());
+      this.battle.sendNotification(message);
+
+      side.addToDiscard(removedCards);
+    }
+  },
   "francesca_leader1": {
     name: "",
     description: "Pick a Biting Frost card from your deck and play it instantly",
@@ -217,8 +249,9 @@ module.exports = {
     name: "",
     description: "Draw an extra card at the beginning of the battle.",
     onGameStart: function() {
-        this.draw(1);
-        this.battle.sendNotification(this.getName() + " draws an extra card at the start of the battle.");
+      this.draw(1);
+      this.getLeader().setDisabled(true);
+      this.battle.sendNotification(this.getName() + " draws an extra card at the start of the battle.");
     }
   },
   "francesca_leader4": {
@@ -242,6 +275,13 @@ module.exports = {
 
       side.addToDiscard(removedCards);
   }
+  },
+  "francesca_leader5": {
+    name: "",
+    description: "Move agile units to whichever valid row maximizes their strength (don't move units already in optimal row).",
+    onActivate: function() {
+      //
+    }
   },
   "eredin_leader1": {
     name: "",
@@ -281,6 +321,25 @@ module.exports = {
       //
     }
   },
+  "eredin_leader5": {
+    name: "",
+    description: "Doubles the strength of all spy cards (affects both players).",
+    onActivate: function(){
+      var applyBoost = function(side) {
+        var cards = side.getFieldCards();
+        cards.forEach(function(card) {
+          if (card.hasAbility("spy")) {
+            card.setBoost("spy_boost", card.getPower());
+          }
+        });
+      };
+
+      applyBoost(this);
+      applyBoost(this.foe);
+
+      this.battle.sendNotification("Eredin: The Treacherous doubles the strength of all Spy cards!");
+    }
+  },
   "emreis_leader1": {
     name: "",
     description: "Look at 3 random cards from your opponent's hand.",
@@ -302,11 +361,9 @@ module.exports = {
     name: "",
     description: "Cancel your opponent's Leader Ability.",
     onGameStart: function() {
-        var opponentLeader = this.foe.getLeader();
-        if (opponentLeader) {
-            opponentLeader.setDisabled(true);
-            this.battle.sendNotification(this.getName() + " cancels the opponent's Leader Ability.");
-        }
+      this.foe.getLeader().setDisabled(true);
+      this.getLeader().setDisabled(true);
+      this.battle.sendNotification(this.getName() + " cancels the opponent's Leader Ability.");
     }
   },
   "emreis_leader4": {
@@ -324,6 +381,27 @@ module.exports = {
       this.send("played:emreis_leader4", {
         cards: JSON.stringify(discard)
       }, true);
+    }
+  },
+  "emreis_leader5": {
+    name: "",
+    description: "Abilities that restore a unit to the battlefield restore a randomly-chosen unit. Affects both players.",
+    onGameStart: function(){
+      //
+    }
+  },
+  "crach_an_craite": {
+    name: "",
+    description: "Shuffle all cards from each player's graveyard back into their decks.",
+    onActivate: function(){
+      //
+    }
+  },
+  "king_bran": {
+    name: "",
+    description: "Units only lose half their Strength in bad weather conditions.",
+    onActivate: function(){
+      //
     }
   },
   "hero": {

@@ -126,7 +126,7 @@ Battleside = (function() {
       var card = self.getCardFromDiscard(cardID);
       if(card === -1) {
         console.log("eredin_leader2:chooseCardFromDiscard | unknown card: ", card);
-        self.sendNotificationTo(self, "Possible bug occured: unknown card was chosen by playing nilfgaardian leader ability.");
+        self.sendNotificationTo(self, "Possible bug occured: unknown card was chosen by playing nilfgaard leader ability.");
         self.endTurn();
         return;
       }
@@ -151,7 +151,7 @@ Battleside = (function() {
       var card = self.foe.getCardFromDiscard(cardID);
       if(card === -1) {
         console.log("emreis_leader4:chooseCardFromDiscard | unknown card: ", card);
-        self.sendNotificationTo(self, "Possible bug occured: unknown card was chosen by playing nilfgaardian leader ability.");
+        self.sendNotificationTo(self, "Possible bug occured: unknown card was chosen by playing nilfgaard leader ability.");
         self.endTurn();
         return;
       }
@@ -602,6 +602,12 @@ Battleside = (function() {
       if(ability.scorchMelee) {
         this.scorchMelee(card);
       }
+      if(ability.scorchRange) {
+        this.scorchRange(card);
+      }
+      if(ability.scorchSiege) {
+        this.scorchSiege(card);
+      }
       if(ability.removeImmediately) {
         this.hand.remove(card);
         this.addToDiscard(card);
@@ -735,6 +741,58 @@ Battleside = (function() {
   r.scorchMelee = function(card) {
     var side = this.foe;
     var field = side.field[Card.TYPE.CLOSE_COMBAT];
+
+    this.battle.sendNotification(this.getName() + " played " + card.getName());
+
+    if(field.getScore() < 10) {
+      this.battle.sendNotification("Scorch: Score is under 10! Nothing happens.");
+      return;
+    }
+
+    var cards = field.getHighestCards(true);
+    var removeCards = field.removeCard(cards);
+
+
+    var txt = "Scorch destroyed:";
+    for(var i = 0; i < removeCards.length; i++) {
+      var c = removeCards[i];
+      txt += "\n" + c.getName();
+    }
+
+    this.battle.sendNotification(txt);
+
+    side.addToDiscard(removeCards);
+  }
+
+  r.scorchRange = function(card) {
+    var side = this.foe;
+    var field = side.field[Card.TYPE.RANGED];
+
+    this.battle.sendNotification(this.getName() + " played " + card.getName());
+
+    if(field.getScore() < 10) {
+      this.battle.sendNotification("Scorch: Score is under 10! Nothing happens.");
+      return;
+    }
+
+    var cards = field.getHighestCards(true);
+    var removeCards = field.removeCard(cards);
+
+
+    var txt = "Scorch destroyed:";
+    for(var i = 0; i < removeCards.length; i++) {
+      var c = removeCards[i];
+      txt += "\n" + c.getName();
+    }
+
+    this.battle.sendNotification(txt);
+
+    side.addToDiscard(removeCards);
+  }
+
+  r.scorchSiege = function(card) {
+    var side = this.foe;
+    var field = side.field[Card.TYPE.SIEGE];
 
     this.battle.sendNotification(this.getName() + " played " + card.getName());
 
