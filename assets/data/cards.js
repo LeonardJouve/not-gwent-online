@@ -4,7 +4,7 @@
  * 1 ranged
  * 2 siege
  * 3 leader
- * 4 special (decoy)
+ * 4 special
  * 5 weather
  */
 
@@ -1599,6 +1599,14 @@ module.exports = {
     faction: "skellige",
     type: 0
   },
+  "transformed_vildkaarl": {
+    name: "Transformed Vildkaarl",
+    power: 12,
+    ability: "morale_boost",
+    img: "vildkaarl",
+    faction: "skellige",
+    type: 0
+  },
   "young_berserker": {
     name: "Young Berserker",
     power: 2,
@@ -1621,6 +1629,14 @@ module.exports = {
     power: 6,
     ability: null,
     img: "archer",
+    faction: "skellige",
+    type: 1
+  },
+  "transformed_young_vildkaarl": {
+    name: "Transformed Young Vildkaarl",
+    power: 6,
+    ability: "tight bond",
+    img: "young_vildkaarl",
     faction: "skellige",
     type: 1
   },
@@ -1696,5 +1712,21 @@ module.exports = {
     img: "king_bran",
     faction: "skellige",
     type: 3
+  },
+  "skellige_storm": {
+    name: "Skellige Storm",
+    power: -1,
+    ability: "weather_storm",
+    img: "storm",
+    faction: "neutral",
+    type: 5
+  },
+  "mardroeme": {
+    name: "Mardroeme",
+    power: -1,
+    ability: "mardroeme",
+    img: "mardroeme",
+    faction: "neutral",
+    type: 4
   }
 }

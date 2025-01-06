@@ -407,6 +407,7 @@ module.exports = {
       "pirate",
       "madman_lugos",
       "olaf",
+      // "transformed_vildkaarl",
 
       // range
       // "young_berserker",
@@ -416,6 +417,9 @@ module.exports = {
       "light_longship",
       "light_longship",
       "archer",
+      // "transformed_young_vildkaarl",
+      // "transformed_young_vildkaarl",
+      // "transformed_young_vildkaarl",
 
       // siege
       "draig_bon_dhu",
@@ -433,12 +437,6 @@ module.exports = {
       // leader
       "crach_an_craite",
       "king_bran",
-
-      // other
-      // "transformed_young_vildkaarl",
-      // "transformed_young_vildkaarl",
-      // "transformed_young_vildkaarl",
-      // "transformed_voldkaarl",
 
       // shared
       "avallach",
@@ -465,9 +463,9 @@ module.exports = {
       "torrential_rain",
       "torrential_rain",
       "torrential_rain",
-      /* "skellige_storm",
-      "skellige_storm",
-      "skellige_storm", */
+      // "skellige_storm",
+      // "skellige_storm",
+      // "skellige_storm",
 
       // special
       "commanders_horn",
@@ -479,9 +477,9 @@ module.exports = {
       "scorch",
       "scorch",
       "scorch",
-      /* "mardroeme",
-      "mardroeme",
-      "mardroeme" */
+      // "mardroeme",
+      // "mardroeme",
+      // "mardroeme"
     ]
   }
 }
