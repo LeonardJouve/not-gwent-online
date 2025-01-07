@@ -4,21 +4,12 @@ var Matchmaker = (function(){
     if(!(this instanceof Matchmaker)){
       return (new Matchmaker());
     }
-    /**
-     * constructor here
-     */
 
     this._connections = connections;
     this._queue = [];
 
   };
   var r = Matchmaker.prototype;
-  /**
-   * methods && properties here
-   * r.property = null;
-   * r.getProperty = function() {...}
-   */
-
   r._queue = null;
   r._connections = null;
 
@@ -52,7 +43,6 @@ var Matchmaker = (function(){
   }
 
   r._getInQueue = function(user){
-    //console.log(user.getName() + " joined in queue");
     this._queue.push(user);
     user._inQueue = true;
   }

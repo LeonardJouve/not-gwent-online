@@ -11,9 +11,7 @@ var Battle = (function(){
     if(!(this instanceof Battle)){
       return (new Battle(id, p1, p2, socket));
     }
-    /**
-     * constructor here
-     */
+    
     this.cm = CardManager();
     this.events = {};
     this._id = id;
@@ -22,12 +20,6 @@ var Battle = (function(){
     this.socket = socket;
   };
   var r = Battle.prototype;
-  /**
-   * methods && properties here
-   * r.property = null;
-   * r.getProperty = function() {...}
-   */
-
   r.p1 = null;
   r.p2 = null;
   r._user1 = null;
@@ -198,10 +190,6 @@ var Battle = (function(){
   }
 
   r.send = function(event, data){
-    /*this.channel.publish({
-      event: event,
-      data: data
-    });*/
     io.sockets.in(this._id).emit(event, data);
   }
 
@@ -245,7 +233,6 @@ var Battle = (function(){
     obj.onArgs = args;
 
     if(!(event in this.events)){
-      /*this.events[event] = [];*/
       this.events[event] = {};
     }
 
@@ -296,7 +283,6 @@ var Battle = (function(){
       }
     }
 
-    //check if is nilfgaard faction ability
     if(this.p1.deck.getFaction() === Deck.FACTION.NILFGAARDIAN_EMPIRE && this.p1.deck.getFaction() !== this.p2.deck.getFaction()){
       this.p2.removeRuby();
       this.sendNotification(this.p1.getName() + " wins the tie! (nilfgaard ability)");
@@ -316,21 +302,7 @@ var Battle = (function(){
 
     this.p1.removeRuby();
     this.p2.removeRuby();
-
-    /*if(!this.p1.getRubies() && !this.p2.getRubies()) {
-      return {
-        loser: Math.random() > 0.5 ? this.p1 : this.p2,
-        isTie: false
-      }
-    }
-
-    if(!this.p1.getRubies()) {
-      return {
-        loser: this.p2,
-        isTie: false
-      }
-    }
-*/
+    
     return {
       loser: Math.random() > 0.5 ? this.p1 : this.p2,
       isTie: true

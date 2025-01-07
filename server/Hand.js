@@ -1,6 +1,3 @@
-/*var $ = require("jquery");*//*
-var CardManager = require("./CardManager");*//*
-var PubSub = require("./pubsub");*/
 var Card = require("./Card");
 
 
@@ -9,22 +6,12 @@ var Hand = (function(){
     if(!(this instanceof Hand)){
       return (new Hand());
     }
-    /**
-     * constructor here
-     */
-
     this._hand = [];
   };
   var r = Hand.prototype;
-  /**
-   * methods && properties here
-   * r.property = null;
-   * r.getProperty = function() {...}
-   */
   r._hand = null;
 
-  r.add = function(card){/*
-    console.log(card.getID(), card.getName());*/
+  r.add = function(card){
     this._hand.push(card);
   }
 
@@ -42,8 +29,6 @@ var Hand = (function(){
 
   r.remove = function(id){
     var n = this.length();
-
-    //console.trace(id);
     id = id instanceof Card ? id.getID() : id;
 
     if(!n) return -1;
@@ -83,8 +68,6 @@ var Hand = (function(){
     });
     return res;
   }
-
-
   return Hand;
 })();
 

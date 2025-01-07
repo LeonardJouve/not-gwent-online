@@ -9,7 +9,6 @@ var babelify = require("babelify");
 var handlebars = require("browserify-handlebars");
 var imagemin = require('gulp-imagemin');
 var gm = require("gulp-gm");
-var argv = require("minimist")(process.argv.slice(2));
 require("dotenv").config();
 var envify = require('envify');
 
@@ -30,13 +29,6 @@ gulp.task('browserify', function() {
     console.log(err);
   }));
 });
-
-gulp.task("watch", function() {
-  if(argv.production) return;
-  gulp.watch("./client/js/*", ["browserify"]);
-  gulp.watch("./client/templates/*", ["browserify"]);
-  gulp.watch("./client/*.html", ["index"]);
-})
 
 gulp.task("index", function() {
   gulp.src("./client/index.html")
@@ -137,4 +129,4 @@ gulp.task("generate sprites", ["resize lg"], function() {
   }, []));
 })
 
-gulp.task("default", ["watch", "browserify", "index", "resize lg", "resize sm", "resize md", "generate sprites"]);
+gulp.task("default", ["browserify", "index", "resize lg", "resize sm", "resize md", "generate sprites"]);

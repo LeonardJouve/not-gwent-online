@@ -388,20 +388,37 @@ module.exports = {
     description: "Abilities that restore a unit to the battlefield restore a randomly-chosen unit. Affects both players.",
     onGameStart: function(){
       //
+      this.getLeader().setDisabled(true);
     }
   },
   "crach_an_craite": {
     name: "",
     description: "Shuffle all cards from each player's graveyard back into their decks.",
     onActivate: function(){
-      //
+      var self = this;
+
+      this.getDiscard().forEach(function(card) {
+        self.deck.add(card);
+        self.removeFromDiscard(card);
+      });
+  
+      this.foe.getDiscard().forEach(function(card) {
+        self.foe.deck.add(card);
+        self.foe.removeFromDiscard(card);
+      });
+  
+      this.deck.shuffle();
+      this.foe.deck.shuffle();
+
+      this.battle.sendNotification(this.foe.getName() + "'s graveyard has been shuffled back into their deck.");
     }
   },
   "king_bran": {
     name: "",
     description: "Units only lose half their Strength in bad weather conditions.",
-    onActivate: function(){
+    onGameStart: function(){
       //
+      this.getLeader().setDisabled(true);
     }
   },
   "hero": {
@@ -410,7 +427,24 @@ module.exports = {
   },
   "weather_storm": {
     name: "weather_storm",
-    description: "Sets the strength of all Siege Combat cards to 1 for both players.",
+    description: "Reduces the Strength of all Range and Siege Units to 1.",
     weather: [1, 2]
+  },
+  "mardroeme": {
+    name: "mardroeme",
+    description: "Triggers transformation of all Berserker cards on the same row.",
+    //
+  },
+  "berserker": {
+    name: "berserker",
+    description: "Transforms into a bear when a Mardroeme card is on its row.",
+    //
+  },
+  "summon_avenger": {
+    name: "summon_avenger",
+    description: "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place.",
+    onRemoveFromField: function() {
+      //
+    }
   }
 }

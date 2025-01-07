@@ -6,9 +6,7 @@ var Card = (function(){
     if(!(this instanceof Card)){
       return (new Card(key, owner, id));
     }
-    /**
-     * constructor here
-     */
+    
     this._owner = owner;
     this._id = id;
     this.boost = 0;
@@ -23,14 +21,8 @@ var Card = (function(){
     this._data.key = key;
     this._boost = {};
     this._forcedPower = -1;
-    //this._init();
   };
   var r = Card.prototype;
-  /**
-   * methods && properties here
-   * r.property = null;
-   * r.getProperty = function() {...}
-   */
   r._key = null;
   r._data = null;
   r._id = null;
@@ -39,7 +31,6 @@ var Card = (function(){
   r._forcedPower = null;
   r._disabled = null;
   r._changedType = null;
-  //Card.__id = 0;
   Card.TYPE = {
     CLOSE_COMBAT: 0,
     RANGED: 1,
@@ -60,7 +51,6 @@ var Card = (function(){
   }
 
   r._init = function(){
-    //this._id = ++Card.__id;
   }
 
   r.getName = function(){
@@ -89,7 +79,7 @@ var Card = (function(){
   }
   r.setForcedPower = function(nr){
     this._forcedPower = nr;
-    this.getBoost(); //recalculate
+    this.getBoost();
   }
   r.getRawAbility = function(){
     return this._data.ability;
@@ -156,7 +146,7 @@ var Card = (function(){
       res += this._boost[key];
     }
 
-    if(doubles){ //tight bond
+    if(doubles){
       for(var i = 0; i < doubles; i++) {
         res += res + this.getBasePower();
       }
@@ -172,7 +162,7 @@ var Card = (function(){
 
   r.setBoost = function(key, val){
     this._boost[key] = val;
-    this.getBoost(); //to recalculate this.boost
+    this.getBoost();
   }
 
   r.isDisabled = function(){

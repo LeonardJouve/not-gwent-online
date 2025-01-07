@@ -5,21 +5,11 @@ var Field = (function() {
     if(!(this instanceof Field)) {
       return (new Field(side, hasHornField));
     }
-    /**
-     * constructor here
-     */
-
     this._hasHornField = hasHornField || false;
     this._cards = [];
     this.side = side;
   };
   var r = Field.prototype;
-  /**
-   * methods && properties here
-   * r.property = null;
-   * r.getProperty = function() {...}
-   */
-
   r._cards = null;
   r._score = 0;
   r._hasHornField = null;
@@ -27,10 +17,6 @@ var Field = (function() {
   r.side = null;
 
   r.add = function(card, isHorn) {
-    /*if(card.hasAbility("commanders_horn")) {
-      this.setHorn(card);
-      return;
-    }*/
     if(isHorn && this._hasHornField) {
       this.setHorn(card);
       return;
@@ -93,17 +79,6 @@ var Field = (function() {
   r.removeAll = function() {
     var tmp = this._cards.slice();
     var self = this;
-    /*for(var i = 0; i < tmp.length; i++) {
-      var card = tmp[i];
-      card.reset();
-      if(card.__lock){
-        continue;
-      }
-      for(var event in card._uidEvents) {
-        self.side.off(event, card.getUidEvents(event));
-      }
-      this._cards[i] = null;
-    }*/
     tmp.forEach(function(card, i) {
       card.reset();
       if(card.__lock) {

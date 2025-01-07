@@ -8,24 +8,12 @@ var Deck = (function(){
     if(!(this instanceof Deck)){
       return (new Deck(deck, side));
     }
-    /**
-     * constructor here
-     */
-
     this.side = side;
     this._deck = [];
-
-    //if(typeof deck !== "object") throw new Error("Deck is not an object!");
-
     this._originalDeck = [];
     this.setDeck(deck);
   };
   var r = Deck.prototype;
-  /**
-   * methods && properties here
-   * r.property = null;
-   * r.getProperty = function() {...}
-   */
   r._deck = null;
   r._owner = null;
   r._originalDeck = null;
@@ -89,8 +77,6 @@ var Deck = (function(){
 
   r.pop = function(){
     var id = this._deck.pop();
-    /*
-        var card = CardManager().getCardById(id);*/
     return id;
   }
 

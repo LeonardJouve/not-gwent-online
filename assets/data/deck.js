@@ -57,13 +57,20 @@ module.exports = {
 
       // shared
       "avallach",
+      // "cow",
       "dandelion",
+      "gaunter_odimm",
+      "gaunter_odimm_darkness",
+      "gaunter_odimm_darkness",
+      "gaunter_odimm_darkness",
       "emiel",
+      "olgeird_von_everec",
       "zoltan",
       "vesemir",
       "villentretenmerth",
       "triss",
       "yen",
+      // "bovine_defense_force",
       "ciri",
       "geralt",
 
@@ -80,6 +87,9 @@ module.exports = {
       "torrential_rain",
       "torrential_rain",
       "torrential_rain",
+      "skellige_storm",
+      "skellige_storm",
+      "skellige_storm",
 
       // special
       "commanders_horn",
@@ -90,7 +100,10 @@ module.exports = {
       "decoy",
       "scorch",
       "scorch",
-      "scorch"
+      "scorch",
+      // "mardroeme",
+      // "mardroeme",
+      // "mardroeme"
     ]
   },
 
@@ -151,13 +164,20 @@ module.exports = {
 
       // shared
       "avallach",
+      // "cow",
       "dandelion",
+      "gaunter_odimm",
+      "gaunter_odimm_darkness",
+      "gaunter_odimm_darkness",
+      "gaunter_odimm_darkness",
       "emiel",
+      "olgeird_von_everec",
       "zoltan",
       "vesemir",
       "villentretenmerth",
       "triss",
       "yen",
+      // "bovine_defense_force",
       "ciri",
       "geralt",
 
@@ -174,6 +194,9 @@ module.exports = {
       "torrential_rain",
       "torrential_rain",
       "torrential_rain",
+      "skellige_storm",
+      "skellige_storm",
+      "skellige_storm",
 
       // special
       "commanders_horn",
@@ -184,7 +207,10 @@ module.exports = {
       "decoy",
       "scorch",
       "scorch",
-      "scorch"
+      "scorch",
+      // "mardroeme",
+      // "mardroeme",
+      // "mardroeme"
     ]
   },
 
@@ -248,13 +274,20 @@ module.exports = {
 
       // shared
       "avallach",
+      // "cow",
       "dandelion",
+      "gaunter_odimm",
+      "gaunter_odimm_darkness",
+      "gaunter_odimm_darkness",
+      "gaunter_odimm_darkness",
       "emiel",
+      "olgeird_von_everec",
       "zoltan",
       "vesemir",
       "villentretenmerth",
       "triss",
       "yen",
+      // "bovine_defense_force",
       "ciri",
       "geralt",
 
@@ -271,6 +304,9 @@ module.exports = {
       "torrential_rain",
       "torrential_rain",
       "torrential_rain",
+      "skellige_storm",
+      "skellige_storm",
+      "skellige_storm",
 
       // special
       "commanders_horn",
@@ -281,7 +317,10 @@ module.exports = {
       "decoy",
       "scorch",
       "scorch",
-      "scorch"
+      "scorch",
+      // "mardroeme",
+      // "mardroeme",
+      // "mardroeme"
     ]
   },
 
@@ -348,13 +387,20 @@ module.exports = {
 
       // shared
       "avallach",
+      // "cow",
       "dandelion",
+      "gaunter_odimm",
+      "gaunter_odimm_darkness",
+      "gaunter_odimm_darkness",
+      "gaunter_odimm_darkness",
       "emiel",
+      "olgeird_von_everec",
       "zoltan",
       "vesemir",
       "villentretenmerth",
       "triss",
       "yen",
+      // "bovine_defense_force",
       "ciri",
       "geralt",
 
@@ -371,6 +417,9 @@ module.exports = {
       "torrential_rain",
       "torrential_rain",
       "torrential_rain",
+      "skellige_storm",
+      "skellige_storm",
+      "skellige_storm",
 
       // special
       "commanders_horn",
@@ -381,7 +430,10 @@ module.exports = {
       "decoy",
       "scorch",
       "scorch",
-      "scorch"
+      "scorch",
+      // "mardroeme",
+      // "mardroeme",
+      // "mardroeme"
     ]
   },
 
@@ -436,17 +488,24 @@ module.exports = {
 
       // leader
       "crach_an_craite",
-      "king_bran",
+      // "king_bran",
 
       // shared
       "avallach",
+      // "cow",
       "dandelion",
+      "gaunter_odimm",
+      "gaunter_odimm_darkness",
+      "gaunter_odimm_darkness",
+      "gaunter_odimm_darkness",
       "emiel",
+      "olgeird_von_everec",
       "zoltan",
       "vesemir",
       "villentretenmerth",
       "triss",
       "yen",
+      // "bovine_defense_force",
       "ciri",
       "geralt",
 

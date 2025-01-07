@@ -1472,6 +1472,7 @@ module.exports = {
     name: "Kambi",
     power: 0,
     ability: "summon_avenger",
+    summonType: "hemdall",
     img: "kambi",
     faction: "skellige",
     type: 0
@@ -1488,12 +1489,13 @@ module.exports = {
     name: "Berserker",
     power: 4,
     ability: "berserker",
+    berserkerType: "transformed_vildkaarl",
     img: "berserker",
     faction: "skellige",
     type: 0
   },
   "shield_maiden1": {
-    name: "Kambi",
+    name: "Shield Maiden",
     power: 4,
     ability: "tight_bond",
     musterType: "shield_maiden",
@@ -1502,7 +1504,7 @@ module.exports = {
     type: 0
   },
   "shield_maiden2": {
-    name: "Kambi",
+    name: "Shield Maiden",
     power: 4,
     ability: "tight_bond",
     musterType: "shield_maiden",
@@ -1511,7 +1513,7 @@ module.exports = {
     type: 0
   },
   "shield_maiden3": {
-    name: "Kambi",
+    name: "Shield Maiden",
     power: 4,
     ability: "tight_bond",
     musterType: "shield_maiden",
@@ -1603,6 +1605,7 @@ module.exports = {
     name: "Young Berserker",
     power: 2,
     ability: "berserker",
+    berserkerType: "transformed_young_vildkaarl",
     img: "young_berserker",
     faction: "skellige",
     type: 1
@@ -1635,7 +1638,7 @@ module.exports = {
   "transformed_young_vildkaarl": {
     name: "Transformed Young Vildkaarl",
     power: 6,
-    ability: "tight bond",
+    ability: "tight_bond",
     img: "young_vildkaarl",
     faction: "skellige",
     type: 1
@@ -1659,7 +1662,7 @@ module.exports = {
   "war_longship": {
     name: "War Longship",
     power: 6,
-    ability: "tight bond",
+    ability: "tight_bond",
     img: "war_longship",
     faction: "skellige",
     type: 2
@@ -1728,5 +1731,47 @@ module.exports = {
     img: "mardroeme",
     faction: "neutral",
     type: 4
-  }
+  },
+  "cow": {
+    name: "Cow",
+    power: 0,
+    ability: "summon_avenger",
+    summonType: "bovine_defense_force",
+    img: "cow",
+    faction: "neutral",
+    type: 1
+  },
+  "gaunter_odimm": {
+    name: "Gaunter O'Dimm",
+    power: 2,
+    ability: "muster",
+    musterType: "gaunter_odimm",
+    img: "gaunter_odimm",
+    faction: "neutral",
+    type: 2
+  },
+  "gaunter_odimm_darkness": {
+    name: "Gaunter O'Dimm: Darkness",
+    power: 4,
+    ability: "muster",
+    musterType: "gaunter_odimm",
+    img: "gaunter_odimm_darkness",
+    faction: "neutral",
+    type: 1
+  },
+  "olgeird_von_everec": {
+    name: "Olgeird von Everec",
+    power: 6,
+    ability: ["agile", "morale_boost"],
+    img: "olgeird",
+    faction: "neutral",
+    type: 0
+  },
+  "bovine_defense_force": {
+    name: "Bovine Defense Force",
+    power: 8,
+    img: "chort",
+    faction: "neutral",
+    type: 0
+  },
 }

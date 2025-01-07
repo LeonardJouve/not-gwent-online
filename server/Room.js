@@ -6,25 +6,12 @@ var Room = (function(){
     if(!(this instanceof Room)){
       return (new Room());
     }
-    /**
-     * constructor here
-     */
-
-    var self = this;
+    
     this._id = shortid.generate();
     this._users = [];
     this._ready = {};
-    //this.socket = scServer.global;
-
-
-    //console.log("room created: " + this.getID());
   };
   var r = Room.prototype;
-  /**
-   * methods && properties here
-   * r.property = null;
-   * r.getProperty = function() {...}
-   */
   r.MAX_USER = 2;
   r._users = null;
   r._id = null;

@@ -1,4 +1,3 @@
-var DeckData = require("../assets/data/deck");
 var Deck = require("./Deck");
 var Hand = require("./Hand");
 var Card = require("./Card");
@@ -13,9 +12,6 @@ Battleside = (function() {
     if(!(this instanceof Battleside)) {
       return (new Battleside(user, n, battle));
     }
-    /**
-     * constructor here
-     */
 
     var deck = user.getDeck();
     var self = this;
@@ -50,8 +46,6 @@ Battleside = (function() {
       var leaderCard = self.getLeader();
       if(leaderCard.isDisabled()) return;
 
-      //console.log("leader activated");
-
       var ability = leaderCard.getAbility();
 
       ability.onActivate.apply(self, [leaderCard]);
@@ -61,7 +55,6 @@ Battleside = (function() {
       if(ability.waitResponse) {
         return;
       }
-      //self.runEvent("NextTurn", null, [self.foe]);
       self.endTurn();
     })
     this.receive("play:cardFromHand", function(data) {
@@ -75,11 +68,9 @@ Battleside = (function() {
     this.receive("decoy:replaceWith", function(data) {
       if(self._isWaiting) return;
       var card = self.findCardOnFieldByID(data.cardID);
-      /*if(card === -1) throw new Error("decoy:replace | unknown card");*/
       if(card === -1) {
         console.log("decoy:replace | unknown card: ", card);
         self.sendNotificationTo(self, "Possible bug occured: unknown card was chosen by playing decoy ability.");
-        //self.endTurn();
         return;
       }
       self.runEvent("Decoy:replaceWith", self, [card]);
@@ -92,12 +83,10 @@ Battleside = (function() {
       self.update();
 
       self.battle.sendNotification(self.getName() + " passed!");
-      //self.runEvent("NextTurn", null, [self.foe]);
       self.endTurn();
     })
     this.receive("medic:chooseCardFromDiscard", function(data) {
       if(!data) {
-        //self.runEvent("NextTurn", null, [self.foe]);
 
         self.endTurn();
         return;
@@ -119,7 +108,6 @@ Battleside = (function() {
       if(!data) {
         self.endTurn();
         self.sendNotificationTo(self.foe, self.getName() + " takes no card from his discard pile (or there wasn't any card to choose)");
-        //self.runEvent("NextTurn", null, [self.foe]);
         return;
       }
       var cardID = data.cardID;
@@ -133,18 +121,15 @@ Battleside = (function() {
 
       self.removeFromDiscard(card);
 
-      //self.placeCard(card);
       self.sendNotificationTo(self.foe, self.getName() + " takes " + card.getName() + " from his discard pile into his hand.");
       self.hand.add(card);
 
       self.endTurn();
-      // self.runEvent("NextTurn", null, [self.foe]);
     })
     this.receive("emreis_leader4:chooseCardFromDiscard", function(data) {
       if(!data) {
         self.endTurn();
         self.sendNotificationTo(self.foe, self.getName() + " takes no card from your discard pile (or there wasn't any card to choose)");
-        //self.runEvent("NextTurn", null, [self.foe]);
         return;
       }
       var cardID = data.cardID;
@@ -158,12 +143,10 @@ Battleside = (function() {
 
       self.foe.removeFromDiscard(card);
 
-      //self.placeCard(card);
       self.sendNotificationTo(self.foe, self.getName() + " takes " + card.getName() + " from your discard pile into his hand.");
       self.hand.add(card);
 
       self.endTurn();
-      // self.runEvent("NextTurn", null, [self.foe]);
     })
     this.receive("agile:field", function(data) {
       var fieldType = data.field;
@@ -171,7 +154,6 @@ Battleside = (function() {
       self.runEvent("agile:setField", null, [fieldType]);
 
       self.endTurn();
-      //self.runEvent("NextTurn", null, [self.foe]);
     })
     this.receive("cancel:agile", function() {
       self.off("agile:setField");
@@ -182,7 +164,6 @@ Battleside = (function() {
       self.runEvent("horn:setField", null, [fieldType]);
 
       self.endTurn();
-      //self.runEvent("NextTurn", null, [self.foe]);
     })
     this.receive("cancel:horn", function() {
       self.off("horn:setField");
@@ -192,11 +173,6 @@ Battleside = (function() {
     this.on("Turn" + this.getID(), this.onTurnStart, this);
   };
   var r = Battleside.prototype;
-  /**
-   * methods && properties here
-   * r.property = null;
-   * r.getProperty = function() {...}
-   */
   r._name = null;
   r._discard = null;
 
@@ -239,11 +215,6 @@ Battleside = (function() {
       var card = field.getCard(id);
       if(card !== -1) return card;
     }
-    /*
-        for(var i = 0; i < this._discard.length; i++) {
-          var c = this._discard[i];
-          if(c.getID() === id) return c;
-        }*/
     return -1;
   }
 
@@ -294,7 +265,6 @@ Battleside = (function() {
   }
 
   r.setLeadercard = function() {
-    // edited to use a random leader, please don't blame me if its ugly -f
     var leaderCards = [];
     var leaderCard;
     while ((leaderCard = this.deck.find("type", Card.TYPE.LEADER)) && leaderCard.length > 0) {
@@ -378,10 +348,6 @@ Battleside = (function() {
   r.onTurnStart = function() {
     this.foe.wait();
     this.turn();
-
-    //wait for cardplay event
-
-
   };
 
   r.playCard = function(card) {
@@ -395,8 +361,6 @@ Battleside = (function() {
 
     this.update();
 
-
-    //this.runEvent("NextTurn", null, [this.foe]);
     this.endTurn();
   }
 
@@ -410,7 +374,6 @@ Battleside = (function() {
     obj = _.extend({}, obj);
 
     if(typeof card === "string") {
-      //card = Card(card);
       card = this.createCard(card);
     }
 
@@ -422,7 +385,6 @@ Battleside = (function() {
     }
     if(obj._nextTurn && !obj.forceField) {
       this.update();
-      //this.runEvent("NextTurn", null, [this.foe]);
       this.endTurn();
       return 0;
     }
@@ -465,8 +427,6 @@ Battleside = (function() {
     field = typeof field === "undefined" ? null : field;
 
     if(typeof card === "string") {
-      //card = Card(card);
-      //card = this.cm.create(card);
       card = this.createCard(card);
     }
 
@@ -499,7 +459,6 @@ Battleside = (function() {
     var id = "commanders_horn";
 
     if(typeof field === "undefined") {
-      //console.log("field unknown | %s", card.getName());
       return;
     }
 
@@ -527,8 +486,6 @@ Battleside = (function() {
 
   r.setTightBond = function(card) {
     var field = this.field[card.getType()];
-    /*
-        var pos = field.getPosition(card);*/
     var cards = field.get();
 
     card.resetTightBond();
@@ -568,10 +525,6 @@ Battleside = (function() {
       ability = ability[0];
     }
 
-    /*if(ability && ability.name === obj.suppress){
-      //this.update();
-    }*/
-
     if(ability && !Array.isArray(ability)) {
 
       if(ability.onBeforePlace) {
@@ -591,10 +544,8 @@ Battleside = (function() {
         obj._nextTurn = ability.nextTurn;
       }
       if(ability.tightBond) {
-        //this.setTightBond(card);
         ability.onAfterPlace = this.setTightBond;
         ability.onEachCardPlace = this.setTightBond;
-        //ability.onWeatherChange = this.setTightBond;
       }
       if(ability.scorch) {
         this.scorch(card);
@@ -670,14 +621,10 @@ Battleside = (function() {
         var uid = this.on("WeatherChange", ability.onWeatherChange, this, [card]);
         card._uidEvents["WeatherChange"] = uid;
       }
-
-      //this.update();
-
     }
   }
 
   r.checkAbilityOnAfterPlace = function(card, obj, __flag) {
-    //var ability = card.getAbility();
     var ability = Array.isArray(__flag) ? __flag : card.getAbility();
 
     if(Array.isArray(ability) && ability.length) {
@@ -689,7 +636,6 @@ Battleside = (function() {
 
     if(ability && !Array.isArray(ability)) {
       if(ability.name && ability.name === obj.suppress) {
-        //this.update();
         return;
       }
       if(ability.onAfterPlace) {
@@ -826,11 +772,7 @@ Battleside = (function() {
     side.addToDiscard(removeCards);
   }
 
-  r.scorch = function(card) {/*
-    var side = this.foe;
-    var field = side.field[Card.TYPE.CLOSE_COMBAT];
-    var cards = field.getHighestCards(true);
-    var removeCards = field.removeCard(cards);*/
+  r.scorch = function(card) {
     var cards = this.getFieldCards();
     cards = cards.concat(this.foe.getFieldCards());
     var noHeroes = true;
@@ -925,7 +867,7 @@ Battleside = (function() {
     this.clearMainFields();
     this.setWeather(5, {
       onTurnEnd: true
-    }); //clear weather
+    });
     this.setPassing(false);
   }
 
@@ -974,7 +916,6 @@ Battleside = (function() {
   }
 
   r.reDraw = function(n) {
-    //var hand = this.hand.getCards();
     var self = this;
     var left = n;
     var deferred = Promise.Deferred();

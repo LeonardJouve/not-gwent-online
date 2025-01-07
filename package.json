@@ -1,7 +1,7 @@
 {
   "name": "Not-Gwent-Online",
   "scripts": {
-    "build": "gulp --production",
+    "build": "gulp",
     "start": "node server/server.js"
   },
   "dependencies": {
@@ -19,7 +19,6 @@
     "handlebars": "latest",
     "jquery": "2.2.4",
     "jquery-deferred": "latest",
-    "minimist": "latest",
     "shortid": "latest",
     "socket.io": "v2-latest",
     "socket.io-client": "v2-latest",

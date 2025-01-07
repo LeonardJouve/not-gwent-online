@@ -1,5 +1,4 @@
 require("dotenv").config();
-require('minimist')(process.argv.slice(2));
 var http = require("http");
 var express = require('express');
 var app = express();
@@ -24,7 +23,7 @@ app.listen(process.env.WEBSERVER_PORT);
 
 var admin = io.of("/admin");
 
-io.on("connection", function(socket) { //global connection
+io.on("connection", function(socket) {
   var user;
   connections.add(user = User(socket));
   console.log("new user ", user.getName());

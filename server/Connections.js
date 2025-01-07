@@ -3,20 +3,12 @@ var Connections = (function(){
     if(!(this instanceof Connections)){
       return (new Connections());
     }
-    /**
-     * constructor here
-     */
+
     this._connections = {};
     this.roomCollection = {};
 
   };
   var r = Connections.prototype;
-  /**
-   * methods && properties here
-   * r.property = null;
-   * r.getProperty = function() {...}
-   */
-
   r._connections = null;
   r.roomCollection = null;
   r._length = 0;
@@ -42,8 +34,6 @@ var Connections = (function(){
   r.length = function() {
     return this._length;
   }
-
-
   return Connections;
 })();
 
