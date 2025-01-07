@@ -1575,14 +1575,6 @@ module.exports = {
     faction: "skellige",
     type: 0
   },
-  "pirate": {
-    name: "Clan Dimun Pirate",
-    power: 6,
-    ability: "scorch_range",
-    img: "pirate",
-    faction: "skellige",
-    type: 0
-  },
   "madman_lugos": {
     name: "Madman Lugos",
     power: 6,
@@ -1629,6 +1621,14 @@ module.exports = {
     power: 6,
     ability: null,
     img: "archer",
+    faction: "skellige",
+    type: 1
+  },
+  "pirate": {
+    name: "Clan Dimun Pirate",
+    power: 6,
+    ability: "scorch_range",
+    img: "pirate",
     faction: "skellige",
     type: 1
   },

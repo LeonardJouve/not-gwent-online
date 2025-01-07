@@ -619,8 +619,18 @@ Battleside = (function() {
         obj.targetSide = this.foe;
       }
       if(typeof ability.weather !== "undefined") {
-        ability.onEachTurn = this.setWeather.bind(this, ability.weather);
-        ability.onEachCardPlace = this.setWeather.bind(this, ability.weather);
+        var weatherRows = Array.isArray(ability.weather) ? ability.weather : [ability.weather];
+        ability.onEachTurn = function() {
+            weatherRows.forEach(function(row) {
+                this.setWeather(row);
+            }, this);
+        }.bind(this);
+    
+        ability.onEachCardPlace = function() {
+            weatherRows.forEach(function(row) {
+                this.setWeather(row);
+            }, this);
+        }.bind(this);
       }
       if(ability.replaceWith && !obj.forcePlace) {
         obj._cancelPlacement = true;

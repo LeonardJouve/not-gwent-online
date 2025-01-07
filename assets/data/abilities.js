@@ -407,5 +407,10 @@ module.exports = {
   "hero": {
     name: "hero",
     description: "Hero: Not affected by special cards, weather cards or abilities."
+  },
+  "weather_storm": {
+    name: "weather_storm",
+    description: "Sets the strength of all Siege Combat cards to 1 for both players.",
+    weather: [1, 2]
   }
 }

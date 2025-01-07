@@ -211,7 +211,7 @@ let SideView = Backbone.View.extend({
     let isInfluencedByWeather;
     this.field.weather.cards.forEach((card) =>{
       let key = card._key;
-      if(key === "impenetrable_fog") isInfluencedByWeather = true;
+      if(key === "impenetrable_fog" || key === "skellige_storm") isInfluencedByWeather = true;
     })
 
     if(isInfluencedByWeather){
@@ -240,7 +240,7 @@ let SideView = Backbone.View.extend({
     let isInfluencedByWeather;
     this.field.weather.cards.forEach((card) =>{
       let key = card._key;
-      if(key === "torrential_rain") isInfluencedByWeather = true;
+      if(key === "torrential_rain" || key === "skellige_storm") isInfluencedByWeather = true;
     })
 
     if(isInfluencedByWeather){

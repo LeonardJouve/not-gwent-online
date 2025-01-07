@@ -404,7 +404,6 @@ module.exports = {
       "warrior",
       "warrior",
       "warrior",
-      "pirate",
       "madman_lugos",
       "olaf",
       // "transformed_vildkaarl",
@@ -417,6 +416,7 @@ module.exports = {
       "light_longship",
       "light_longship",
       "archer",
+      "pirate",
       // "transformed_young_vildkaarl",
       // "transformed_young_vildkaarl",
       // "transformed_young_vildkaarl",
@@ -463,9 +463,9 @@ module.exports = {
       "torrential_rain",
       "torrential_rain",
       "torrential_rain",
-      // "skellige_storm",
-      // "skellige_storm",
-      // "skellige_storm",
+      "skellige_storm",
+      "skellige_storm",
+      "skellige_storm",
 
       // special
       "commanders_horn",
