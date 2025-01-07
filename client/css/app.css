@@ -566,30 +566,37 @@ ul {
 }
 
 .field-session {
-    float: left;
-    padding: 10px 20px;
+    text-align: center;
     border: 0;
     color: #8798ac;
     font-size: 16px;
-    margin: 0 10px 0 0;
+    margin: 0 0 10px 0;
     height: 48px;
     width: 220px;
     background: #243141;
     background: linear-gradient(to right, #243141 0%, #334152 100%);
+    border-radius: 10px;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#243141', endColorstr='#334152', GradientType=1);
 }
 
+input:focus::placeholder {
+    color: transparent;
+}
+
 .container-form-landing .field-session {
-    width: 170px;
+    width: 200px;
+    display: flex;
+    margin: 10px auto;
 }
 
 .wrap-btn-action {
-    float: left;
+    display: inline-block;
     padding: 10px 20px;
     cursor: pointer;
     height: 48px;
     background: #da7020;
     background: linear-gradient(to right, #da7020 0%, #ca5907 100%);
+    border-radius: 10px;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#da7020', endColorstr='#ca5907', GradientType=1);
     transition: box-shadow 0.3s ease-in-out 0s;
 }
@@ -687,9 +694,8 @@ body.landing {
     margin: 0 auto;
 }
 
-.logo-big {
-    margin: 0 auto;
-    display: block;
+.logo {
+    width: 350px;
 }
 
 .container-landing {

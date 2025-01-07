@@ -2,6 +2,7 @@
   body {
     background:#162232 center top no-repeat;
     background-size: cover;
+    font-family: Arial;
   }
 
   .container {
@@ -10,11 +11,7 @@
 
   .container-form-landing {
     opacity: 1;
-    margin: 60px 0 0 0;
-  }
-
-  .field-session {
-    width: 250px !important;
+    margin: 5% 0;
   }
 
   .container {
@@ -42,13 +39,14 @@
   }
 
   .container-landing {
-    margin: 20% 0 0 0;
+    margin: 10% 0 0 0;
+    text-align: center;
   }
 
   .teaser-landing {
     float: left;
     width: 100%;
-    margin: 70px 0 0 0;
+    margin: 5% 0;
     text-shadow: none;
   }
 
@@ -63,11 +61,11 @@
 
 <section class="container-landing">
   <div class="wrap-landing">
-    <img src="assets/logo-big.png" width="243" height="85" alt="Gwent" class="logo-big">
+    <img src="assets/logo.png" alt="Gwent" class="logo">
 
     <div class="container-form-landing">
 
-      <input type="text" placeholder="Username" class="field-session field-username name-input" autofocus value="{{name}}">
+      <input type="text" placeholder="Username" class="field-session field-username name-input">
 
       <select id="deckChoice" class="field-session">
         <option value="random">Random Deck</option>
