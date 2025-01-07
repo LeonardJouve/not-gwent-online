@@ -113,6 +113,12 @@ var Card = (function(){
   r.getMusterType = function(){
     return this._data.musterType || null;
   }
+  r.getSummonType = function(){
+    return this._data.summonType || null;
+  }
+  r.getBerserkerType = function(){
+    return this._data.berserkerType || null;
+  }
   r.getType = function(){
     return this._changedType == null ? this._data.type : this._changedType;
   }

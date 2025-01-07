@@ -57,7 +57,7 @@ module.exports = {
 
       // shared
       "avallach",
-      // "cow",
+      "cow",
       "dandelion",
       "gaunter_odimm",
       "gaunter_odimm_darkness",
@@ -70,7 +70,6 @@ module.exports = {
       "villentretenmerth",
       "triss",
       "yen",
-      // "bovine_defense_force",
       "ciri",
       "geralt",
 
@@ -100,10 +99,7 @@ module.exports = {
       "decoy",
       "scorch",
       "scorch",
-      "scorch",
-      // "mardroeme",
-      // "mardroeme",
-      // "mardroeme"
+      "scorch"
     ]
   },
 
@@ -164,7 +160,7 @@ module.exports = {
 
       // shared
       "avallach",
-      // "cow",
+      "cow",
       "dandelion",
       "gaunter_odimm",
       "gaunter_odimm_darkness",
@@ -177,7 +173,6 @@ module.exports = {
       "villentretenmerth",
       "triss",
       "yen",
-      // "bovine_defense_force",
       "ciri",
       "geralt",
 
@@ -207,10 +202,7 @@ module.exports = {
       "decoy",
       "scorch",
       "scorch",
-      "scorch",
-      // "mardroeme",
-      // "mardroeme",
-      // "mardroeme"
+      "scorch"
     ]
   },
 
@@ -274,7 +266,7 @@ module.exports = {
 
       // shared
       "avallach",
-      // "cow",
+      "cow",
       "dandelion",
       "gaunter_odimm",
       "gaunter_odimm_darkness",
@@ -287,7 +279,6 @@ module.exports = {
       "villentretenmerth",
       "triss",
       "yen",
-      // "bovine_defense_force",
       "ciri",
       "geralt",
 
@@ -317,10 +308,7 @@ module.exports = {
       "decoy",
       "scorch",
       "scorch",
-      "scorch",
-      // "mardroeme",
-      // "mardroeme",
-      // "mardroeme"
+      "scorch"
     ]
   },
 
@@ -387,7 +375,7 @@ module.exports = {
 
       // shared
       "avallach",
-      // "cow",
+      "cow",
       "dandelion",
       "gaunter_odimm",
       "gaunter_odimm_darkness",
@@ -400,7 +388,6 @@ module.exports = {
       "villentretenmerth",
       "triss",
       "yen",
-      // "bovine_defense_force",
       "ciri",
       "geralt",
 
@@ -430,10 +417,7 @@ module.exports = {
       "decoy",
       "scorch",
       "scorch",
-      "scorch",
-      // "mardroeme",
-      // "mardroeme",
-      // "mardroeme"
+      "scorch"
     ]
   },
 
@@ -441,7 +425,7 @@ module.exports = {
     faction: "skellige",
     data: [
       // melee
-      // "kambi",
+      "kambi",
       "birna_bran",
       // "berserker",
       "shield_maiden1",
@@ -458,20 +442,16 @@ module.exports = {
       "warrior",
       "madman_lugos",
       "olaf",
-      // "transformed_vildkaarl",
 
       // range
-      // "young_berserker",
-      // "young_berserker",
-      // "young_berserker",
+      "young_berserker",
+      "young_berserker",
+      "young_berserker",
       "light_longship",
       "light_longship",
       "light_longship",
       "archer",
       "pirate",
-      // "transformed_young_vildkaarl",
-      // "transformed_young_vildkaarl",
-      // "transformed_young_vildkaarl",
 
       // siege
       "draig_bon_dhu",
@@ -483,8 +463,7 @@ module.exports = {
       // hero
       "hjalmar",
       "cerys",
-      // "hemdall",
-      // "ermion",
+      "ermion",
 
       // leader
       "crach_an_craite",
@@ -492,7 +471,7 @@ module.exports = {
 
       // shared
       "avallach",
-      // "cow",
+      "cow",
       "dandelion",
       "gaunter_odimm",
       "gaunter_odimm_darkness",
@@ -505,7 +484,6 @@ module.exports = {
       "villentretenmerth",
       "triss",
       "yen",
-      // "bovine_defense_force",
       "ciri",
       "geralt",
 

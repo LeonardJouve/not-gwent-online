@@ -479,10 +479,25 @@ Battleside = (function() {
       if(_card.getID() === card.getID()) return;
       if(_card.getType() != card.getType()) return;
       if(_card.hasAbility("hero")) return;
-      _card.setBoost(id, 0);
+      _card.setBoost(id,   0);
       _card.setBoost(id, _card.getPower());
     })
   }
+
+  r.mardroeme = function(card) {
+      var field = this.field[card.getType()];
+      if (typeof field === "undefined") {
+          return;
+      }
+
+      field.get().forEach(function(_card) {
+          if (_card.hasAbility("berserker")) {
+              var newCard = this.createCard(_card.getBerserkerType());
+              field.replaceWith(_card, newCard);
+              this.sendNotification(_card.getName() + " transformed into " + newCard.getName() + "!");
+          }
+      }, this);
+  };
 
   r.setTightBond = function(card) {
     var field = this.field[card.getType()];
@@ -536,6 +551,9 @@ Battleside = (function() {
       if(ability.commandersHorn) {
         ability.onEachCardPlace = this.commanderHornAbility;
         ability.onWeatherChange = this.commanderHornAbility;
+      }
+      if(ability.mardroeme) {
+        ability.onAfterPlace = this.mardroeme;
       }
       if(ability.cancelPlacement && !obj.forcePlace) {
         obj._cancelPlacement = true;
@@ -783,12 +801,12 @@ Battleside = (function() {
     this.battle.sendNotification(this.getName() + " played " + card.getName());
 
     cards.forEach(function(card) {
-      if(noHeroes && card.hasAbility("hero")) return;
+      if(noHeroes && card.hasAbility("hero") && card.constructor.TYPE.SPECIAL) return;
       highest = card.getPower() > highest ? card.getPower() : highest;
     })
 
     cards.forEach(function(card) {
-      if(noHeroes && card.hasAbility("hero")) return;
+      if(noHeroes && card.hasAbility("hero") && card.constructor.TYPE.SPECIAL) return;
       if(card.getPower() === highest) res.push(card);
     });
 

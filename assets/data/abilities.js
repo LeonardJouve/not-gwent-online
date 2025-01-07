@@ -1,3 +1,5 @@
+const { get } = require("underscore");
+
 module.exports = {
 
   "agile": {
@@ -399,18 +401,18 @@ module.exports = {
 
       this.getDiscard().forEach(function(card) {
         self.deck.add(card);
-        self.removeFromDiscard(card);
       });
+      this._discard = [];
   
       this.foe.getDiscard().forEach(function(card) {
         self.foe.deck.add(card);
-        self.foe.removeFromDiscard(card);
       });
+      this.foe._discard = [];
   
       this.deck.shuffle();
       this.foe.deck.shuffle();
 
-      this.battle.sendNotification(this.foe.getName() + "'s graveyard has been shuffled back into their deck.");
+      this.battle.sendNotification("Both graveyards have been shuffled back into their deck.");
     }
   },
   "king_bran": {
@@ -433,18 +435,11 @@ module.exports = {
   "mardroeme": {
     name: "mardroeme",
     description: "Triggers transformation of all Berserker cards on the same row.",
-    //
+    mardroeme: true
   },
-  "berserker": {
-    name: "berserker",
-    description: "Transforms into a bear when a Mardroeme card is on its row.",
+  "mardroeme_card": {
+    name: "mardroeme",
+    description: "Triggers transformation of all Berserker cards on the same row.",
     //
-  },
-  "summon_avenger": {
-    name: "summon_avenger",
-    description: "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place.",
-    onRemoveFromField: function() {
-      //
-    }
   }
 }

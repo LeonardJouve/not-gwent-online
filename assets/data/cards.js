@@ -1727,7 +1727,7 @@ module.exports = {
   "mardroeme": {
     name: "Mardroeme",
     power: -1,
-    ability: "mardroeme",
+    ability: "mardroeme_card",
     img: "mardroeme",
     faction: "neutral",
     type: 4
@@ -1770,6 +1770,7 @@ module.exports = {
   "bovine_defense_force": {
     name: "Bovine Defense Force",
     power: 8,
+    ability: null,
     img: "chort",
     faction: "neutral",
     type: 0
