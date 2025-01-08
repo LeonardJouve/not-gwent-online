@@ -1,11 +1,26 @@
 services:
-  not-gwent-online:
-    container_name: not-gwent-online
+  build:
+    container_name: build
     build:
       context: .
-    working_dir: /not-gwent-online
+      dockerfile: ./build/Dockerfile
+    working_dir: /gwent
     volumes:
-      - .:/not-gwent-online
+      - ./build:/gwent
+      - .env:/gwent/.env
+    environment:
+      TZ: Europe/Zurich
+  server:
+    container_name: server
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    working_dir: /gwent
+    volumes:
+      - ./server:/gwent
+      - ./build/public:/gwent/public
+      - ./build/assets:/gwent/assets
+      - .env:/gwent/.env
     environment:
       TZ: Europe/Zurich
     ports:

@@ -1,0 +1,14 @@
+{
+  "name": "Not-Gwent-Online",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "dependencies": {
+    "dotenv": "latest",
+    "express": "latest",
+    "jquery-deferred": "latest",
+    "shortid": "latest",
+    "socket.io": "v2-latest",
+    "underscore": "latest"
+  }
+}

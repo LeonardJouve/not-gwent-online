@@ -6,7 +6,7 @@ Not-Gwent-Online is a standalone multiplayer version of Gwent, a card game from 
 ## Installation
 ```bash
 git clone https://github.com/LeonardJouve/not-gwent-online.git
-cd not-gwent-online
+cd gwent
 cp .env.example .env
 ```
 

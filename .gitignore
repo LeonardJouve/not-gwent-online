@@ -1,6 +1,11 @@
-/node_modules
+/build/node_modules
+/server/node_modules
+/build/assets/cards
+/build/public
+/build/.env
+/server/assets
+/server/public
+/server/.env
 /.vs
-/public
-/assets/cards
 .env
 *.db
