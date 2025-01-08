@@ -82,9 +82,8 @@ var Field = (function () {
     var cardsToRemove = [];
     var summonCards = [];
 
-    tmp.forEach(function (card, i) {
+    tmp.forEach(function (card) {
       if (card.hasAbility("summon_avenger")) {
-        if (!card) return;
         var summonCard = self.side.createCard(card.getSummonType());
         var position = self.getPosition(card);
         cardsToRemove.push(card);
@@ -113,12 +112,6 @@ var Field = (function () {
 
     summonCards.forEach(function (summonCard) {
       self.side.placeCard(summonCard);
-    });
-
-    cardsToRemove.forEach(function (card, index) {
-      if (card.hasAbility("summon_avenger")) {
-        self.side.battle.sendNotification(card.getName() + " was replaced by " + summonCards[index].getName() + "!");
-      }
     });
 
     if (this.getHorn()) {
