@@ -425,6 +425,14 @@ module.exports = {
     name: "hero",
     description: "Hero: Not affected by special cards, weather cards or abilities."
   },
+  "berserker": {
+    name: "berserker",
+    description: "Transforms into a bear when a Mardroeme card is on its row."
+  },
+  "summon_avenger": {
+    name: "summon_avenger",
+    description: "When this card is removed from the battlefield, it summons a powerful new Unit Card to take its place."
+  },
   "weather_storm": {
     name: "weather_storm",
     description: "Reduces the Strength of all Range and Siege Units to 1.",

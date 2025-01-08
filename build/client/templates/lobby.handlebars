@@ -65,15 +65,21 @@
 
     <div class="container-form-landing">
 
-      <input type="text" placeholder="Username" class="field-session field-username name-input">
+      <input type="text" placeholder="Username" class="field-session field-username name-input" value="{{name}}">
 
       <select id="deckChoice" class="field-session">
         <option value="random">Random Deck</option>
         <option value="northern">Northern Realms</option>
+        <option value="nilfgaard">Nilfgaard</option>
         <option value="scoiatael">Scoia'tael</option>
         <option value="monster">Monsters</option>
-        <option value="nilfgaard">Nilfgaard</option>
         <option value="skellige">Skellige</option>
+        <option value="random_optimized">Random Custom Deck</option>
+        <option value="northern_optimized">Northern Realms (Custom)</option>
+        <option value="nilfgaard_optimized">Nilfgaard (Custom)</option>
+        <option value="scoiatael_optimized">Scoia'tael (Custom)</option>
+        <option value="monster_optimized">Monsters (Custom)</option>
+        <option value="skellige_optimized">Skellige (Custom)</option>
       </select>
 
       <div class="wrap-btn-action btn-register-action startMatchmaking">

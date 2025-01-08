@@ -32,8 +32,15 @@ var Deck = (function(){
     var deck = DeckData[deckKey] ? DeckData[deckKey] : DeckData["northern"];
 
     if(deckKey === "random"){
-      var decks = _.allKeys(DeckData);
-      deck = DeckData[decks[(Math.random() * decks.length) | 0]];
+      var validFactions = ["northern", "nilfgaard", "scoiatael", "monster", "skellige"];
+      var randomFaction = validFactions[(Math.random() * validFactions.length) | 0];
+      deck = DeckData[randomFaction];
+    }
+
+    if(deckKey === "random_optimized"){
+      var validFactions = ["northern_optimized", "nilfgaard_optimized", "scoiatael_optimized", "monster_optimized", "skellige_optimized"];
+      var randomFaction = validFactions[(Math.random() * validFactions.length) | 0];
+      deck = DeckData[randomFaction];
     }
 
     this._originalDeck = deck.data.slice();

@@ -1,8 +1,14 @@
 {
   "name": "Not-Gwent-Online",
+  "description": "Not-Gwent-Online is a standalone multiplayer version of Gwent, a card game from The Witcher 3.",
   "scripts": {
     "build": "gulp"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LeonardJouve/not-gwent-online.git"
+  },
+  "license": "MIT",
   "dependencies": {
     "babelify": "7.3.0",
     "backbone": "1.3.3",

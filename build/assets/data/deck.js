@@ -1,5 +1,4 @@
 module.exports = {
-
   "northern": {
     faction: "northern",
     data: [
@@ -102,7 +101,6 @@ module.exports = {
       "scorch"
     ]
   },
-
   "nilfgaard": {
     faction: "nilfgaard",
     data: [
@@ -205,7 +203,6 @@ module.exports = {
       "scorch"
     ]
   },
-
   "scoiatael": {
     faction: "scoiatael",
     data: [
@@ -311,7 +308,6 @@ module.exports = {
       "scorch"
     ]
   },
-
   "monster": {
     faction: "monster",
     data: [
@@ -420,7 +416,6 @@ module.exports = {
       "scorch"
     ]
   },
-
   "skellige": {
     faction: "skellige",
     data: [
@@ -517,6 +512,206 @@ module.exports = {
       // "mardroeme",
       // "mardroeme",
       // "mardroeme"
+    ]
+  },
+  "northern_optimized": {
+    faction: "northern",
+    data: [
+      "blue_stripes_commando",
+      "blue_stripes_commando",
+      "blue_stripes_commando",
+      "sigismund_dijkstra",
+      "prince_stennis",
+      "thaler",
+      "dun_banner_medic",
+      "ballista1",
+      "ballista2",
+      "siege_tower",
+      "trebuchet1",
+      "catapult",
+      "catapult",
+      "esterad_thyssen",
+      "john_natalis",
+      "philippa_eilhart",
+      "vernon_roche",
+      "avallach",
+      "villentretenmerth",
+      "yen",
+      "ciri",
+      "geralt",
+
+      "foltest_siegemaster",
+
+      "biting_frost",
+      "clear_weather",
+      "impenetrable_fog",
+      "commanders_horn",
+      "decoy",
+      "decoy",
+      "decoy",
+      "scorch",
+      "scorch",
+      "scorch"
+    ]
+  },
+  "nilfgaard_optimized": {
+    faction: "nilfgaard",
+    data: [
+      "vattier_de_rideaux",
+      "young_emmisary1",
+      "young_emmisary2",
+      "shilard_fitz_oesterlen",
+      "stefan_skellen",
+      "etolian_auxiliary_archers1",
+      "etolian_auxiliary_archers2",
+      "black_infantry_archer1",
+      "black_infantry_archer2",
+      "siege_technician",
+      "siege_engineer",
+      "heavy_zerrikanian_fire_scorpion",
+      "letho_of_gulet",
+      "menno_coehoorn",
+      "tibor_eggebracht",
+      "morvran_voorhis",
+      "avallach",
+      "villentretenmerth",
+      "triss",
+      "yen",
+      "ciri",
+      "geralt",
+
+      "emreis_relentless",
+
+      "biting_frost",
+      "clear_weather",
+      "torrential_rain",
+      "commanders_horn",
+      "decoy",
+      "decoy",
+      "decoy",
+      "scorch",
+      "scorch",
+      "scorch"
+    ]
+  },
+  "scoiatael_optimized": {
+    faction: "scoiatael",
+    data: [
+      "dwarven_skirmisher1",
+      "dwarven_skirmisher2",
+      "dwarven_skirmisher3",
+      "havekar_healer1",
+      "havekar_healer2",
+      "havekar_healer3",
+      "elven_skirmisher1",
+      "elven_skirmisher2",
+      "elven_skirmisher3",
+      "milva",
+      "schirru",
+      "isengrim_faoiltiarnah",
+      "eithne",
+      "iorveth",
+      "saesenthessis",
+      "avallach",
+      "cow",
+      "villentretenmerth",
+      "triss",
+      "yen",
+      "ciri",
+      "geralt",
+
+      "francesca_daisy_of_the_valley",
+
+      "biting_frost",
+      "clear_weather",
+      "torrential_rain",
+      "commanders_horn",
+      "decoy",
+      "decoy",
+      "decoy",
+      "scorch",
+      "scorch",
+      "scorch"
+    ]
+  },
+  "monster_optimized": {
+    faction: "monster",
+    data: [
+      "arachas1",
+      "arachas2",
+      "arachas3",
+      "vampire_bruxa",
+      "vampire_ekimmara",
+      "vampire_fleder",
+      "vampire_garkain",
+      "vampire_katakan",
+      "crone_brewess",
+      "crone_weavess",
+      "crone_whispess",
+      "toad",
+      "arachas_behemoth",
+      "draug",
+      "imlerith",
+      "leshen",
+      "kayran",
+      "avallach",
+      "villentretenmerth",
+      "yen",
+      "ciri",
+      "geralt",
+
+      "eredin_bringer_of_death",
+
+      "clear_weather",
+      "skellige_storm",
+      "skellige_storm",
+      "commanders_horn",
+      "decoy",
+      "decoy",
+      "decoy",
+      "scorch",
+      "scorch",
+      "scorch"
+    ]
+  },
+  "skellige_optimized": {
+    faction: "skellige",
+    data: [
+      "kambi",
+      "birna_bran",
+      "shield_maiden1",
+      "shield_maiden2",
+      "shield_maiden3",
+      "young_berserker",
+      "young_berserker",
+      "young_berserker",
+      "light_longship",
+      "light_longship",
+      "light_longship",
+      "war_longship",
+      "war_longship",
+      "war_longship",
+      "hjalmar",
+      "cerys",
+      "ermion",
+      "avallach",
+      "villentretenmerth",
+      "yen",
+      "ciri",
+      "geralt",
+
+      "crach_an_craite",
+      
+      "biting_frost",
+      "clear_weather",
+      "skellige_storm",
+      "commanders_horn",
+      "decoy",
+      "decoy",
+      "decoy",
+      "scorch",
+      "scorch",
+      "scorch"
     ]
   }
 }
