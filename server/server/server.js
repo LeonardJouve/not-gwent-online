@@ -23,12 +23,12 @@ app.listen(process.env.WEBSERVER_PORT);
 
 var admin = io.of("/admin");
 
-io.on("connection", function(socket) {
+io.on("connection", function (socket) {
   var user;
   connections.add(user = User(socket));
   console.log("new user ", user.getName());
 
-  socket.on("disconnect", function() {
+  socket.on("disconnect", function () {
     connections.remove(user);
     user.disconnect();
     console.log("user ", user.getName(), " disconnected");
@@ -39,8 +39,8 @@ io.on("connection", function(socket) {
   io.emit("update:playerOnline", connections.length());
 })
 
-admin.on("connection", function(socket) {
-  socket.on("sendMessage", function(msg) {
+admin.on("connection", function (socket) {
+  socket.on("sendMessage", function (msg) {
     console.log("admin send msg: " + msg);
     io.emit("notification", {
       message: msg

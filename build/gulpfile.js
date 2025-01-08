@@ -12,82 +12,82 @@ var gm = require("gulp-gm");
 require("dotenv").config();
 var envify = require('envify');
 
-gulp.task('browserify', function() {
-  browserify('./client/js/main.js', {standalone: "app", debug: true})
-  .transform(envify)
-  .transform(handlebars).on("error", function(err) {
-    console.log(err);
-  })
-  .transform(babelify)
-  .bundle().on("error", function(err) {
-    console.log(err);
-  })
-  .pipe(source('app.js').on("error", function(err) {
-    console.log(err);
-  }))
-  .pipe(gulp.dest('./public/build/').on("error", function(err) {
-    console.log(err);
-  }));
+gulp.task('browserify', function () {
+  browserify('./client/js/main.js', { standalone: "app", debug: true })
+    .transform(envify)
+    .transform(handlebars).on("error", function (err) {
+      console.log(err);
+    })
+    .transform(babelify)
+    .bundle().on("error", function (err) {
+      console.log(err);
+    })
+    .pipe(source('app.js').on("error", function (err) {
+      console.log(err);
+    }))
+    .pipe(gulp.dest('./public/build/').on("error", function (err) {
+      console.log(err);
+    }));
 });
 
-gulp.task("index", function() {
+gulp.task("index", function () {
   gulp.src("./client/index.html")
-  .pipe(gulp.dest("./public/"));
+    .pipe(gulp.dest("./public/"));
 
   gulp.src("./client/favicon.ico")
-  .pipe(gulp.dest("./public/"));
+    .pipe(gulp.dest("./public/"));
 
   gulp.src("./client/css/bootstrap.css")
-  .pipe(gulp.dest("./public/build"));
+    .pipe(gulp.dest("./public/build"));
 
   gulp.src("./client/css/main.css")
-  .pipe(gulp.dest("./public/build"));
+    .pipe(gulp.dest("./public/build"));
 
   gulp.src("./client/css/app.css")
-  .pipe(gulp.dest("./public/build"));
+    .pipe(gulp.dest("./public/build"));
 })
 
-gulp.task('resize sm', function(done) {
-  if(fs.existsSync(__dirname + "/assets/cards/sm/monster/arachas1.png")) {
+gulp.task('resize sm', function (done) {
+  if (fs.existsSync(__dirname + "/assets/cards/sm/monster/arachas1.png")) {
     console.log("skip generating sm images");
     return done();
   }
   return gulp.src('./assets/original_cards/**/*.png')
-  .pipe(gm(function(gmfile) {
-    return gmfile.resize(null, 120);
-  }))
-  .pipe(imagemin())
-  .pipe(gulp.dest('./assets/cards/sm/'));
+    .pipe(gm(function (gmfile) {
+      return gmfile.resize(null, 120);
+    }))
+    .pipe(imagemin())
+    .pipe(gulp.dest('./assets/cards/sm/'));
 });
 
-gulp.task('resize md', function(done) {
-  if(fs.existsSync(__dirname + "/assets/cards/md/monster/arachas1.png")) {
+gulp.task('resize md', function (done) {
+  if (fs.existsSync(__dirname + "/assets/cards/md/monster/arachas1.png")) {
     console.log("skip generating md images");
     return done();
   }
   return gulp.src('./assets/original_cards/**/*.png')
-  .pipe(gm(function(gmfile) {
-    return gmfile.resize(null, 284);
-  }))
-  .pipe(imagemin())
-  .pipe(gulp.dest('./assets/cards/md/'));
+    .pipe(gm(function (gmfile) {
+      return gmfile.resize(null, 284);
+    }))
+    .pipe(imagemin())
+    .pipe(gulp.dest('./assets/cards/md/'));
 });
 
-gulp.task('resize lg', ["resize sm", "resize md"], function(done) {
-  if(fs.existsSync(__dirname + "/assets/cards/lg/monster/arachas1.png")) {
+gulp.task('resize lg', ["resize sm", "resize md"], function (done) {
+  if (fs.existsSync(__dirname + "/assets/cards/lg/monster/arachas1.png")) {
     console.log("skip generating lg images");
     return done();
   }
   return gulp.src('./assets/original_cards/**/*.png')
-  .pipe(gm(function(gmfile) {
-    return gmfile.resize(null, 450);
-  }))
-  .pipe(imagemin())
-  .pipe(gulp.dest('./assets/cards/lg/'));
+    .pipe(gm(function (gmfile) {
+      return gmfile.resize(null, 450);
+    }))
+    .pipe(imagemin())
+    .pipe(gulp.dest('./assets/cards/lg/'));
 });
 
-gulp.task("generate sprites", ["resize lg"], function() {
-  if(fs.existsSync(__dirname + "/public/build/cards-lg-monster.png")) {
+gulp.task("generate sprites", ["resize lg"], function () {
+  if (fs.existsSync(__dirname + "/public/build/cards-lg-monster.png")) {
     console.log("skip sprite generation");
     return;
   }
@@ -99,7 +99,7 @@ gulp.task("generate sprites", ["resize lg"], function() {
         imgName: `cards-${size}-${faction}.png`,
         cssName: `cards.css`,
         cssFormat: 'css',
-        cssOpts: {cssSelector: (item) => `.card-${size}-${faction}-${item.name}`}
+        cssOpts: { cssSelector: (item) => `.card-${size}-${faction}-${item.name}` }
       }));
 
       acc.push(

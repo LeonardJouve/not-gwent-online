@@ -262,7 +262,8 @@ select {
  *    `input` and others.
  */
 button,
-html input[type="button"], input[type="reset"],
+html input[type="button"],
+input[type="reset"],
 input[type="submit"] {
     -webkit-appearance: button;
     /* 2 */
@@ -442,7 +443,8 @@ body {
     text-shadow: none;
 }
 
-input, textarea {
+input,
+textarea {
     font-family: 'Titillium Web', sans-serif;
     outline: 0;
 }
@@ -676,7 +678,7 @@ input:focus::placeholder {
 }
 
 body.landing {
-    background:#162232 center top no-repeat;
+    background: #162232 center top no-repeat;
     background-size: cover;
 }
 
@@ -958,15 +960,19 @@ nav a.active {
     0% {
         opacity: 0;
     }
+
     25% {
         opacity: .5;
     }
+
     50% {
         opacity: 1;
     }
+
     75% {
         opacity: .5;
     }
+
     100% {
         opacity: 0;
     }
@@ -976,15 +982,19 @@ nav a.active {
     0% {
         opacity: 0;
     }
+
     25% {
         opacity: .5;
     }
+
     50% {
         opacity: 1;
     }
+
     75% {
         opacity: .5;
     }
+
     100% {
         opacity: 0;
     }
@@ -994,15 +1004,19 @@ nav a.active {
     0% {
         opacity: 0;
     }
+
     25% {
         opacity: .5;
     }
+
     50% {
         opacity: 1;
     }
+
     75% {
         opacity: .5;
     }
+
     100% {
         opacity: 0;
     }
@@ -1033,9 +1047,11 @@ nav a.active {
     0% {
         background-position: 51% 0%;
     }
+
     50% {
         background-position: 50% 100%;
     }
+
     100% {
         background-position: 51% 0%;
     }
@@ -1045,9 +1061,11 @@ nav a.active {
     0% {
         background-position: 51% 0%;
     }
+
     50% {
         background-position: 50% 100%;
     }
+
     100% {
         background-position: 51% 0%;
     }

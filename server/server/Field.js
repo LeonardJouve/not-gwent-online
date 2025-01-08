@@ -1,8 +1,8 @@
 var _ = require("underscore");
 
-var Field = (function() {
-  var Field = function(side, hasHornField) {
-    if(!(this instanceof Field)) {
+var Field = (function () {
+  var Field = function (side, hasHornField) {
+    if (!(this instanceof Field)) {
       return (new Field(side, hasHornField));
     }
     this._hasHornField = hasHornField || false;
@@ -16,8 +16,8 @@ var Field = (function() {
   r._hornCard = null;
   r.side = null;
 
-  r.add = function(card, isHorn) {
-    if(isHorn && this._hasHornField) {
+  r.add = function (card, isHorn) {
+    if (isHorn && this._hasHornField) {
       this.setHorn(card);
       return;
     }
@@ -25,61 +25,61 @@ var Field = (function() {
     this.updateScore();
   }
 
-  r.get = function() {
+  r.get = function () {
     return this._cards;
   }
 
-  r.getScore = function() {
+  r.getScore = function () {
     this.updateScore();
     return this._score;
   }
 
-  r.updateScore = function() {
+  r.updateScore = function () {
     this._score = 0;
-    for(var i = 0; i < this._cards.length; i++) {
+    for (var i = 0; i < this._cards.length; i++) {
       var card = this._cards[i];
       this._score += card.getPower();
     }
   }
 
-  r.getPosition = function(card) {
-    for(var i = 0; i < this._cards.length; i++) {
-      if(this._cards[i].getID() === card.getID()) return i;
+  r.getPosition = function (card) {
+    for (var i = 0; i < this._cards.length; i++) {
+      if (this._cards[i].getID() === card.getID()) return i;
     }
     return -1;
   }
 
-  r.isOnField = function(card) {
-    if(this._hasHornField && this.getHorn() && card.getID() === this.getHorn().getID()) {
+  r.isOnField = function (card) {
+    if (this._hasHornField && this.getHorn() && card.getID() === this.getHorn().getID()) {
       return true;
     }
     return this.getPosition(card) >= 0;
   }
 
-  r.replaceWith = function(oldCard, newCard) {
+  r.replaceWith = function (oldCard, newCard) {
     var index = this.getPosition(oldCard);
     this._cards[index] = newCard;
     oldCard.reset();
-    for(var event in oldCard._uidEvents) {
-      if(this.side && this.side.off) {
+    for (var event in oldCard._uidEvents) {
+      if (this.side && this.side.off) {
         this.side.off(event, oldCard.getUidEvents(event));
       }
     }
     return oldCard;
   }
 
-  r.getCard = function(id) {
-    for(var i = 0; i < this._cards.length; i++) {
+  r.getCard = function (id) {
+    for (var i = 0; i < this._cards.length; i++) {
       var card = this._cards[i];
-      if(card.getID() == id) return card;
+      if (card.getID() == id) return card;
     }
     return -1;
   }
 
-  r.removeAll = function() {
+  r.removeAll = function () {
     var tmp = this._cards.slice();
     var self = this;
-    tmp.forEach(function(card, i) {
+    tmp.forEach(function (card, i) {
       if (card.hasAbility("summon_avenger")) {
         var summonCard = self.side.createCard(card.getSummonType());
         self._cards.splice(self.getPosition(card), 1)
@@ -101,11 +101,11 @@ var Field = (function() {
 
     this._cards = _.without(this._cards, null);
 
-    if(this.getHorn()) {
+    if (this.getHorn()) {
       var card = this.getHorn();
       card.reset();
       this.setHorn(null);
-      for(var event in card._uidEvents) {
+      for (var event in card._uidEvents) {
         self.side.off(event, card.getUidEvents(event));
       }
       tmp.push(card);
@@ -113,14 +113,14 @@ var Field = (function() {
     return tmp;
   }
 
-  r.removeCard = function(cards) {
+  r.removeCard = function (cards) {
     var res = [];
     var _cards = this.get();
-    if(!Array.isArray(cards)) {
+    if (!Array.isArray(cards)) {
       cards = [cards];
     }
     var self = this;
-    cards.forEach(function(card) {
+    cards.forEach(function (card) {
       if (card.hasAbility("summon_avenger")) {
         var summonCard = self.side.createCard(card.getSummonType());
         _cards.splice(self.getPosition(card), 1)
@@ -140,7 +140,7 @@ var Field = (function() {
     return res;
   }
 
-  r.getInfo = function() {
+  r.getInfo = function () {
     var self = this;
     return {
       cards: self._cards,
@@ -149,29 +149,29 @@ var Field = (function() {
     }
   }
 
-  r.getHorn = function() {
-    if(!this._hasHornField) return null;
+  r.getHorn = function () {
+    if (!this._hasHornField) return null;
     return this._hornCard;
   }
 
-  r.setHorn = function(card) {
-    if(!this._hasHornField) return null;
+  r.setHorn = function (card) {
+    if (!this._hasHornField) return null;
     this._hornCard = card;
   }
 
-  r.getHighestCards = function(noHeroes) {
+  r.getHighestCards = function (noHeroes) {
     noHeroes = noHeroes || false;
     var res = [];
     var highest = 0;
 
-    this.get().forEach(function(card) {
-      if(noHeroes && card.hasAbility("hero")) return;
+    this.get().forEach(function (card) {
+      if (noHeroes && card.hasAbility("hero")) return;
       highest = card.getPower() > highest ? card.getPower() : highest;
     })
 
-    this.get().forEach(function(card) {
-      if(noHeroes && card.hasAbility("hero")) return;
-      if(card.getPower() === highest) res.push(card);
+    this.get().forEach(function (card) {
+      if (noHeroes && card.hasAbility("hero")) return;
+      if (card.getPower() === highest) res.push(card);
     });
 
     return res;

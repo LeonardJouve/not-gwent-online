@@ -1183,7 +1183,7 @@ module.exports = {
     power: -1,
     ability: "emreis_leader3",
     img: "emhyr_white",
-    faction: "nilfgaard",  
+    faction: "nilfgaard",
     type: 3
   },
   "emreis_relentless": {

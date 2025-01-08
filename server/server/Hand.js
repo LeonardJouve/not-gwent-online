@@ -1,9 +1,9 @@
 var Card = require("./Card");
 
 
-var Hand = (function(){
-  var Hand = function(){
-    if(!(this instanceof Hand)){
+var Hand = (function () {
+  var Hand = function () {
+    if (!(this instanceof Hand)) {
       return (new Hand());
     }
     this._hand = [];
@@ -11,58 +11,58 @@ var Hand = (function(){
   var r = Hand.prototype;
   r._hand = null;
 
-  r.add = function(card){
+  r.add = function (card) {
     this._hand.push(card);
   }
 
-  r.getCards = function(){
+  r.getCards = function () {
     return this._hand;
   }
 
-  r.getCard = function(id) {
-    for(var i=0; i< this.length(); i++) {
+  r.getCard = function (id) {
+    for (var i = 0; i < this.length(); i++) {
       var card = this.getCards()[i];
-      if(card.getID() === id) return card;
+      if (card.getID() === id) return card;
     }
     return -1;
   }
 
-  r.remove = function(id){
+  r.remove = function (id) {
     var n = this.length();
     id = id instanceof Card ? id.getID() : id;
 
-    if(!n) return -1;
+    if (!n) return -1;
 
-    for(var i = 0; i < n; i++) {
-      if(!this._hand[i]) {
+    for (var i = 0; i < n; i++) {
+      if (!this._hand[i]) {
         console.trace(this._hand[i]);
         continue;
       }
-      if(this._hand[i].getID() != id) continue;
+      if (this._hand[i].getID() != id) continue;
       return this._hand.splice(i, 1);
     }
 
     return -1;
   }
 
-  r.getRandomCard = function(){
+  r.getRandomCard = function () {
     var rnd = (Math.random() * this._hand.length) | 0;
-    if(!this._hand.length) return -1;
+    if (!this._hand.length) return -1;
     return this._hand[rnd];
   }
 
-  r.getLength = function(){
+  r.getLength = function () {
     return this._hand.length;
   }
 
-  r.length = function(){
+  r.length = function () {
     return this._hand.length;
   }
 
-  r.find = function(key, val) {
+  r.find = function (key, val) {
     var res = [];
-    this._hand.forEach(function(card){
-      if(card.getProperty(key) == val){
+    this._hand.forEach(function (card) {
+      if (card.getProperty(key) == val) {
         res.push(card);
       }
     });

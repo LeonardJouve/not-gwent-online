@@ -1,6 +1,6 @@
-var Connections = (function(){
-  var Connections = function(){
-    if(!(this instanceof Connections)){
+var Connections = (function () {
+  var Connections = function () {
+    if (!(this instanceof Connections)) {
       return (new Connections());
     }
 
@@ -13,25 +13,25 @@ var Connections = (function(){
   r.roomCollection = null;
   r._length = 0;
 
-  r.add = function(user) {
+  r.add = function (user) {
     this._connections[user.getID()] = user;
     this._length++;
   }
 
-  r.remove = function(user) {
+  r.remove = function (user) {
     delete this._connections[user.getID()];
     this._length--;
   }
 
-  r.get = function() {
+  r.get = function () {
     return this._connections;
   }
 
-  r.hasUser = function(user) {
+  r.hasUser = function (user) {
     return !!this._connections[user.getID()];
   }
 
-  r.length = function() {
+  r.length = function () {
     return this._length;
   }
   return Connections;

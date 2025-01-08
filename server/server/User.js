@@ -1,6 +1,6 @@
-var User = (function(){
-  var User = function(socket){
-    if(!(this instanceof User)){
+var User = (function () {
+  var User = function (socket) {
+    if (!(this instanceof User)) {
       return (new User(socket));
     }
 
@@ -19,14 +19,14 @@ var User = (function(){
   r.socket = null;
   r.disconnected = false;
 
-  r.getID = function(){
+  r.getID = function () {
     return this._id;
   }
 
-  r.send = function(event, data, room){
+  r.send = function (event, data, room) {
     room = room || null;
     data = data || null;
-    if(!room){
+    if (!room) {
       this.socket.emit(event, data);
     }
     else {
@@ -34,42 +34,42 @@ var User = (function(){
     }
   }
 
-  r.generateName = function(){
+  r.generateName = function () {
     var name = "Guest" + (((Math.random() * 8999) + 1000) | 0);
     this._name = name;
     return name;
   }
 
-  r.setName = function(name) {
+  r.setName = function (name) {
     name = name.slice(0, 20);
     console.log("user name changed from %s to %s", this._name, name);
     this._name = name;
   }
 
-  r.getName = function() {
+  r.getName = function () {
     return this._name;
   }
 
-  r.getRoom = function() {
+  r.getRoom = function () {
     return this._rooms[0];
   }
 
-  r.setDeck = function(deck) {
+  r.setDeck = function (deck) {
     this._deck = deck;
   }
 
-  r.getDeck = function() {
+  r.getDeck = function () {
     return this._deck;
   }
 
-  r.addRoom = function(room) {
+  r.addRoom = function (room) {
     this._rooms.push(room);
   }
 
-  r.cleanUp = function() {
-    for(var i=0; i<this._rooms.length; i++) {
+  r.cleanUp = function () {
+    for (var i = 0; i < this._rooms.length; i++) {
       var room = this._rooms[i];
-      if(room[i] === null) {
+      if (room[i] === null) {
         this._rooms.splice(i, 1);
 
         return this.cleanUp();
@@ -77,15 +77,15 @@ var User = (function(){
     }
   }
 
-  r.disconnect = function() {
+  r.disconnect = function () {
     var self = this;
     this.disconnected = true;
 
     matchmaking.removeFromQueue(this);
 
-    this._rooms.forEach(function(room) {
+    this._rooms.forEach(function (room) {
       room.leave(self);
-      if(!room.hasUser()) {
+      if (!room.hasUser()) {
         room = null;
       }
     })
@@ -93,28 +93,28 @@ var User = (function(){
     this.cleanUp();
   }
 
-  r._events = function() {
+  r._events = function () {
     var socket = this.socket;
     var self = this;
 
-    socket.on("request:name", function(data){
-      if(data && data.name){
+    socket.on("request:name", function (data) {
+      if (data && data.name) {
         self.setName(data.name);
       }
-      socket.emit("response:name", {name: self.getName()});
+      socket.emit("response:name", { name: self.getName() });
     })
 
-    socket.on("request:matchmaking", function() {
-      if(self._inQueue) return;
+    socket.on("request:matchmaking", function () {
+      if (self._inQueue) return;
       matchmaking.findOpponent(self);
     });
 
-    socket.on("request:gameLoaded", function(data){
+    socket.on("request:gameLoaded", function (data) {
       connections.roomCollection[data._roomID].setReady(self);
     })
 
-    socket.on("set:deck", function(data) {
-      if(data && data.deck){
+    socket.on("set:deck", function (data) {
+      if (data && data.deck) {
         self.setDeck(data.deck);
       }
     })

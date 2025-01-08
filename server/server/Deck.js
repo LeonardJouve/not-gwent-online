@@ -2,9 +2,9 @@ var Card = require("./Card");
 var DeckData = require("../assets/data/deck");
 var _ = require("underscore");
 
-var Deck = (function(){
-  var Deck = function(deck, side){
-    if(!(this instanceof Deck)){
+var Deck = (function () {
+  var Deck = function (deck, side) {
+    if (!(this instanceof Deck)) {
       return (new Deck(deck, side));
     }
     this.side = side;
@@ -28,16 +28,16 @@ var Deck = (function(){
     SKELLIGE: "skellige"
   }
 
-  r.setDeck = function(deckKey){
+  r.setDeck = function (deckKey) {
     var deck = DeckData[deckKey] ? DeckData[deckKey] : DeckData["northern"];
 
-    if(deckKey === "random"){
+    if (deckKey === "random") {
       var validFactions = ["northern", "nilfgaard", "scoiatael", "monster", "skellige"];
       var randomFaction = validFactions[(Math.random() * validFactions.length) | 0];
       deck = DeckData[randomFaction];
     }
 
-    if(deckKey === "random_optimized"){
+    if (deckKey === "random_optimized") {
       var validFactions = ["northern_optimized", "nilfgaard_optimized", "scoiatael_optimized", "monster_optimized", "skellige_optimized"];
       var randomFaction = validFactions[(Math.random() * validFactions.length) | 0];
       deck = DeckData[randomFaction];
@@ -51,67 +51,67 @@ var Deck = (function(){
     this.shuffle();
   }
 
-  r.getFaction = function(){
+  r.getFaction = function () {
     return this._faction;
   }
 
-  r.getLength = function(){
+  r.getLength = function () {
     return this._deck.length;
   }
 
-  r.length = function(){
+  r.length = function () {
     return this.getLength();
   }
 
-  r.getDeck = function(){
+  r.getDeck = function () {
     return this._deck;
   }
 
-  r.draw = function(){
-    if(!this._deck.length) return 0;
+  r.draw = function () {
+    if (!this._deck.length) return 0;
     var card = this.pop();
     return card;
   }
 
-  r._loadCards = function(){
+  r._loadCards = function () {
     var self = this;
-    this._deck = this.getDeck().map(function(cardkey){
+    this._deck = this.getDeck().map(function (cardkey) {
       return self.side.createCard(cardkey);
     });
   }
 
-  r.pop = function(){
+  r.pop = function () {
     var id = this._deck.pop();
     return id;
   }
 
-  r.find = function(key, val){
+  r.find = function (key, val) {
     var res = [];
-    this.getDeck().forEach(function(card){
-      if(card.getProperty(key) == val){
+    this.getDeck().forEach(function (card) {
+      if (card.getProperty(key) == val) {
         res.push(card);
       }
     });
     return res;
   }
 
-  r.removeFromDeck = function(card){
+  r.removeFromDeck = function (card) {
     var n = this.length();
 
-    for(var i = 0; i < n; i++) {
+    for (var i = 0; i < n; i++) {
       var c = this.getDeck()[i];
-      if(c.getID() === card.getID()){
+      if (c.getID() === card.getID()) {
         return this.getDeck().splice(i, 1)[0];
       }
     }
     return -1;
   }
 
-  r.shuffle = function(){
+  r.shuffle = function () {
     var deck = this.getDeck();
 
     var n = this.length();
-    for(var i = n - 1; i > 0; i--) {
+    for (var i = n - 1; i > 0; i--) {
       var j = (Math.random() * i) | 0;
       var tmp;
 
@@ -121,7 +121,7 @@ var Deck = (function(){
     }
   }
 
-  r.add = function(card){
+  r.add = function (card) {
     this._deck.push(card);
   }
 

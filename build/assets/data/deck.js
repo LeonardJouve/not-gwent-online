@@ -16,7 +16,7 @@ module.exports = {
       "prince_stennis",
       "siegfried_of_denesle",
       "ves",
-      
+
       // range
       "sabrina_glevissig",
       "sheldon_skaggs",
@@ -701,7 +701,7 @@ module.exports = {
       "geralt",
 
       "crach_an_craite",
-      
+
       "biting_frost",
       "clear_weather",
       "skellige_storm",

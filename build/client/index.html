@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="">
+
 <head>
   <meta charset="utf-8">
   <title>Gwent</title>
@@ -11,24 +12,26 @@
   <link rel="stylesheet" href="/build/cards.css">
   <link rel="stylesheet" href="/build/main.css">
 </head>
+
 <body>
-<div class="music-container">
-  <div id="player"></div>
-  <i class="music-icon active" title="Click to mute/unmute music"></i>
-  <div class="music-options">
-    <label for="volume">Volume:</label>
-    <input type="text" class="volume" id="volume" min="0" max="100" value="75">
-    <label for="volume">%</label>
+  <div class="music-container">
+    <div id="player"></div>
+    <i class="music-icon active" title="Click to mute/unmute music"></i>
+    <div class="music-options">
+      <label for="volume">Volume:</label>
+      <input type="text" class="volume" id="volume" min="0" max="100" value="75">
+      <label for="volume">%</label>
+    </div>
   </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="notifications"></div>
-    <div class="gwent-battle"></div>
+  <div class="container">
+    <div class="row">
+      <div class="notifications"></div>
+      <div class="gwent-battle"></div>
+    </div>
   </div>
-</div>
-<script src="/build/app.js"></script>
-<script src="/assets/data/music.js"></script>
-<script src="https://www.youtube.com/iframe_api"></script>
+  <script src="/build/app.js"></script>
+  <script src="/assets/data/music.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
 </body>
+
 </html>

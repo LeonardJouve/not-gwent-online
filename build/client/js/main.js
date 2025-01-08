@@ -1,6 +1,6 @@
 var App = require("./client");
 
-(function main(){
+(function main() {
   var app = new App();
 
 })();

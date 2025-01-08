@@ -1,7 +1,7 @@
 
-var Matchmaker = (function(){
-  var Matchmaker = function(){
-    if(!(this instanceof Matchmaker)){
+var Matchmaker = (function () {
+  var Matchmaker = function () {
+    if (!(this instanceof Matchmaker)) {
       return (new Matchmaker());
     }
 
@@ -13,22 +13,22 @@ var Matchmaker = (function(){
   r._queue = null;
   r._connections = null;
 
-  r.removeFromQueue = function(user){
-    for(var i = 0; i < this._queue.length; i++) {
+  r.removeFromQueue = function (user) {
+    for (var i = 0; i < this._queue.length; i++) {
       var u = this._queue[i];
-      if(u.getID() === user.getID()) {
+      if (u.getID() === user.getID()) {
         user._inQueue = false;
         return this._queue.splice(i, 1);
       }
     }
   }
 
-  r.findOpponent = function(user){
+  r.findOpponent = function (user) {
     var c = connections;
 
     var found = this._checkForOpponent();
 
-    if(found){
+    if (found) {
 
       var room = Room();
       c.roomCollection[room.getID()] = room;
@@ -42,14 +42,14 @@ var Matchmaker = (function(){
     this._getInQueue(user);
   }
 
-  r._getInQueue = function(user){
+  r._getInQueue = function (user) {
     this._queue.push(user);
     user._inQueue = true;
   }
 
 
-  r._checkForOpponent = function(){
-    if(!this._queue.length) return null;
+  r._checkForOpponent = function () {
+    if (!this._queue.length) return null;
     var foe = this._queue.splice(0, 1)[0];
     foe._inQueue = false;
     return foe;
