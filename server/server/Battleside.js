@@ -489,13 +489,23 @@ Battleside = (function () {
       return;
     }
 
+    var transformedCards = [];
+    var obj = {};
+
     field.get().forEach(function (_card) {
       if (_card.hasAbility("berserker")) {
         var newCard = this.createCard(_card.getBerserkerType());
         field.replaceWith(_card, newCard);
+        transformedCards.push(newCard);
         this.sendNotification(_card.getName() + " transformed into " + newCard.getName() + "!");
       }
     }, this);
+
+    transformedCards.forEach(function (newCard) {
+      this.checkAbilities(newCard, obj);
+      this.checkAbilityOnAfterPlace(newCard, obj);
+    }, this);
+
   };
 
   r.setTightBond = function (card) {

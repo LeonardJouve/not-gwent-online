@@ -152,10 +152,8 @@ var Card = (function () {
       res += this._boost[key];
     }
 
-    if (doubles) {
-      for (var i = 0; i < doubles; i++) {
-        res += res + this.getBasePower();
-      }
+    if (doubles > 0) {
+      res += this.getBasePower() * doubles;
     }
 
     if (this._boost["commanders_horn"] || this._boost["commanders_horn_card"]) {
