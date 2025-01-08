@@ -79,12 +79,16 @@ var Field = (function () {
   r.removeAll = function () {
     var tmp = this._cards.slice();
     var self = this;
-    tmp.forEach(function (card, i) {
+    var cardsToRemove = [];
+    var summonCards = [];
+
+    tmp.forEach(function (card) {
       if (card.hasAbility("summon_avenger")) {
         var summonCard = self.side.createCard(card.getSummonType());
-        self._cards.splice(self.getPosition(card), 1)
-        self.side.placeCard(summonCard);
-        self.side.battle.sendNotification(card.getName() + " was replaced by " + summonCard.getName() + "!");
+        var position = self.getPosition(card);
+        cardsToRemove.push(card);
+        summonCards.push(summonCard);
+        self._cards.splice(position, 1);
       } else {
         card.reset();
         if (card.__lock) {
@@ -95,11 +99,26 @@ var Field = (function () {
             self.side.off(event, card.getUidEvents(event));
           }
         }
-        self._cards[i] = null;
+        cardsToRemove.push(card);
       }
-    }, this);
+    });
+
+    cardsToRemove.forEach(function (card) {
+      var position = self.getPosition(card);
+      self._cards.splice(position, 1);
+    });
 
     this._cards = _.without(this._cards, null);
+
+    summonCards.forEach(function (summonCard) {
+      self.side.placeCard(summonCard);
+    });
+
+    cardsToRemove.forEach(function (card, index) {
+      if (card.hasAbility("summon_avenger")) {
+        self.side.battle.sendNotification(card.getName() + " was replaced by " + summonCards[index].getName() + "!");
+      }
+    });
 
     if (this.getHorn()) {
       var card = this.getHorn();
@@ -110,8 +129,9 @@ var Field = (function () {
       }
       tmp.push(card);
     }
+
     return tmp;
-  }
+  };
 
   r.removeCard = function (cards) {
     var res = [];
