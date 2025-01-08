@@ -82,8 +82,9 @@ var Field = (function () {
     var cardsToRemove = [];
     var summonCards = [];
 
-    tmp.forEach(function (card) {
+    tmp.forEach(function (card, i) {
       if (card.hasAbility("summon_avenger")) {
+        if (!card) return;
         var summonCard = self.side.createCard(card.getSummonType());
         var position = self.getPosition(card);
         cardsToRemove.push(card);
