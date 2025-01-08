@@ -20,3 +20,20 @@ Edit .env
 
 ## Start Client
 Open your browser and go to `http://<server-ip>:<webserver-port>`
+
+## Todo List
+- Deck Maker
+- Improve UI to better reflect selected faction etc
+- Missing abilities
+    - Mardroeme Cards
+    - Leader Cards:
+        - Francesca Findabair: Hope of the Aen Seidhe
+        - Eredin: Destroyer of Worlds
+        - Eredin: King of The Wild Hunt
+        - Emhyr var Emreis: Emperor of Nilfgaard
+        - Emhyr var Emreis: Invader of the North
+        - King Bran
+
+## Known Issues
+- Tight Bond ability multiplies the card values instead of adding them
+- Gaunter O'Dimm can be summoned by its Darkness version
