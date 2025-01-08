@@ -1,7 +1,7 @@
 var Battleside = require("./Battleside");
 var Card = require("./Card");
 var Deck = require("./Deck");
-var nanoid = require("nanoid");
+var { nanoid } = require("nanoid");
 var Promise = require("jquery-deferred");
 var CardManager = require("./CardManager");
 

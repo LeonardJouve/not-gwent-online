@@ -1,4 +1,4 @@
-var nanoid = require("nanoid");
+var { nanoid } = require("nanoid");
 var Battle = require("./Battle");
 
 var Room = (function () {
