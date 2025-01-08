@@ -1,4 +1,4 @@
-var shortid = require("shortid");
+var nanoid = require("nanoid");
 var Battle = require("./Battle");
 
 var Room = (function () {
@@ -7,7 +7,7 @@ var Room = (function () {
       return (new Room());
     }
 
-    this._id = shortid.generate();
+    this._id = nanoid();
     this._users = [];
     this._ready = {};
   };

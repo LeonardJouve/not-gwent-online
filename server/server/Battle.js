@@ -1,7 +1,7 @@
 var Battleside = require("./Battleside");
 var Card = require("./Card");
 var Deck = require("./Deck");
-var shortid = require("shortid");
+var nanoid = require("nanoid");
 var Promise = require("jquery-deferred");
 var CardManager = require("./CardManager");
 
@@ -236,7 +236,7 @@ var Battle = (function () {
     ctx = ctx || null;
     args = args || [];
     var event = "on" + eventid;
-    var uid_event = shortid.generate();
+    var uid_event = nanoid();
 
     var obj = {};
     if (!ctx) {

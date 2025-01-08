@@ -7,7 +7,7 @@
     "dotenv": "latest",
     "express": "latest",
     "jquery-deferred": "latest",
-    "shortid": "latest",
+    "nanoid": "latest",
     "socket.io": "v2-latest",
     "underscore": "latest"
   }
