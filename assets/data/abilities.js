@@ -1,5 +1,3 @@
-const { get } = require("underscore");
-
 module.exports = {
 
   "agile": {

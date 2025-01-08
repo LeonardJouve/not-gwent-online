@@ -82,7 +82,8 @@ var Field = (function() {
     tmp.forEach(function(card, i) {
       if (card.hasAbility("summon_avenger")) {
           var summonCard = self.side.createCard(card.getSummonType());
-          self._cards[i] = summonCard;
+          self._cards.splice(i, 1);
+          self.side.placeCard(summonCard);
           self.side.battle.sendNotification(card.getName() + " was replaced by " + summonCard.getName() + "!");
       } else {
           card.reset();
@@ -122,8 +123,8 @@ var Field = (function() {
     cards.forEach(function(card) {
       if (card.hasAbility("summon_avenger")) {
         var summonCard = self.side.createCard(card.getSummonType());
-        var index = self.getPosition(card);
-        _cards[index] = summonCard;
+        _cards.splice(self.getPosition(card), 1)
+        self.side.placeCard(summonCard);
         self.side.battle.sendNotification(card.getName() + " was replaced by " + summonCard.getName() + "!");
       } else {
         card.reset();

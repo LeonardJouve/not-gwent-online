@@ -1,13 +1,3 @@
-/**
- * types
- * 0 close combat
- * 1 ranged
- * 2 siege
- * 3 leader
- * 4 special
- * 5 weather
- */
-
 module.exports = {
   "none": {
     name: "none",
@@ -1588,7 +1578,7 @@ module.exports = {
   "olaf": {
     name: "Olaf",
     power: 12,
-    ability: ["tight_bond", "agile"],
+    ability: ["morale_boost", "agile"],
     img: "olaf",
     faction: "skellige",
     type: 0

@@ -1,5 +1,4 @@
 var Card = require("./Card");
-/*var CardManager = require("./CardManager");*/
 var DeckData = require("../assets/data/deck");
 var _ = require("underscore");
 
@@ -70,7 +69,6 @@ var Deck = (function(){
   r._loadCards = function(){
     var self = this;
     this._deck = this.getDeck().map(function(cardkey){
-      //return Card(cardkey);
       return self.side.createCard(cardkey);
     });
   }

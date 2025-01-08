@@ -124,6 +124,21 @@ var Battle = (function(){
       this.sendNotification(winner.getName() + " draws 1 extra card! (Northern ability)");
     }
 
+    if (this.p1.getRubies() === 1 && this.p2.getRubies() === 1) {
+      if (this.p1.deck.getFaction() === Deck.FACTION.SKELLIGE) {
+          var restoredCards = this.p1.restoreRandomUnitsFromGraveyard(2);
+          restoredCards.forEach(card => {
+              this.sendNotification(this.p1.getName() + " restores " + card.getName() + " from his or her graveyard! (Skellige ability)");
+          });
+      }
+      if (this.p2.deck.getFaction() === Deck.FACTION.SKELLIGE) {
+          var restoredCards = this.p2.restoreRandomUnitsFromGraveyard(2);
+          restoredCards.forEach(card => {
+              this.sendNotification(this.p2.getName() + " restores " + card.getName() + " from his or her graveyard! (Skellige ability)");
+          });
+      }
+    }
+
     this.update();
 
     if(winner.deck.getFaction() === Deck.FACTION.SCOIATAEL){

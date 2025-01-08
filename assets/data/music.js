@@ -54,7 +54,6 @@ $('.music-icon').on('click', function () {
     }
 });
 
-// Show/hide music options
 let musicHover;
 $('.music-icon, .music-options').hover(function () {
     clearTimeout(musicHover);

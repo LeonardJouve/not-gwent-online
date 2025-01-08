@@ -380,7 +380,6 @@ Battleside = (function() {
     this.checkAbilities(card, obj);
     if(obj._cancelPlacement && !obj.forceField) {
 
-      //this.battle.sendNotification(this.getName() + " played " + card.getName() + "!");
       return 0;
     }
     if(obj._nextTurn && !obj.forceField) {
@@ -510,21 +509,6 @@ Battleside = (function() {
       if(c.getName() !== card.getName()) return;
       card.setBoost(card.getID() + "|tight_bond|" + c.getID(), "tight_bond");
     });
-
-    /*if(pos < 0) return;
-    if(pos >= 1 && cards[pos - 1].getName() === cards[pos].getName()){
-      cards[pos].setBoost(cards[pos].getID() + "|left", "tight_bond");
-    }
-    else {
-      cards[pos].setBoost(cards[pos].getID() + "|left", 0);
-    }
-
-    if(pos < cards.length - 1 && cards[pos + 1].getName() === cards[pos].getName()){
-      cards[pos].setBoost(cards[pos].getID() + "|right", "tight_bond");
-    }
-    else {
-      cards[pos].setBoost(cards[pos].getID() + "|right", 0);
-    }*/
   }
 
   r.checkAbilities = function(card, obj, __flag) {
@@ -622,7 +606,6 @@ Battleside = (function() {
           self.hand.remove(card);
 
           self.update();
-          //self.runEvent("NextTurn", null, [self.foe]);
           self.endTurn();
           self.battle.sendNotification(self.getName() + " played Decoy!");
         })
@@ -880,6 +863,21 @@ Battleside = (function() {
     }
     return this._discard;
   }
+
+  r.restoreRandomUnitsFromGraveyard = function(count) {
+    var discard = this.getDiscard();
+    var unitCards = this.filter(discard, {
+        "ability": "hero",
+        "type": [Card.TYPE.SPECIAL, Card.TYPE.WEATHER]
+    });
+
+    var randomCards = _.sample(unitCards, Math.min(count, unitCards.length));
+    randomCards.forEach(card => {
+        this.removeFromDiscard(card);
+        this.placeCard(card);
+    });
+    return randomCards;
+  };
 
   r.resetNewRound = function() {
     this.clearMainFields();
