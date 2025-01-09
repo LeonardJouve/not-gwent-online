@@ -422,7 +422,7 @@ module.exports = {
       // melee
       "kambi",
       "birna_bran",
-      // "berserker",
+      "berserker",
       "shield_maiden1",
       "shield_maiden2",
       "shield_maiden3",

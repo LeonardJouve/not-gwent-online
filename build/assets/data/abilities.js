@@ -72,6 +72,7 @@ module.exports = {
       var cardsHand = this.hand.find("musterType", musterType);
 
       cardsDeck.forEach(function (_card) {
+        if (_card.excludeFromMuster()) return;
         if (_card.getID() === card.getID()) return;
         self.deck.removeFromDeck(_card);
         self.placeCard(_card, {
@@ -79,6 +80,7 @@ module.exports = {
         });
       })
       cardsHand.forEach(function (_card) {
+        if (_card.excludeFromMuster()) return;
         if (_card.getID() === card.getID()) return;
         self.hand.remove(_card);
         self.placeCard(_card, {

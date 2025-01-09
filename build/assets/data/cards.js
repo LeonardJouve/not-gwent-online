@@ -1736,6 +1736,7 @@ module.exports = {
     power: 2,
     ability: "muster",
     musterType: "gaunter_odimm",
+    excludeFromMuster: true,
     img: "gaunter_odimm",
     faction: "neutral",
     type: 2

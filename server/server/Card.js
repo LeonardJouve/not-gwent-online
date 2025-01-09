@@ -113,6 +113,9 @@ var Card = (function () {
   r.getMusterType = function () {
     return this._data.musterType || null;
   }
+  r.excludeFromMuster = function () {
+    return this._data.excludeFromMuster || false;
+  };
   r.getSummonType = function () {
     return this._data.summonType || null;
   }
