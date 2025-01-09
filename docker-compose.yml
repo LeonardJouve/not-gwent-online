@@ -11,7 +11,7 @@ services:
     environment:
       TZ: Europe/Zurich
   server:
-    image: node
+    image: node:alpine
     container_name: server
     working_dir: /gwent
     volumes:
