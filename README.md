@@ -35,5 +35,4 @@ Open your browser and go to `http://<server-ip>:<webserver-port>`
         - King Bran
 
 ## Known Issues
-- Transformed Young Vildkaarls' Tight Bond ability doesn't work as intended 
-- Gaunter O'Dimm can be summoned by its Darkness version
+- Transformed Young Vildkaarls' Tight Bond ability doesn't work as intended
