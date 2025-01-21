@@ -57,6 +57,20 @@ let App = Backbone.Router.extend({
     this.socket.on("disconnect", function (socket) {
       self.user.set("serverOffline", true);
     })
+    this.socket.on("chat:newMessage", function (data) {
+      if (data && data.sender && data.message) {
+        const chatContainer = document.getElementById("chatMessages");
+        const newMessage = document.createElement("div");
+        newMessage.textContent = `${data.sender}: ${data.message}`;
+        chatContainer.appendChild(newMessage);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }
+    });
+  },
+  sendMessage: function (message) {
+    if (message && message.trim()) {
+      this.socket.emit("chat:message", message.trim());
+    }
   },
   receive: function (event, cb) {
     this.socket.on(event, cb);

@@ -606,16 +606,6 @@ body {
   margin: 4px 10px 0 0;
 }
 
-.volume {
-  width: 40px;
-  background: #404d5b;
-  border: 0;
-  padding: 5px;
-  float: left;
-  margin: 0 15px 0 0;
-  text-align: center;
-}
-
 .container {
   min-width: 970px;
   width: 970px important;
@@ -871,10 +861,6 @@ body {
 
 .right-side {
   height: 300px;
-}
-
-.right-side:nth-child(2) {
-  border-bottom: 1px solid black;
 }
 
 .card {

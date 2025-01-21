@@ -1,0 +1,86 @@
+#chatContainer {
+	display: flex;
+	flex-direction: column;
+	width: 250px;
+	height: 65%;
+	color: white;
+	background: rgba(0, 0, 0, 0.2);
+	box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+	position: fixed;
+	top: 100px;
+	right: 20px;
+	z-index: 1000;
+	border-radius: 8px;
+	overflow: hidden;
+}
+  
+#chatMessages {
+	flex: 1;
+	padding: 10px;
+	overflow-y: auto;
+  overflow-x: hidden;
+  overflow-wrap: break-word; 
+}
+
+#chatMessages::-webkit-scrollbar {
+  width: 8px;
+}
+
+#chatMessages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#chatMessages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+}
+
+#chatMessages::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+  
+#chatInput,
+#chatSend {
+	padding: 8px;
+	border: none;
+	border-radius: 4px;
+}
+
+#chatContainer > input,
+#chatContainer > button {
+	margin: 5px;
+}
+
+#chatInput {
+	background-color: rgba(255, 255, 255, 0.2);
+	color: #fff;
+}
+
+#chatSend {
+	background-color: rgba(100, 149, 237, 0.4);
+	color: white;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+#chatSend:hover {
+	background-color: rgba(100, 149, 237, 0.6);
+}
+
+#chatContainer > input,
+#chatContainer > button {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#toggleChat {
+  background-color: transparent;
+	text-align: right;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+#chatContainer.hidden {
+  display: none;
+}

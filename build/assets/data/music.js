@@ -18,7 +18,7 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
-function onPlayerReady(event) {
+function onPlayerReady() {
     const volume = localStorage.getItem('volumeValue') || 75;
     player.setVolume(volume);
     $('#volume').val(volume);
@@ -34,13 +34,6 @@ function onPlayerStateChange(event) {
         player.playVideo();
     }
 }
-
-$('#volume').on('blur', function () {
-    let val = $(this).val();
-    val = Math.max(0, Math.min(100, val || 75));
-    player.setVolume(val);
-    localStorage.setItem('volumeValue', val);
-});
 
 $('.music-icon').on('click', function () {
     if ($(this).hasClass('active')) {

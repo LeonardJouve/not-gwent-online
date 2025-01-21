@@ -37,6 +37,14 @@ io.on("connection", function (socket) {
 
 
   io.emit("update:playerOnline", connections.length());
+  
+  socket.on("chat:message", function (msg) {
+    if (!msg || typeof msg !== "string") return;
+    io.emit("chat:newMessage", {
+      sender: user.getName(),
+      message: msg
+    });
+  });
 })
 
 admin.on("connection", function (socket) {

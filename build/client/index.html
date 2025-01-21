@@ -11,22 +11,24 @@
   <link rel="stylesheet" href="/build/bootstrap.css">
   <link rel="stylesheet" href="/build/cards.css">
   <link rel="stylesheet" href="/build/main.css">
+  <link rel="stylesheet" href="/build/chat.css">
 </head>
 
 <body>
   <div class="music-container">
     <div id="player"></div>
     <i class="music-icon active" title="Click to mute/unmute music"></i>
-    <div class="music-options">
-      <label for="volume">Volume:</label>
-      <input type="text" class="volume" id="volume" min="0" max="100" value="75">
-      <label for="volume">%</label>
-    </div>
   </div>
   <div class="container">
     <div class="row">
       <div class="notifications"></div>
       <div class="gwent-battle"></div>
+      <div id="chatContainer">
+        <button id="toggleChat">X</button>
+        <div id="chatMessages"></div>
+        <input id="chatInput" type="text" placeholder="Type your message here..." />
+        <button id="chatSend">Send</button>
+      </div>
     </div>
   </div>
   <script src="/build/app.js"></script>
