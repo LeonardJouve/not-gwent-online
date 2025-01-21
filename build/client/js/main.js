@@ -18,10 +18,4 @@ var App = require("./client");
     }
   });
 
-  document.getElementById("toggleChat").addEventListener("click", function () {
-    const chatContainer = document.getElementById("chatContainer");
-    const isHidden = chatContainer.classList.toggle("hidden");
-    this.textContent = isHidden ? "Show Chat" : "Hide Chat";
-  });
-
 })();
