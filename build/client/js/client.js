@@ -64,6 +64,10 @@ let App = Backbone.Router.extend({
         newMessage.textContent = `${data.sender}: ${data.message}`;
         chatContainer.appendChild(newMessage);
         chatContainer.scrollTop = chatContainer.scrollHeight;
+        if (data.sender !== localStorage["userName"]) {
+          var audio = new Audio('/assets/sounds/notification.mp3');
+          audio.play();
+        }
       }
     });
   },
