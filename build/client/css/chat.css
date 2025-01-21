@@ -4,12 +4,10 @@
 	width: 250px;
 	height: 65%;
 	color: white;
-	background: rgba(0, 0, 0, 0.2);
-	box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+	background: rgba(0, 0, 0, 0.4);
 	position: fixed;
 	top: 100px;
 	right: 20px;
-	z-index: 1000;
 	border-radius: 8px;
 	overflow: hidden;
 }
@@ -52,12 +50,12 @@
 }
 
 #chatInput {
-	background-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(255, 255, 255, 0.01);
 	color: #fff;
 }
 
 #chatSend {
-	background-color: rgba(100, 149, 237, 0.4);
+	background-color: #3f4c5b;
 	color: white;
 	cursor: pointer;
 	transition: background-color 0.3s ease;

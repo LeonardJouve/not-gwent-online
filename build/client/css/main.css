@@ -807,16 +807,15 @@ body {
 }
 
 .button-pass {
-  width: 100%;
+  width: -webkit-fill-available;
   border: 0;
   background: #3f4c5b;
   padding: 5px 0;
   color: #fff;
   text-transform: uppercase;
-  fon-size: 15px;
-  position: absolute;
   z-index: 21;
-  margin-top: -33px;
+  border-radius: 4px;
+  margin: 5px;
 }
 
 .button-pass:hover {
@@ -832,6 +831,7 @@ body {
   width: 100%;
   background: rgba(0, 0, 0, 0.4);
   position: relative;
+  border-radius: 8px
 }
 
 .game-info div {
