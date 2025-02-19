@@ -19,7 +19,7 @@ function onYouTubeIframeAPIReady() {
 }
 
 function onPlayerReady() {
-    const volume = localStorage.getItem('volumeValue') || 75;
+    const volume = localStorage.getItem('volumeValue') || 50;
     player.setVolume(volume);
     $('#volume').val(volume);
 

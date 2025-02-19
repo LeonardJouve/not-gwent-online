@@ -46,9 +46,6 @@ gulp.task("index", function () {
   gulp.src("./client/css/app.css")
     .pipe(gulp.dest("./public/build"));
 
-  gulp.src("./client/css/chat.css")
-    .pipe(gulp.dest("./public/build"));
-
 })
 
 gulp.task('resize sm', function (done) {

@@ -34,17 +34,11 @@ Handlebars.registerHelper("formatMessage", function (msg) {
 });
 
 let App = Backbone.Router.extend({
-  routes: {
-    /*"lobby": "lobbyRoute",
-    "battle": "battleRoute",
-    "*path": "defaultRoute"*/
-  },
+  routes: {},
   initialize: function () {
     let self = this;
     this.connect();
     this.user = new User({ app: this });
-
-    /*Backbone.history.start();*/
     this.lobbyRoute();
   },
   connect: function () {
@@ -57,31 +51,10 @@ let App = Backbone.Router.extend({
     this.socket.on("disconnect", function (socket) {
       self.user.set("serverOffline", true);
     })
-    this.socket.on("chat:newMessage", function (data) {
-      if (data && data.sender && data.message) {
-        const chatContainer = document.getElementById("chatMessages");
-        const newMessage = document.createElement("div");
-        newMessage.textContent = `${data.sender}: ${data.message}`;
-        chatContainer.appendChild(newMessage);
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-        if (data.sender !== localStorage["userName"]) {
-          var audio = new Audio('/assets/sounds/notification.mp3');
-          audio.play();
-        }
-      }
-    });
-  },
-  sendMessage: function (message) {
-    if (message && message.trim()) {
-      this.socket.emit("chat:message", message.trim());
-    }
   },
   receive: function (event, cb) {
     this.socket.on(event, cb);
-  }, /*
-  receiveOnce: function(event, cb){
-    this.socket.once(event, cb);
-  },*/
+  },
   send: function (event, data) {
     data = data || null;
     let socket = this.socket;
@@ -163,10 +136,6 @@ let SideView = Backbone.View.extend({
     })
 
     this.$info = this.$el.find(".game-info" + this.side).html(html);
-
-    /*let $deck = $(this.side + " .field-deck");
-    $deck*/
-
     this.$deck = $(this.side + ".right-side");
     this.$deck.html(this.templateCardpiles({
       data: d
@@ -207,7 +176,6 @@ let SideView = Backbone.View.extend({
       $field.addClass("field-frost");
     }
 
-    //calculateCardMargin($field.find(".card"), 351, 70, cards.length);
     this.battleView.calculateMargin($field.find(".field-close"), 5);
   },
   renderRangeField: function () {
@@ -236,7 +204,6 @@ let SideView = Backbone.View.extend({
       $field.addClass("field-fog");
     }
 
-    //calculateCardMargin($field.find(".card"), 351, 70, cards.length);
     this.battleView.calculateMargin($field.find(".field-range"), 5);
   },
   renderSiegeField: function () {
@@ -265,7 +232,6 @@ let SideView = Backbone.View.extend({
       $field.addClass("field-rain");
     }
 
-    //calculateCardMargin($field.find(".card"), 351, 70, cards.length);
     this.battleView.calculateMargin($field.find(".field-siege"), 5);
   },
   renderWeatherField: function () {
@@ -277,18 +243,6 @@ let SideView = Backbone.View.extend({
     this.battleView.calculateMargin($weatherField, 0);
     return this;
   }
-  /*,
-  lives: function(lives){
-    let out = "";
-    for(let i = 0; i < 2; i++) {
-      out += "<i";
-      if(i < lives){
-        out += " class='ruby'";
-      }
-      out += "></i>";
-    }
-    return out;
-  }*/
 });
 
 let BattleView = Backbone.View.extend({
@@ -313,8 +267,6 @@ let BattleView = Backbone.View.extend({
 
     this.$hand = this.$el.find(".field-hand");
     this.$preview = this.$el.find(".card-preview");
-
-    //$(window).on("resize", this.calculateMargin.bind(this, this.$hand));
 
     let interval = setInterval(function () {
       if (!user.get("room")) return;
@@ -508,17 +460,11 @@ let BattleView = Backbone.View.extend({
     return this;
   },
   renderPreview: function () {
-    /*let preview = new Preview({key: this.user.get("showPreview")});*/
     let preview = this.user.get("showPreview");
     if (!preview) {
       return;
     }
     this.$el.find(".card-preview").html(preview.render().el);
-    /*this.$el.find(".card-preview").html(this.templatePreview({src: this.user.get("showPreview")}))
-    this.$el.find(".card-preview").css("display", "none");
-    if(this.user.get("showPreview")) {
-      this.$el.find(".card-preview").css("display", "block");
-    }*/
   },
   clickLeader: function (e) {
     let $card = $(e.target).closest(".field-leader");
@@ -572,47 +518,6 @@ let BattleView = Backbone.View.extend({
       side.field.weather = data.weather;
       side.render();
     })
-
-    /*this.battleChannel.watch(function(d){
-      let event = d.event, data = d.data;
-
-      if(event === "update:hand"){
-        if(user.get("roomSide") == data._roomSide){
-          self.handCards = JSON.parse(data.cards);
-          self.user.set("handCards", self.handCards);
-          self.render();
-        }
-      }
-      else if(event === "update:info"){
-        let _side = data._roomSide;
-        let infoData = data.info;
-        let leader = data.leader;
-
-        let side = self.yourSide;
-        if(user.get("roomSide") != _side){
-          side = self.otherSide;
-        }
-        side.infoData = infoData;
-        side.leader = leader;
-
-        side.infoData.discard = JSON.parse(side.infoData.discard);
-
-        side.render();
-      }
-      else if(event === "update:fields"){
-        let _side = data._roomSide;
-
-        let side = self.yourSide;
-        if(user.get("roomSide") != _side){
-          side = self.otherSide;
-        }
-        side.field.close = data.close;
-        side.field.ranged = data.ranged;
-        side.field.siege = data.siege;
-        side.field.weather = data.weather;
-        side.render();
-      }
-    })*/
   },
   calculateMargin: function ($container, minSize) {
     minSize = typeof minSize === "number" && minSize >= 0 ? minSize : 6;
@@ -765,9 +670,6 @@ let User = Backbone.Model.extend({
       //console.log("opponent found!");
       self.set("roomSide", data.side);
       self.set("roomFoeSide", data.foeSide);
-      /*
-            self.set("channel:battle", app.socket.subscribe(self.get("room")));*/
-      //app.navigate("battle", {trigger: true});
       app.battleRoute();
     })
 
@@ -877,7 +779,6 @@ let User = Backbone.Model.extend({
   subscribeRoom: function () {
     let room = this.get("room");
     let app = this.get("app");
-    //app.socket.subscribe(room);
   },
   setName: function (name) {
     name = name.slice(0, 20);
@@ -934,7 +835,6 @@ let Lobby = Backbone.View.extend({
   },
   events: {
     "click .startMatchmaking": "startMatchmaking",
-    /*"click .join-room": "joinRoom",*/
     "blur .name-input": "changeName",
     "change #deckChoice": "setDeck",
     "click .note": "debugNote"
@@ -960,12 +860,7 @@ let Lobby = Backbone.View.extend({
     this.$el.find("#deckChoice option[value='" + val + "']").attr("selected", "selected")
   },
   setName: function () {
-    /*let val = $(e.target).val();
-    this.app.trigger("setDeck", val);
-    this.$el.find("#deckChoice option[value='" + val + "']").attr("selected", "selected")*/
-
     localStorage["userName"] = this.app.user.get("name");
-    /*this.render();*/
     this.$el.find(".name-input").val(this.app.user.get("name"));
   },
   changeName: function (e) {

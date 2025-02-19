@@ -23,7 +23,7 @@ Open your browser and go to `http://<server-ip>:<webserver-port>`
 
 ## Todo List
 - Deck Maker
-- Improve UI to better reflect selected faction etc
+- Improve UI to better reflect selected faction
 - Missing abilities
     - Mardroeme Cards
     - Leader Cards:
