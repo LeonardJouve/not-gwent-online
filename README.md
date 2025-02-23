@@ -10,7 +10,7 @@ cd gwent
 cp .env.example .env
 ```
 
-Edit .env
+Edit .env with the websocket IP address (must be different from the server IP address)
 
 ## Start Server
 `docker compose up -d --build`
@@ -35,4 +35,4 @@ Open your browser and go to `http://<server-ip>:<webserver-port>`
         - King Bran
 
 ## Known Issues
-- Transformed Young Vildkaarls' Tight Bond ability doesn't work as intended
+- Transformed Young Vildkaarls' Tight Bond ability doesn't grant the expected amount of points

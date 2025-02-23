@@ -42,7 +42,7 @@ let App = Backbone.Router.extend({
     this.lobbyRoute();
   },
   connect: function () {
-    this.socket = socket(process.env.BIND + ":" + process.env.WEBSOCKET_PORT);
+    this.socket = socket(process.env.BIND);
     var self = this;
     console.log(this.socket.connected);
     this.socket.on("connect", function (socket) {
